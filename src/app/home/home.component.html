@@ -1,0 +1,26 @@
+
+<div class="row" style="padding-top:20px">
+  <div class="col-sm-8">
+    <span style="font-size: 16px;font-weight: bold;">Select company to generate bill</span>
+  </div>
+
+  <div class="col-sm-4">
+      <span>Upcoming Invoice :</span> <span style="font-weight:bold">{{upcomingInvoice}}</span> <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
+      <div [hidden]="showInvoiceOption">Enter new Invoice number : <input type="number" [(ngModel)]="newinvoice"> <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button></div> </div>
+  
+ 
+  </div>
+
+
+  
+
+   <div class="row">
+      <div class="col-sm-4" *ngFor="let item of companyData; let i = index">
+       <div class="card" >
+          <div style="padding: 15px;font-weight: bold;" [(ngModel)]="selectedItemBill" (click)="createBill(item.code)">&nbsp;&nbsp;{{i+1}}.&nbsp;{{item.name}}</div>
+
+      </div></div>
+  </div>
+ 
+
+

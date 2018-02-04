@@ -1,0 +1,80 @@
+.companySelection{
+
+}
+.company{
+    cursor: pointer;
+    line-height:25px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+@-webkit-keyframes spin {
+    
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    
+  }
+  
+  @keyframes spin {
+    
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+    
+  }
+  
+  body {
+    margin: 0;
+    background: #eee;
+    
+    font-family: "Roboto", sans-serif;
+    color: #333;
+  }
+  
+  .container {
+    width: 300px;
+    margin: 0 auto;
+    
+    padding: 0 32px;
+    box-sizing: border-box;
+  }
+  
+  .card {
+    margin: 12px 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    background: white;
+    min-height: 80px;
+    display: flex;
+  }
+  
+  
+  
+  @media screen and (max-width: 700px) {
+    
+    .container {
+      width: 100%;
+    }
+}  
