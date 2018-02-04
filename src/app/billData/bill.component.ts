@@ -107,6 +107,8 @@ export class BillComponent {
     showInvoiceOption = true;
     displayBill:boolean = true;
     Billcopy:string;
+    newinvoice:any;
+    dt:any;
      
     constructor (private router: Router,private activatedRoute: ActivatedRoute,private numberToWordsPipe: NumberToWordsPipe){}
 

@@ -16,7 +16,7 @@ export class HomeComponent {
     time:any;
     showInvoiceOption:boolean = true;
     upcomingInvoice:any;
-    pdfSrc: string = '/pdf-test.pdf';
+    newinvoice:any;
 
 
     constructor (private router: Router,private activatedRoute: ActivatedRoute){
