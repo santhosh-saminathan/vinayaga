@@ -78,6 +78,471 @@ export class BillComponent {
                 }
             ]
         },
+        {
+            code:'AVCL6',
+            name:'Anugraha Valve Castings Limited(Unit-VI)', 
+            address:'168/1,Pathuvampalli Village & Panchayat,sulur tk',
+            city:'Coimbatore-641659',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AACCA2285Q1ZF',
+            Billformat:true,
+            differentType:false,
+            items:[
+              {
+                'name':'Stainless steel impact',
+                'rate': 84,
+                'pieces':true
+                },{
+                'name':'Stainless full length impact',
+                'rate': 420,
+                'pieces':false
+                },{
+                'name':'Stainless steel IGC',
+                'rate': 84,
+                'pieces':false
+                },{
+                'name':'Non alloy steel impact',
+                'rate': 63,
+                'pieces':true
+                },{
+                'name':'Stainless steel IGC G48',
+                'rate': 84,
+                'pieces':false
+                },{
+                'name':'Non alloy steel full length impact',
+                'rate': 367,
+                'pieces':false
+                },{
+                'name':'Stainless steel IBR bend',
+                'rate': 84,
+                'pieces':false
+                },{
+                'name':'Stainless steel weld test plate V groove',
+                'rate': 420,
+                'pieces':false
+                },{
+                'name':'Non alloy steel weld test plate V groove',
+                'rate': 420,
+                'pieces':false
+                }
+            ]
+        },
+
+        {
+            code:'SRVACPL',
+            Bill:true,
+            name:'Sri Ranganathar Valves And Control Private Limited',
+            address:'5/239 & 5/240,Karegoundenpalayam,Annur',
+            city:'Coimbatore-641697',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AAWCS8068D1ZV', 
+            Billformat:true,
+            items:[{
+                'name':'Stainless Steel Impact',
+                'rate': 55,
+                'pieces':true
+            },{
+                'name':'Non Alloy Steel Impact ',
+                'rate': 35,
+                'pieces':true
+            },{
+                'name':'Stainless Steel IGC Bend ',
+                'rate': 140,
+                'pieces':false
+            },{
+                'name':'Stainless Steel IGC A ',
+                'rate': 15,
+                'pieces':false
+            },]
+            
+            },{
+            code:'AVCL5',
+            name:'Anugraha Valve Castings Limited(Unit-V)',
+            address:'307, Sengoda goundan Pudur',
+            city:'Coimbatore-641407',
+            state:'Tamilnadu',
+            stateCode:'33',
+            Billformat:true,
+            gst:'33AACCA2285Q1ZF' ,
+            items:[{
+                'name':'Stainless Steel Impact',
+                'rate': 84,
+                'pieces':true
+            },{
+                'name':'Non Alloy Steel Impact ',
+                'rate': 63,
+                'pieces':true
+            },{
+                'name':'Cutting C.S ',
+                'rate': 105,
+                'pieces':false
+            },{
+                'name':'Cutting CS.S ',
+                'rate': 157,
+                'pieces':false
+            },]
+            
+        },{
+            code:'JJ',
+            name:'JJ',
+            address:'-',
+            city:'Coimbatore',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'-' 
+            },{
+            code:'MASPL',
+            name:'Mira Alloy Steels Private Limited',
+            address:'S.F.No 363,Kurumbapalayam',
+            city:'Coimbatore-641107',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AAICS1449JIZ9' ,
+            Billformat:false,
+            items:[
+             {
+                'name':'Stainless Steel Impact',
+                'rate': 100,
+                 'pieces':true
+             },
+             {
+                'name':'Carbon Steel Impact',
+                'rate': 85,
+                 'pieces':true
+             },
+             {
+                'name':'Stainless Steel tensile',
+                'rate': 55,
+                 'pieces':false
+             },
+             {
+                'name':'Carbon Steel tensile',
+                'rate': 45,
+                 'pieces':false
+             },
+             {
+                'name':'Stainless Steel Micro',
+                'rate': 70,
+                 'pieces':false
+             },
+             {
+                'name':'Carbon Steel Micro',
+                'rate': 70,
+                 'pieces':false
+             },
+             {
+                'name':'Stainless Steel Hardness',
+                'rate': 70.0,
+                 'pieces':false
+             },
+             {
+                'name':'Carbon Steel Hardness',
+                'rate': 70,
+                'pieces':false
+             },
+             {
+                'name':'Carbon Steel Hardness Cutting Purpose',
+                'rate': 150,
+                'pieces':false
+             },
+             {
+                'name':'Stainless Steel Weld test plate 40mm',
+                'rate': 70.0,
+                'pieces':false
+             },
+             {
+                'name':'Carbon Steel Weld test plate 40mm',
+                'rate': 700,
+                'pieces':false
+             },
+             {
+                'name':'Stainless Steel IGC (E)',
+                'rate': 150,
+                'pieces':false
+             },
+             {
+                'name':'Carbon Steel Bend',
+                'rate': 120,
+                'pieces':false
+             }, {
+                'name':'Carbon Steel Test Block',
+                'rate': 100,
+                'pieces':false
+            },{
+                'name':'Carbon Steel V groove ',
+                'rate': 700,
+                'pieces':false
+            },{
+                'name':'Carbon Steel UT Block',
+                'rate': 100,
+                'pieces':false
+            },
+            {
+                'name':'Carbon Steel Test Plate 40mm Tensile Specimen',
+                'rate': 450,
+                'pieces':false
+            },
+             {
+                'name':'Carbon Steel Test Plate Bend Specimen',
+                'rate': 300,
+                'pieces':false
+            },{
+                'name':'Carbon Steel Test Plate Macro Specimen ',
+                'rate': 300,
+                'pieces':false
+            },{
+                'name':'Carbon Steel Test Plate Impact',
+                'rate': 125,
+                'pieces':true
+            },]
+        },{
+            code:'REW',
+            name:'Rukmani Engineering Works',
+            address:'5/235/C4,Kuppanaiken Road, Somayampalayam',
+            city:'Coimbatore-641108',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33ACQPR8448H1ZZ' ,
+            Billformat:true,
+            items:[{
+                'name':'Non Alloy Steel Tensile Test Bar',
+                'rate': 50,
+                'pieces':false
+            },{
+                'name':'Stainless Steel Tensile Test Bar ',
+                'rate': 50,
+                'pieces':false
+            },]
+        },{
+            code:'SSACIPL',
+            name:'S.S.A Castings India Private Limited',
+            address:'Plot no 90-c Cosmafan foundry cluster park-1,Arasur',
+            city:'Coimbatore-641407',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AAKCS9336C1ZC' ,
+            Billformat:true,
+            items:[{
+                'name':'Stainless steel impact',
+                'rate': 55,
+                'pieces':true
+            },{
+                'name':'Non Alloy steel impact',
+                'rate': 35,
+                'pieces':true
+            },{
+                'name':'Stainless steel impact IGC bend',
+                'rate': 140,
+                'pieces':false
+            },{
+                'name':'Stainless steel impact IGC (A) ',
+                'rate': 15,
+                'pieces':false
+            },{
+                'name':'Stainless steel full length impact',
+                'rate': 165,
+                'pieces':true
+            },{
+                'name':'Non Alloy steel full length impact',
+                'rate': 145,
+                'pieces':true
+            },
+            {
+                'name':'Non Alloy steel spectro sample',
+                'rate': 125,
+                'pieces':false
+            },
+           {
+                'name':'Non Alloy steel IBR bend',
+                'rate': 155,
+                'pieces':false
+            }]
+        },{
+            code:'URCAAPL',
+            name:'UR Castings And Alloys Private Limited',
+            address:'S.F.No-76&80,Thirumalayampalayam Post',
+            city:'Coimbatore-641105',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AAACU7496B1ZD' ,
+            Billformat:true,
+            items:[{
+                'name':'Stainless steel Impact',
+                'rate': 100,
+                'pieces':true
+            },{
+                'name':'Non Alloy steel Impact',
+                'rate': 80,
+                'pieces':true
+            },{
+                'name':'Stainless steel IGC(E) ',
+                'rate': 100,
+                'pieces':true
+            },{
+                'name':'Non Alloy steel Round Bar',
+                'rate': 150,
+                'pieces':false
+            },{
+                'name':'Non Alloy steel Bend',
+                'rate': 175,
+                'pieces':false
+            },
+            {
+                'name':'Non Alloy steel IBR Bend',
+                'rate': 175,
+                'pieces':true
+            }]
+            
+        },{
+            code:'SRI',
+            name:'Sri Ranganather Industries',
+            Bill:true,
+            address:'12/45,Thadagam main road',
+            city:'Coimbatore-641025',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AADCS0183Q1Z3' ,
+            Billformat:true,
+            items:[{
+                'name':'Stainless steel impact',
+                'rate': 55,
+                'pieces':true,
+               
+            },{
+                'name':'Non Alloy steel impact',
+                'rate': 35,
+                'pieces':true,
+            },{
+                'name':'Stainless steel  IGC bend',
+                'rate': 140,
+                'pieces':false
+            },{
+                'name':'Stainless steel impact IGC A',
+                'rate': 15,
+                'pieces':false
+            },{
+                'name':'Stainless steel full length impact',
+                'rate': 165,
+                'pieces':true
+            },{
+                'name':'Non Alloy steel full length impact',
+                'rate': 145,
+                'pieces':true
+            },
+            {
+                'name':'Non Alloy steel spectro sample',
+                'rate': 125,
+                'pieces':false
+            },
+           {
+                'name':'Non Alloy steel IBR bend',
+                'rate': 155,
+                'pieces':false
+            }]
+        },{
+            code:'SRVPL',
+            name:'Sri Ranganathar Valves Private Limited',
+            diffBill:true,
+            address:'7/109, Arasur',
+            city:'Coimbatore-641407',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AALCS5492C1ZA' ,
+            Billformat:true,
+            items:[{
+                'name':'Stainless Steel Impact',
+                'rate': 65,
+                'pieces':true
+            },{
+                'name':'Non Alloy Steel Impact ',
+                'rate': 45,
+                'pieces':true
+            },{
+                'name':'Stainless Steel IGC Bend ',
+                'rate': 150,
+                'pieces':false
+            },{
+                'name':'Stainless Steel IGC A ',
+                'rate': 15,
+                'pieces':false
+            },]
+        
+        
+        },{
+            code:'URCAAPL',
+            name:'UR Castings And Alloys Private Limited',
+            address:'S.F.No-76&80,Thirumalayampalayam Post',
+            city:'Coimbatore-641105',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AAACU7496B1ZD' ,
+            Billformat:true,
+            items:[{
+                'name':'Stainless Steel Tensile Test Bar',
+                'rate': 55,
+                'pieces':false
+            },{
+                'name':'Non Alloy Steel Tensile Test Bar',
+                'rate': 45,
+                'pieces':false
+            },{
+                'name':'Non Alloy Steel Impact',
+                'rate': 45,
+                'pieces':false
+            },{
+                'name':'Stainless Steel Impact',
+                'rate': 70,
+                'pieces':true
+            },{
+                'name':'Weld Test Plate Stainless Steel Tensile',
+                'rate': 450,
+                'pieces':false
+            },
+            {
+                'name':'Weld Test Plate Stainless Steel Impact',
+                'rate': 250,
+                'pieces':true
+            },]
+        },{
+            code:'VSPL',
+            name:'Veeyes Steelcast Private Limited',
+            address:'4/363-A,Kallipalayam,karamadai',
+            city:'Coimbatore-641104',
+            state:'Tamilnadu',
+            stateCode:'33',
+            gst:'33AAECV0350M1ZE' ,
+            Billformat:false,
+            items:[{
+                'name':'Carbon steel impact(7*3=21)',
+                'rate': 90,
+                'pieces':true
+            },{
+                'name':'Carbon steel impact(14*3=42)',
+                'rate': 90,
+                'pieces':true
+            },{
+                'name':'  Stainless steel impact(1*3)',
+                'rate': 100,
+                'pieces':true
+            },{
+                'name':'Sample die rework purpose(double side)',
+                'rate': 600,
+                'pieces':false
+            }]
+        
+        }
+
+
+
+
+
+
+
+
+
+
 
     ]
 
@@ -109,6 +574,8 @@ export class BillComponent {
     Billcopy:string;
     newinvoice:any;
     dt:any;
+    DcDate:any;
+    Dcnumber:any;
      
     constructor (private router: Router,private activatedRoute: ActivatedRoute,private numberToWordsPipe: NumberToWordsPipe){}
 
@@ -132,6 +599,7 @@ export class BillComponent {
         this.invoice = localStorage.getItem('upcomingInvoice')
         this.date = new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear();
         this.supplyDate = new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear();
+        
         this.companyDetails.forEach(element => {
             if(element.code === this.activatedRoute.snapshot.queryParams["company"]){
                 console.log(element)
