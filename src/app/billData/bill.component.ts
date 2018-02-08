@@ -22,6 +22,8 @@ import { NumberToWordsPipe } from './../number-to-words.pipe';
 })
 export class BillComponent {
     invoice:any;
+    Dcdt:any;
+    Dcdate:any
    
     companyDetails:any = [
         {
