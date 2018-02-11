@@ -34,6 +34,22 @@
 .billTable td{
     border-left: 1px solid black;
 }
+.w-150{
+    width: 150px;
+}
+
+.colorfulFocus:focus{
+    border: 1px solid red;
+}
+
+ .modal-content{
+    overflow: hidden;
+    height:600px;
+}
+#billContent{
+    overflow: scroll;
+    height: 550px;
+} 
 
 
 input::-webkit-outer-spin-button,

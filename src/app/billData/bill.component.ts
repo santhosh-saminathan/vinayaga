@@ -14,7 +14,6 @@ declare var $:any;
 export class BillComponent {
     invoice: any;
     Dcdt: any;
-    Dcdate: any
 
     companyDetails: any = [
         {
@@ -558,8 +557,8 @@ export class BillComponent {
     Billcopy: string;
     newinvoice: any;
     dt: any;
-    DcDate: any;
-    Dcnumber: any;
+    yourDcDate: any;
+    yourDcNumber: any;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe) { }
 
