@@ -17,7 +17,7 @@
 <div class="row">
   <div class="col-sm-4" *ngFor="let item of companyData; let i = index">
     <div class="card">
-      <div style="padding: 15px;font-weight: bold;" [(ngModel)]="selectedItemBill" (click)="createBill(item.code)">&nbsp;&nbsp;{{i+1}}.&nbsp;{{item.name}}</div>
+      <div style="padding: 15px;font-weight: bold;" (click)="createBill(item.code)">&nbsp;&nbsp;{{i+1}}.&nbsp;{{item.name}}</div>
 
     </div>
   </div>

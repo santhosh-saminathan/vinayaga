@@ -1,198 +1,193 @@
-<!-- Heading and back button -->
-<div class="row">
-    <div class="col-xs-2">
-        <br>
-        <button tabindex="-1" type="button" class="btn btn-xs" (click)="backToHome()">
-            <span style="transform: rotate(-180deg)" class="glyphicon glyphicon-share-alt"></span> Back</button>
-    </div>
-    <div class="col-xs-10 center_align">
-        <h2>{{selectedCompany.name}}</h2>
-    </div>
-</div>
-
-<!-- Updating items -->
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3">
-        <span>Invoice Number :</span>
-        <span style="font-weight:bold">{{invoice}}</span>
-        <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
-        <br>
-        <span [hidden]="showInvoiceOption">
-            <span class="glyphicon glyphicon-arrow-right"></span> Enter new Invoice number :
-            <input type="number" [(ngModel)]="newinvoice">
-            <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
-        </span>
-        <br>
-
-        <span>Date of Supply&nbsp;&nbsp;:</span>
-        <span style="font-weight:bold">{{supplyDate}}</span>
-        <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="showDateOption()">Change</span>
-        <br>
-        <span [hidden]="showDateUpdate">
-            <span class="glyphicon glyphicon-arrow-right"></span> Enter new Date of supply :
-            <input type="date" [ngModel]="dt" (ngModelChange)="dt = $event">
-            <button type="button" class="btn btn-primary btn-xs" (click)="updateDate(dt)">Update</button>
-        </span>
-
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.yourDc">
-        <div>
-            <label>Your DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-            <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="yourDcNumber">
+<div class="outer_style">
+    <!-- Heading and back button -->
+    <div class="row" style="background:#efefef;padding:10px">
+        <div class="col-xs-2">
+            <button style="margin-top:5px" tabindex="-1" type="button" class="btn btn-xs" (click)="backToHome()">
+                <span style="transform: rotate(-180deg)" class="glyphicon glyphicon-share-alt"></span> Back</button>
         </div>
-        <br>
-        <div>
-            <label>Your DC Date&nbsp;&nbsp;:</label>
-            <input tabindex="-1" class="w-150" type="date" [ngModel]="yourDcDate" (ngModelChange)="yourDcDate = $event">
+        <div class="col-xs-10 center_align">
+            <span style="font-size:24px">{{selectedCompany.name}}</span>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.ourDc">
-        <div>
-            <label>Our DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-            <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="ourDcNumber">
+
+    <!-- Updating items -->
+    <div class="row" style="margin-top:15px;">
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <label>Invoice Number :</label>
+            <span style="font-weight:bold">{{invoice}}</span>
+            <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
+            <br>
+            <span [hidden]="showInvoiceOption">
+                <span class="glyphicon glyphicon-arrow-right"></span> Enter new Invoice number :
+                <input class="input_data" type="number" [(ngModel)]="newinvoice">
+                <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
+            </span>
+            <br>
+
+            <label>Date of Supply&nbsp;&nbsp;:</label>
+            <span style="font-weight:bold">{{supplyDate}}</span>
+            <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="showDateOption()">Change</span>
+            <br>
+            <span [hidden]="showDateUpdate">
+                <span class="glyphicon glyphicon-arrow-right"></span> Enter new Date of supply :
+                <input class="input_data" type="date" [ngModel]="dt" (ngModelChange)="dt = $event">
+                <button type="button" class="btn btn-primary btn-xs" (click)="updateDate(dt)">Update</button>
+            </span>
+
         </div>
-        <br>
-        <div>
-            <label>Our DC Date&nbsp;&nbsp;:</label>
-            <input tabindex="-1" class="w-150" type="date" [ngModel]="ourDcDate" (ngModelChange)="ourDcDate = $event">
+        <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.yourDc">
+            <div>
+                <label>Your DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="yourDcNumber">
+            </div>
+            <br>
+            <div>
+                <label>Your DC Date&nbsp;&nbsp;:</label>
+                <input tabindex="-1" class="w-150" type="date" [ngModel]="yourDcDate" (ngModelChange)="yourDcDate = $event">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.ourDc">
+            <div>
+                <label>Our DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="ourDcNumber">
+            </div>
+            <br>
+            <div>
+                <label>Our DC Date&nbsp;&nbsp;:</label>
+                <input tabindex="-1" class="w-150" type="date" [ngModel]="ourDcDate" (ngModelChange)="ourDcDate = $event">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.billDifferentType">
+            <label>Select Type of Bill :</label>
+            <br>
+            <select class="w-150" style="background:none" tabindex="-1" [(ngModel)]="selectedBillcopy" (change)="billCopyType(selectedBillcopy)">
+                <option value="Original">Original</option>
+                <option value="Duplicate">Duplicate</option>
+                <option value="Triplicate">Triplicate</option>
+                <option value="" selected>None</option>
+            </select>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.billDifferentType">
-        <label>Select Type of Bill :</label>
-        <br>
-        <select tabindex="-1">
-            <option value="Original">Original</option>
-            <option value="Duplicate">Duplicate</option>
-            <option value="Triplicate">Triplicate</option>
-            <option value="None" selected>None</option>
-        </select>
-        <!-- <select *ngIf="selectedCompany.differentType" [(ngModel)]="selectedBillcopy" (change)="BillCopy(selectedBillcopy)">
-                    <option value="Copy" selected>Selected Copy</option>
-                    <option value="Original">Original</option>
-                    <option value="Duplicate">Duplicate</option>
-                    <option value="Triplicate">Triplicate</option>
-                </select> -->
-    </div>
-</div>
 
-<!-- Select Item -->
-<div class="row">
+    <!-- Select Item -->
+    <div class="row">
 
-    <div class="col-xs-12 col-md-4">
-        <label>Select Item:</label>
-        <select autofocus [(ngModel)]="selectedItemName" (change)="newItem(selectedItemName)" class="form-control">
-            <option value="{{item.name}}" *ngFor="let item of selectedCompany.items">{{item.name}}</option>
-            <option value="newItem">+Add New</option>
-        </select>
-    </div>
+        <div class="col-xs-12 col-md-4">
+            <br>
+            <label>Select Item:</label>
+            <select autofocus [(ngModel)]="selectedItemName" (change)="newItem(selectedItemName)" class="form-control">
+                <option value="{{item.name}}" *ngFor="let item of selectedCompany.items">{{item.name}}</option>
+                <option value="newItem">+Add New</option>
+            </select>
+        </div>
 
-    <div class="col-xs-12">
-        <table class="table table-striped custab" *ngIf="selectedItemName && selectedItemName!='newItem'">
-            <thead>
-                <tr>
-                    <th>Select Item</th>
-                    <th>Total Pieces</th>
-                    <th>Rate</th>
-                    <th>Total Rate</th>
-                    <th>Add</th>
-                </tr>
-            </thead>
-            <tr>
-                <td>
-                    <span *ngIf="selectedItemName">{{selectedItemName}}</span>
-                </td>
-                <td *ngIf="selectedItem">
-                    <div *ngIf="!selectedItem.pieces">
-                        <input class="colorfulFocus" type="number" [(ngModel)]="total" (change)="totalQty(total)">
-                    </div>
-                    <div *ngIf="selectedItem.pieces" class="col-md-3" style="padding:0px">
-                        <input class="colorfulFocus" placeholder="material" type="number" [(ngModel)]="material" (change)="materialCount(material,count)">
-                    </div>
-                    <div *ngIf="selectedItem.pieces" class="col-md-1 center_align">&nbsp;&nbsp;&nbsp;*</div>
-                    <div *ngIf="selectedItem.pieces" class="col-md-3" style="padding:0px">
-                        <input class="colorfulFocus" placeholder="count" type="number" [(ngModel)]="count" (change)="materialCount(material,count)">
-                    </div>
-                    <div *ngIf="selectedItem.pieces" class="col-md-1">&nbsp;&nbsp;&nbsp;=</div>
-                    <div *ngIf="selectedItem.pieces" class="col-md-3">
-                        <span> &nbsp;{{totalCount}}</span>
-                    </div>
-                </td>
-                <td *ngIf="selectedItem">{{selectedItem.rate}}</td>
-                <td *ngIf="selectedItem">{{totRate}}</td>
-                <td *ngIf="selectedItem">
-                    <button class="btn btn-primary btn-xs colorfulFocus" (click)="addItem()">
-                        <b>+</b>Add</button>
-                </td>
-            </tr>
-        </table>
-        <table class="table table-striped custab" *ngIf="selectedItemName && selectedItemName==='newItem'">
-            <thead>
-                <tr>
-                    <th>Select Item</th>
-                    <th>Total Pieces</th>
-                    <th>Rate</th>
-                    <th>Total Rate</th>
-                    <th>Add</th>
-                </tr>
-            </thead>
-            <tr>
-                <td>
-                    <input class="colorfulFocus" type="text" [(ngModel)]="newItemName">
-                </td>
-                <td>
-                    <input class="colorfulFocus" type="number" [(ngModel)]="newItemTotPiece">
-                </td>
-                <td>
-                    <input class="colorfulFocus" type="number" [(ngModel)]="newItemRate">
-                </td>
-                <td>
-                    <span *ngIf="newItemTotPiece && newItemRate"> {{newItemTotPiece*newItemRate}}</span>
-                </td>
-                <td>
-                    <button class="btn btn-primary btn-xs colorfulFocus" style="text-align:center" (click)="addNewItem(newItemName,newItemTotPiece,newItemRate)">
-                        <b>+</b>Add</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-
-
-</div>
-
-<!-- Selected Item table and Generate bill button -->
-<div class="row">
-    <div class="col-xs-12">
-        <br>
-        <div *ngIf="itemsArray.length>0">
-            <table class="table table-bordered">
-                <tr>
-                    <th class="center-align">Item</th>
-                    <th class="center-align">Qty</th>
-                    <th class="center-align">Rate</th>
-                    <th class="center-align">Total</th>
-                    <th class="center-align">Remove Item</th>
-                </tr>
-                <tbody *ngFor="let data of itemsArray">
+        <div class="col-xs-12">
+            <table class="table table-striped custab colorfulFocus" *ngIf="selectedItemName && selectedItemName!='newItem'">
+                <thead>
                     <tr>
-                        <td class="center-align">{{data.desc}}</td>
-                        <td class="center-align">{{data.qty}}</td>
-                        <td class="center-align">{{data.rate}}</td>
-                        <td class="center-align">{{data.total}}</td>
-                        <td class="center-align" (click)="deleteItem(data)">
-                            <span style="color: red;cursor: pointer;" class="glyphicon glyphicon-trash"></span>
-                        </td>
+                        <th>Select Item</th>
+                        <th>Total Pieces</th>
+                        <th>Rate</th>
+                        <th>Total Rate</th>
+                        <th>Add</th>
                     </tr>
-                </tbody>
+                </thead>
+                <tr>
+                    <td>
+                        <span *ngIf="selectedItemName">{{selectedItemName}}</span>
+                    </td>
+                    <td *ngIf="selectedItem">
+                        <div *ngIf="!selectedItem.pieces">
+                            <input class="colorfulFocus input_data" type="number" [(ngModel)]="total" (change)="totalQty(total)">
+                        </div>
+                        <div *ngIf="selectedItem.pieces" class="col-md-3" style="padding:0px">
+                            <input class="colorfulFocus input_data" placeholder="material" type="number" [(ngModel)]="material" (change)="materialCount(material,count)">
+                        </div>
+                        <div *ngIf="selectedItem.pieces" class="col-md-1 center_align">&nbsp;&nbsp;&nbsp;X</div>
+                        <div *ngIf="selectedItem.pieces" class="col-md-3" style="padding:0px">
+                            <input class="colorfulFocus input_data" placeholder="count" type="number" [(ngModel)]="count" (change)="materialCount(material,count)">
+                        </div>
+                        <div *ngIf="selectedItem.pieces" class="col-md-1">&nbsp;&nbsp;&nbsp;=</div>
+                        <div *ngIf="selectedItem.pieces" class="col-md-3">
+                            <span> &nbsp;{{totalCount}}</span>
+                        </div>
+                    </td>
+                    <td *ngIf="selectedItem">{{selectedItem.rate}}</td>
+                    <td *ngIf="selectedItem">{{totRate}}</td>
+                    <td *ngIf="selectedItem">
+                        <button style="background-color:#2c96f1" class="btn btn-primary btn-xs colorfulFocus" (click)="addItem()">
+                            <b>+</b>Add</button>
+                    </td>
+                </tr>
             </table>
-            <!-- <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button> -->
+            <table class="table table-striped custab" *ngIf="selectedItemName && selectedItemName==='newItem'">
+                <thead>
+                    <tr>
+                        <th>Select Item</th>
+                        <th>Total Pieces</th>
+                        <th>Rate</th>
+                        <th>Total Rate</th>
+                        <th>Add</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <input class="colorfulFocus input_data" type="text" [(ngModel)]="newItemName">
+                    </td>
+                    <td>
+                        <input class="colorfulFocus input_data" type="number" [(ngModel)]="newItemTotPiece">
+                    </td>
+                    <td>
+                        <input class="colorfulFocus input_data" type="number" [(ngModel)]="newItemRate">
+                    </td>
+                    <td>
+                        <span *ngIf="newItemTotPiece && newItemRate"> {{newItemTotPiece*newItemRate}}</span>
+                    </td>
+                    <td>
+                        <button style="background-color:#2c96f1" class="btn btn-primary btn-xs colorfulFocus" style="text-align:center" (click)="addNewItem(newItemName,newItemTotPiece,newItemRate)">
+                            <b>+</b>Add</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
+
+
+    </div>
+
+    <!-- Selected Item table and Generate bill button -->
+    <div class="row">
+        <div class="col-xs-12">
+            <br>
+            <div *ngIf="itemsArray.length>0">
+                <table class="table table-bordered" style="width:60%;margin:0 auto">
+                    <tr>
+                        <th class="center-align">Item</th>
+                        <th class="center-align">Qty</th>
+                        <th class="center-align">Rate</th>
+                        <th class="center-align">Total</th>
+                        <th class="center-align">Remove Item</th>
+                    </tr>
+                    <tbody *ngFor="let data of itemsArray">
+                        <tr>
+                            <td class="center-align">{{data.desc}}</td>
+                            <td class="center-align">{{data.qty}}</td>
+                            <td class="center-align">{{data.rate}}</td>
+                            <td class="center-align">{{data.total}}</td>
+                            <td class="center-align" (click)="deleteItem(data)">
+                                <span style="color: red;cursor: pointer;" class="glyphicon glyphicon-trash"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="center_align">
-    <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
+    <div class="center_align">
+        <br>
+        <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
+    </div>
 </div>
 
 
@@ -279,10 +274,13 @@
                         </table>
                     </div>
                     <div class="col-xs-2" style="padding-top:2%">
-                        <div>
-                            <p *ngIf="!selectedCompany.Bill">Original</p>
-                            <p *ngIf="!selectedCompany.Bill">Duplicate</p>
-                            <p *ngIf="!selectedCompany.Bill">Triplicate</p>
+                        <div *ngIf="!selectedCompany.billDifferentType">
+                            <p>Original</p>
+                            <p>Duplicate</p>
+                            <p>Triplicate</p>
+                        </div>
+                        <div *ngIf="selectedCompany.billDifferentType">
+                            <p>{{billFormatType}}</p>
                         </div>
                     </div>
                 </div>
@@ -295,24 +293,28 @@
                     </div>
                     <div class="col-xs-9 border_left">
                         <div>
-                            <span style="white-space: nowrap;font-weight:bold">Name of Service : Manufacturing Services –Iron and Steel Casting</span><br>
+                            <span style="white-space: nowrap;font-weight:bold">Name of Service : Manufacturing Services –Iron and Steel Casting</span>
+                            <br>
                             <span class="singleLine">Service A/C Code : {{selectedCompany.serviceAccountCode}}</span>
                         </div>
                         <div class="row">
                             <div class="col-xs-4" style="padding-left:0px">
-                                <span class="singleLine">Date of Supply : {{supplyDate}}</span><br>
+                                <span class="singleLine">Date of Supply : {{supplyDate}}</span>
+                                <br>
                                 <span class="singleLine">Place : Coimbatore</span>
                             </div>
                             <div class="col-xs-4" *ngIf="selectedCompany.ourDc">
-                                <span class="singleLine">Our Dc No: {{ourDcNumber}} </span><br>
-                                <span class="singleLine">Date: {{ourDcDate}}</span>
+                                <span class="singleLine">Our Dc No: {{ourDcNumber}} </span>
+                                <br>
+                                <span class="singleLine">Date: {{ourDcDateData}}</span>
                             </div>
                             <div class="col-xs-4" *ngIf="!selectedCompany.ourDc">
-                               
+
                             </div>
                             <div class="col-xs-4" *ngIf="selectedCompany.yourDc">
-                                <span class="singleLine">Your Dc No: {{yourDcNumber}}</span><br>
-                                <span class="singleLine">Date: {{yourDcDate}}</span>
+                                <span class="singleLine">Your Dc No: {{yourDcNumber}}</span>
+                                <br>
+                                <span class="singleLine">Date: {{yourDcDateData}}</span>
                             </div>
                         </div>
 
@@ -321,30 +323,41 @@
 
                 </div>
                 <div class="row billTable">
-                    <table class="customTable">
+                    <table class="customTable" style="min-height:400px">
                         <tr class="border_bottom border_top">
-                            <th style="border-left:none">SL.NO</th>
-                            <th>SERVICE <br> ACCOUNTING CODE</th>
-                            <th><span>DESCRIPTION OF SERVICE</span></th>
-                            <th>QTY</th>
-                            <th style="width:100px">RATE</th>
-                            <th style="width:100px">AMOUNT IN Rs</th>
+                            <th height="4" class="fix-height" style="border-left:none">SL.NO</th>
+                            <th height="4" class="fix-height">SERVICE
+                                <br> ACCOUNTING CODE</th>
+                            <th height="4" class="fix-height" style="width:400px">
+                                <span>DESCRIPTION OF SERVICE</span>
+                            </th>
+                            <th height="4" class="fix-height">QTY</th>
+                            <th height="4" class="fix-height" style="width:60px">RATE</th>
+                            <th height="4" class="fix-height" style="width:100px">AMOUNT IN Rs</th>
                         </tr>
                         <tr *ngFor="let data of itemsArray; let i = index">
-                            <td style="border-left:none">{{i+1}}</td>
-                            <td>{{selectedCompany.serviceAccountCode}}</td>
-                            <td>{{data.desc}}</td>
-                            <td>{{data.qty}} Nos</td>
-                            <td>{{data.rate}}</td>
-                            <td>{{data.total}}</td>
+                            <td height="4" class="fix-height" style="border-left:none">{{i+1}}</td>
+                            <td height="4" class="fix-height">{{selectedCompany.serviceAccountCode}}</td>
+                            <td height="4" class="fix-height">{{data.desc}}</td>
+                            <td height="4" class="fix-height">{{data.qty}} Nos</td>
+                            <td height="4" class="fix-height">{{data.rate}}</td>
+                            <td height="4" class="fix-height">{{data.total}}</td>
                         </tr>
-                        <tr style="height:100px">
+                        <tr>
                             <td style="border-left:none"> &nbsp;</td>
                             <td> </td>
                             <td> </td>
                             <td> </td>
                             <td> </td>
                             <td> </td>
+                        </tr>
+                        <tr>
+                            <td height="4" class="fix-height" style="border-left:none"> &nbsp;</td>
+                            <td height="4" class="fix-height"></td>
+                            <td height="4" class="fix-height">Total Items</td>
+                            <td height="4" class="fix-height">{{totalQuantityOfItems}} Nos</td>
+                            <td height="4" class="fix-height"></td>
+                            <td height="4" class="fix-height"></td>
                         </tr>
                     </table>
                 </div>

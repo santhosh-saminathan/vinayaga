@@ -1,30 +1,49 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="font-size: 24px;
-background:  #2076d8 ;
-color: white;
-font-family: cursive;">
+<div style="font-size: 24px;background: #2076d8;color: white;font-family: cursive;">
 
     <div>
-      <div class="row">
+        <div class="row">
             <div class="col-sm-3">
                 <img src="assets\vinayagaLogo.png" style="height:135px">
             </div>
             <div class="col-sm-6">
                 <div>SRI VINAYAKA INDUSTRIES</div>
-                <span><h5>We Undertake All type of Engineering Works</h5></span>
-                <span><h5>No.9/1,Balaji Garden GiriNagar,P&T Colony Road,Coimbatore- 641030.Mobile No:94436 83219</h5></span>
-                <span><h5>GSTIN: 33AOCPK6138F1Z8</h5></span>
+                <span>
+                    <h5>We Undertake All type of Engineering Works</h5>
+                </span>
+                <span>
+                    <h5>No.9/1,Balaji Garden GiriNagar,P&T Colony Road,Coimbatore- 641030.Mobile No:94436 83219</h5>
+                </span>
+                <span>
+                    <h5>GSTIN: 33AOCPK6138F1Z8</h5>
+                </span>
             </div>
             <div class="col-sm-3">
-                <h4><span>Date&nbsp;:</span><span>{{date}}</span></h4>
-                <h4> <span>Day&nbsp;&nbsp;:</span><span> {{day}}</span></h4>
-                <h4><span>Time&nbsp;:</span><span> {{time}}</span></h4>
+                <h4>
+                    <span>Date&nbsp;:</span>
+                    <span>{{date}}</span>
+                </h4>
+                <h4>
+                    <span>Day&nbsp;&nbsp;:</span>
+                    <span> {{day}}</span>
+                </h4>
+                <h4>
+                    <span>Time&nbsp;:</span>
+                    <span> {{time}}</span>
+                </h4>
             </div>
         </div>
 
     </div>
 </div>
 
-<router-outlet></router-outlet>
+<div *ngIf="!allowUser" style="margin-top:100px;text-align:center">
+    <div *ngIf="showWarning"><span style="color:red">Incorrect Password</span></div>
+    <label>Enter Password to Proceed : </label>
+    <input autofocus type="text" [(ngModel)]="password">
+    <button style="margin-left:10px" class="btn btn-sm" (click)="login(password)">Login</button>
 
-
+</div>
+<div *ngIf="allowUser">
+    <router-outlet></router-outlet>
+</div>

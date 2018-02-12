@@ -14,6 +14,10 @@ declare var $:any;
 export class BillComponent {
     invoice: any;
     Dcdt: any;
+    totalQuantityOfItems:any;
+    selectedBillcopy:any;
+    yourDcDateData:any;
+    ourDcDateData:any;
 
     companyDetails: any = [
         {
@@ -25,7 +29,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AACCA2285Q1ZF',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998898,
             ourDc:false,
             yourDc:true,
             billDifferentType:false,
@@ -83,7 +87,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AACCA2285Q1ZF',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:false,
@@ -139,7 +143,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AAWCS8068D1ZV',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:true,
@@ -171,7 +175,7 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             gst: '33AACCA2285Q1ZF',
@@ -206,7 +210,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AAICS1449JIZ9',
             //Billformat: false,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:true,
@@ -317,7 +321,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33ACQPR8448H1ZZ',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:false,
@@ -342,7 +346,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AAKCS9336C1ZC',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:true,
@@ -393,7 +397,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AAACU7496B1ZD',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:true,
             yourDc:true,
             billDifferentType:false,
@@ -437,7 +441,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AADCS0183Q1Z3',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:true,
@@ -489,7 +493,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AALCS5492C1ZA',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:true,
@@ -524,7 +528,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AAACU7496B1ZD',
             //Billformat: true,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:false,
@@ -565,7 +569,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AAECV0350M1ZE',
             //Billformat: false,
-            serviceAccountCode:99921,
+            serviceAccountCode:998931,
             ourDc:false,
             yourDc:true,
             billDifferentType:false,
@@ -617,7 +621,7 @@ export class BillComponent {
     supplyDate: any;
     showInvoiceOption = true;
     displayBill: boolean = true;
-    Billcopy: string;
+    billFormatType: any;
     newinvoice: any;
     dt: any;
     yourDcDate: any;
@@ -672,14 +676,15 @@ export class BillComponent {
             }
         });
     }
-    BillCopy = function (Bill) {
-        this.Billcopy = Bill;
+    billCopyType = function (billType) {
+        console.log(billType)
+        this.billFormatType = billType;
     }
 
     materialCount = function (material, count) {
         this.totMaterialPieces = material,
-            this.totMaterialCount = count,
-            this.totalCount = material * count;
+        this.totMaterialCount = count,
+        this.totalCount = material * count;
         this.totRate = this.totalCount * this.selectedItem.rate;
     }
 
@@ -744,14 +749,45 @@ export class BillComponent {
 
     loadBill = function () {
         this.grandTotal = 0;
+        this.totalQuantityOfItems = 0;
         let count = 0;
         this.itemsArray.forEach(element => {
+            console.log(element)
             this.grandTotal = this.grandTotal + element.total;
+            this.totalQuantityOfItems = this.totalQuantityOfItems + element.qty;
             count++;
             if (count === this.itemsArray.length) {
                 this.calculateGst();
             }
         });
+        if(this.selectedCompany.yourDc){
+            if(!this.yourDcNumber){
+                window.alert("Your DC Number not available");
+            }
+            if(!this.yourDcDate){
+                window.alert("Your DC Date not available");
+            }else{
+                this.yourDcDateData = this.yourDcDate.split('-')[2]+'/'+this.yourDcDate.split('-')[1]+'/'+this.yourDcDate.split('-')[0]
+            }
+        }
+        if(this.selectedCompany.ourDc){
+            if(!this.yourDcNumber){
+                window.alert("Our DC Number not available");
+            }
+            if(!this.yourDcDate){
+                window.alert("Our DC Date not available");
+            }else{
+                this.ourDcDateData = this.ourDcDate.split('-')[2]+'/'+this.ourDcDate.split('-')[1]+'/'+this.ourDcDate.split('-')[0]
+            }
+            
+
+        }
+        if(this.selectedCompany.billDifferentType){
+            if(!this.selectedBillcopy){
+                window.alert("Bill type not available");
+            }
+            console.log(this.selectedBillcopy)
+        }
     }
 
     calculateGst = function () {

@@ -25,7 +25,7 @@
     max-width: 100%;
     text-align: center;
     border-bottom: 1px solid black;
-    min-height: 200px;
+    /* min-height: 200px; */
 }
 .billTable th{
     border-left: 1px solid black;
@@ -36,22 +36,33 @@
 }
 .w-150{
     width: 150px;
+    margin-left: 5px;
+    border:1px solid grey;
+    padding: 2px;
+    border-radius: 5px;
+}
+.input_data{
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 2px;
+}
+.outer_style{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.form-control:focus{
+    border-color: #f36e2f;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f36e2f
 }
 
 .colorfulFocus:focus{
-    border: 1px solid red;
+    border: 1px solid #f36e2f;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f36e2f
 }
 
- .modal-content{
-    overflow: hidden;
-    height:600px;
+.fix-height{
+    /* height: 25px; */
 }
-#billContent{
-    overflow: scroll;
-    height: 550px;
-} 
-
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */

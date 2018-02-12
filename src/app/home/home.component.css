@@ -68,6 +68,7 @@ button:focus {
     background: white;
     min-height: 80px;
     display: flex;
+    cursor: pointer;
   }
   
   
