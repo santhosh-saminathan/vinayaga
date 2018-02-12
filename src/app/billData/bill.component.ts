@@ -24,8 +24,12 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AACCA2285Q1ZF',
-            Billformat: true,
-            differentType: false,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:false,
+            displayTotNos:false,
             items: [
                 {
                     'name': 'Carbon steel impact',
@@ -78,8 +82,12 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AACCA2285Q1ZF',
-            Billformat: true,
-            differentType: false,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:false,
+            displayTotNos:false,
             items: [
                 {
                     'name': 'Stainless steel impact',
@@ -130,7 +138,12 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AAWCS8068D1ZV',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:true,
+            displayTotNos:false,
             items: [{
                     'name': 'Stainless Steel Impact',
                     'rate': 55,
@@ -157,8 +170,13 @@ export class BillComponent {
             city: 'Coimbatore-641407',
             state: 'Tamilnadu',
             stateCode: '33',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
             gst: '33AACCA2285Q1ZF',
+            billDifferentType:false,
+            displayTotNos:false,
             items: [{
                     'name': 'Stainless Steel Impact',
                     'rate': 84,
@@ -187,7 +205,12 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AAICS1449JIZ9',
-            Billformat: false,
+            //Billformat: false,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:true,
+            displayTotNos:false,
             items: [
                 {
                     'name': 'Stainless Steel Impact',
@@ -293,16 +316,21 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33ACQPR8448H1ZZ',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:false,
+            displayTotNos:false,
             items: [{
                 'name': 'Non Alloy Steel Tensile Test Bar',
                 'rate': 50,
                 'pieces': false
-            }, {
-                'name': 'Stainless Steel Tensile Test Bar ',
-                'rate': 50,
-                'pieces': false
-            }
+                }, {
+                    'name': 'Stainless Steel Tensile Test Bar ',
+                    'rate': 50,
+                    'pieces': false
+                }
             ]
         },
         {
@@ -313,42 +341,48 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AAKCS9336C1ZC',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:true,
+            displayTotNos:true,
             items: [{
-                'name': 'Stainless steel impact',
-                'rate': 55,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy steel impact',
-                'rate': 35,
-                'pieces': true
-            }, {
-                'name': 'Stainless steel impact IGC bend',
-                'rate': 140,
-                'pieces': false
-            }, {
-                'name': 'Stainless steel impact IGC (A) ',
-                'rate': 15,
-                'pieces': false
-            }, {
-                'name': 'Stainless steel full length impact',
-                'rate': 165,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy steel full length impact',
-                'rate': 145,
-                'pieces': true
-            },
-            {
-                'name': 'Non Alloy steel spectro sample',
-                'rate': 125,
-                'pieces': false
-            },
-            {
-                'name': 'Non Alloy steel IBR bend',
-                'rate': 155,
-                'pieces': false
-            }]
+                    'name': 'Stainless steel impact',
+                    'rate': 55,
+                    'pieces': true
+                }, {
+                    'name': 'Non Alloy steel impact',
+                    'rate': 35,
+                    'pieces': true
+                }, {
+                    'name': 'Stainless steel impact IGC bend',
+                    'rate': 140,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel impact IGC (A) ',
+                    'rate': 15,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel full length impact',
+                    'rate': 165,
+                    'pieces': true
+                }, {
+                    'name': 'Non Alloy steel full length impact',
+                    'rate': 145,
+                    'pieces': true
+                },
+                {
+                    'name': 'Non Alloy steel spectro sample',
+                    'rate': 125,
+                    'pieces': false
+                },
+                {
+                    'name': 'Non Alloy steel IBR bend',
+                    'rate': 155,
+                    'pieces': false
+                }
+            ]
         },
         {
             code: 'URCAAPL',
@@ -358,33 +392,39 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AAACU7496B1ZD',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:true,
+            yourDc:true,
+            billDifferentType:false,
+            displayTotNos:false,
             items: [{
-                'name': 'Stainless steel Impact',
-                'rate': 100,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy steel Impact',
-                'rate': 80,
-                'pieces': true
-            }, {
-                'name': 'Stainless steel IGC(E) ',
-                'rate': 100,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy steel Round Bar',
-                'rate': 150,
-                'pieces': false
-            }, {
-                'name': 'Non Alloy steel Bend',
-                'rate': 175,
-                'pieces': false
-            },
-            {
-                'name': 'Non Alloy steel IBR Bend',
-                'rate': 175,
-                'pieces': true
-            }]
+                    'name': 'Stainless steel Impact',
+                    'rate': 100,
+                    'pieces': true
+                }, {
+                    'name': 'Non Alloy steel Impact',
+                    'rate': 80,
+                    'pieces': true
+                }, {
+                    'name': 'Stainless steel IGC(E) ',
+                    'rate': 100,
+                    'pieces': true
+                }, {
+                    'name': 'Non Alloy steel Round Bar',
+                    'rate': 150,
+                    'pieces': false
+                }, {
+                    'name': 'Non Alloy steel Bend',
+                    'rate': 175,
+                    'pieces': false
+                },
+                {
+                    'name': 'Non Alloy steel IBR Bend',
+                    'rate': 175,
+                    'pieces': true
+                }
+            ]
 
         },
         {
@@ -396,42 +436,48 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AADCS0183Q1Z3',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:true,
+            displayTotNos:false,
             items: [{
-                'name': 'Stainless steel impact',
-                'rate': 55,
-                'pieces': true,
-            }, {
-                'name': 'Non Alloy steel impact',
-                'rate': 35,
-                'pieces': true,
-            }, {
-                'name': 'Stainless steel  IGC bend',
-                'rate': 140,
-                'pieces': false
-            }, {
-                'name': 'Stainless steel impact IGC A',
-                'rate': 15,
-                'pieces': false
-            }, {
-                'name': 'Stainless steel full length impact',
-                'rate': 165,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy steel full length impact',
-                'rate': 145,
-                'pieces': true
-            },
-            {
-                'name': 'Non Alloy steel spectro sample',
-                'rate': 125,
-                'pieces': false
-            },
-            {
-                'name': 'Non Alloy steel IBR bend',
-                'rate': 155,
-                'pieces': false
-            }]
+                    'name': 'Stainless steel impact',
+                    'rate': 55,
+                    'pieces': true,
+                }, {
+                    'name': 'Non Alloy steel impact',
+                    'rate': 35,
+                    'pieces': true,
+                }, {
+                    'name': 'Stainless steel  IGC bend',
+                    'rate': 140,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel impact IGC A',
+                    'rate': 15,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel full length impact',
+                    'rate': 165,
+                    'pieces': true
+                }, {
+                    'name': 'Non Alloy steel full length impact',
+                    'rate': 145,
+                    'pieces': true
+                },
+                {
+                    'name': 'Non Alloy steel spectro sample',
+                    'rate': 125,
+                    'pieces': false
+                },
+                {
+                    'name': 'Non Alloy steel IBR bend',
+                    'rate': 155,
+                    'pieces': false
+                }
+            ]
         },
         {
             code: 'SRVPL',
@@ -442,24 +488,30 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AALCS5492C1ZA',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:true,
+            displayTotNos:false,
             items: [{
-                'name': 'Stainless Steel Impact',
-                'rate': 65,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy Steel Impact ',
-                'rate': 45,
-                'pieces': true
-            }, {
-                'name': 'Stainless Steel IGC Bend ',
-                'rate': 150,
-                'pieces': false
-            }, {
-                'name': 'Stainless Steel IGC A ',
-                'rate': 15,
-                'pieces': false
-            }]
+                    'name': 'Stainless Steel Impact',
+                    'rate': 65,
+                    'pieces': true
+                }, {
+                    'name': 'Non Alloy Steel Impact ',
+                    'rate': 45,
+                    'pieces': true
+                }, {
+                    'name': 'Stainless Steel IGC Bend ',
+                    'rate': 150,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless Steel IGC A ',
+                    'rate': 15,
+                    'pieces': false
+                }
+            ]
 
 
         },
@@ -471,33 +523,38 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AAACU7496B1ZD',
-            Billformat: true,
+            //Billformat: true,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:false,
+            displayTotNos:false,
             items: [{
-                'name': 'Stainless Steel Tensile Test Bar',
-                'rate': 55,
-                'pieces': false
-            }, {
-                'name': 'Non Alloy Steel Tensile Test Bar',
-                'rate': 45,
-                'pieces': false
-            }, {
-                'name': 'Non Alloy Steel Impact',
-                'rate': 45,
-                'pieces': false
-            }, {
-                'name': 'Stainless Steel Impact',
-                'rate': 70,
-                'pieces': true
-            }, {
-                'name': 'Weld Test Plate Stainless Steel Tensile',
-                'rate': 450,
-                'pieces': false
-            },
-            {
-                'name': 'Weld Test Plate Stainless Steel Impact',
-                'rate': 250,
-                'pieces': true
-            }]
+                    'name': 'Stainless Steel Tensile Test Bar',
+                    'rate': 55,
+                    'pieces': false
+                }, {
+                    'name': 'Non Alloy Steel Tensile Test Bar',
+                    'rate': 45,
+                    'pieces': false
+                }, {
+                    'name': 'Non Alloy Steel Impact',
+                    'rate': 45,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless Steel Impact',
+                    'rate': 70,
+                    'pieces': true
+                }, {
+                    'name': 'Weld Test Plate Stainless Steel Tensile',
+                    'rate': 450,
+                    'pieces': false
+                },
+                {
+                    'name': 'Weld Test Plate Stainless Steel Impact',
+                    'rate': 250,
+                    'pieces': true
+                }]
         },
         {
             code: 'VSPL',
@@ -507,24 +564,30 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             gst: '33AAECV0350M1ZE',
-            Billformat: false,
+            //Billformat: false,
+            serviceAccountCode:99921,
+            ourDc:false,
+            yourDc:true,
+            billDifferentType:false,
+            displayTotNos:false,
             items: [{
-                'name': 'Carbon steel impact(7*3=21)',
-                'rate': 90,
-                'pieces': true
-            }, {
-                'name': 'Carbon steel impact(14*3=42)',
-                'rate': 90,
-                'pieces': true
-            }, {
-                'name': '  Stainless steel impact(1*3)',
-                'rate': 100,
-                'pieces': true
-            }, {
-                'name': 'Sample die rework purpose(double side)',
-                'rate': 600,
-                'pieces': false
-            }]
+                    'name': 'Carbon steel impact(7*3=21)',
+                    'rate': 90,
+                    'pieces': true
+                }, {
+                    'name': 'Carbon steel impact(14*3=42)',
+                    'rate': 90,
+                    'pieces': true
+                }, {
+                    'name': '  Stainless steel impact(1*3)',
+                    'rate': 100,
+                    'pieces': true
+                }, {
+                    'name': 'Sample die rework purpose(double side)',
+                    'rate': 600,
+                    'pieces': false
+                }
+            ]
 
         }
     ]
@@ -559,6 +622,8 @@ export class BillComponent {
     dt: any;
     yourDcDate: any;
     yourDcNumber: any;
+    ourDcNumber:any;
+    ourDcDate:any;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe) { }
 

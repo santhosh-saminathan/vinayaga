@@ -53,23 +53,22 @@ export class HomeComponent {
             code: 'VSPL',
             name: 'Veeyes Steelcast Private Limited '
         }, 
-        // {
-        //     //multiple bills
-        //     code: 'MASPL',
-        //     name: 'Mira Alloy Steels Private Limited'
-        // },{
-        //     code: 'SSACIPL',
-        //     name: 'S.S.A Castings India Private Limited'
-        // }, {
-        //     code: 'SRI',
-        //     name: 'Sri Ranganather Industries'
-        // }, {
-        //     code: 'SRVACPL',
-        //     name: 'Sri Ranganathar Valves And Control Private Limited'
-        // }, {
-        //     code: 'SRVPL',
-        //     name: 'Sri Ranganathar Valves Private Limited'
-        // }
+        {
+            code: 'MASPL',
+            name: 'Mira Alloy Steels Private Limited'
+        },{
+            code: 'SSACIPL',
+            name: 'S.S.A Castings India Private Limited'
+        }, {
+            code: 'SRI',
+            name: 'Sri Ranganather Industries'
+        }, {
+            code: 'SRVACPL',
+            name: 'Sri Ranganathar Valves And Control Private Limited'
+        }, {
+            code: 'SRVPL',
+            name: 'Sri Ranganathar Valves Private Limited'
+        }
     ]
 
         this.getPersentTime();
