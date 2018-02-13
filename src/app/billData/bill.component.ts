@@ -36,14 +36,14 @@ export class BillComponent {
             displayTotNos:false,
             items: [
                 {
-                    'name': 'Carbon steel impact',
-                    'rate': 60,
-                    'pieces': true
-                }, {
                     'name': 'Stainless steel impact',
                     'rate': 84,
                     'pieces': true
                 }, {
+                    'name': 'Non alloy steel impact',
+                    'rate': 63,
+                    'pieces': true
+                },{
                     'name': 'Stainless steel full length impact',
                     'rate': 420,
                     'pieces': false
@@ -51,11 +51,7 @@ export class BillComponent {
                     'name': 'Stainless steel IGC',
                     'rate': 84,
                     'pieces': false
-                }, {
-                    'name': 'Non alloy steel impact',
-                    'rate': 63,
-                    'pieces': true
-                }, {
+                },  {
                     'name': 'Stainless steel IGC G48',
                     'rate': 84,
                     'pieces': false
@@ -181,21 +177,42 @@ export class BillComponent {
             gst: '33AACCA2285Q1ZF',
             billDifferentType:false,
             displayTotNos:false,
-            items: [{
-                    'name': 'Stainless Steel Impact',
+            items: [
+                {
+                    'name': 'Stainless steel impact',
                     'rate': 84,
                     'pieces': true
                 }, {
-                    'name': 'Non Alloy Steel Impact ',
+                    'name': 'Stainless full length impact',
+                    'rate': 420,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel IGC',
+                    'rate': 84,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel impact',
                     'rate': 63,
                     'pieces': true
                 }, {
-                    'name': 'Cutting C.S ',
-                    'rate': 105,
+                    'name': 'Stainless steel IGC G48',
+                    'rate': 84,
                     'pieces': false
                 }, {
-                    'name': 'Cutting CS.S ',
-                    'rate': 157,
+                    'name': 'Non alloy steel full length impact',
+                    'rate': 367,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel IBR bend',
+                    'rate': 84,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel weld test plate V groove',
+                    'rate': 420,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel weld test plate V groove',
+                    'rate': 420,
                     'pieces': false
                 }
             ]
@@ -575,18 +592,18 @@ export class BillComponent {
             billDifferentType:false,
             displayTotNos:false,
             items: [{
-                    'name': 'Carbon steel impact(7*3=21)',
+                    'name': 'Carbon steel impact',
                     'rate': 90,
                     'pieces': true
-                }, {
-                    'name': 'Carbon steel impact(14*3=42)',
-                    'rate': 90,
-                    'pieces': true
-                }, {
-                    'name': '  Stainless steel impact(1*3)',
+                },  {
+                    'name': '  Stainless steel impact',
                     'rate': 100,
                     'pieces': true
-                }, {
+                },  {
+                    'name': '  Stainless steel IGC-E',
+                    'rate': 250,
+                    'pieces': false
+                },{
                     'name': 'Sample die rework purpose(double side)',
                     'rate': 600,
                     'pieces': false
