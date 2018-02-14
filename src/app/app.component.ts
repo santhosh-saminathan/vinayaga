@@ -22,12 +22,16 @@ export class AppComponent {
 
   ngOnInit(){
       this.getPersentTime();
+      if(sessionStorage.getItem('password')){
+          this.login(sessionStorage.getItem('password'));
+      }
     }
 
     login(password){
         console.log(password)
         if(password === "test"){
             this.allowUser = true;
+            sessionStorage.setItem('password',password)
         }else{
             this.allowUser = false;
             this.showWarning = true;

@@ -18,6 +18,7 @@ export class BillComponent {
     selectedBillcopy:any;
     yourDcDateData:any;
     ourDcDateData:any;
+    showPrintOption:boolean = false;
 
     companyDetails: any = [
         {
@@ -738,6 +739,7 @@ export class BillComponent {
     }
 
     loadBill = function () {
+        this.showPrintOption =false;
         this.grandTotal = 0;
         this.totalQuantityOfItems = 0;
         let count = 0;
@@ -752,9 +754,11 @@ export class BillComponent {
         });
         if(this.selectedCompany.yourDc){
             if(!this.yourDcNumber){
+                this.showPrintOption = true;
                 window.alert("Your DC Number not available");
             }
             if(!this.yourDcDate){
+                this.showPrintOption = true;
                 window.alert("Your DC Date not available");
             }else{
                 this.yourDcDateData = this.yourDcDate.split('-')[2]+'/'+this.yourDcDate.split('-')[1]+'/'+this.yourDcDate.split('-')[0]
@@ -762,9 +766,11 @@ export class BillComponent {
         }
         if(this.selectedCompany.ourDc){
             if(!this.yourDcNumber){
+                this.showPrintOption = true;
                 window.alert("Our DC Number not available");
             }
             if(!this.yourDcDate){
+                this.showPrintOption = true;
                 window.alert("Our DC Date not available");
             }else{
                 this.ourDcDateData = this.ourDcDate.split('-')[2]+'/'+this.ourDcDate.split('-')[1]+'/'+this.ourDcDate.split('-')[0]
@@ -774,10 +780,10 @@ export class BillComponent {
         }
         if(this.selectedCompany.billDifferentType){
             if(!this.selectedBillcopy){
+                this.showPrintOption = true;
                 window.alert("Bill type not available");
             }
-            console.log(this.selectedBillcopy)
-        }
+         }
     }
 
     calculateGst = function () {
@@ -853,10 +859,14 @@ export class BillComponent {
         },1000)
     }
 
-    // print = function () {
-    //     window.print();
-    //     location.reload();
-    // }
+    print = function (billContent) {
+        const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
+       
+        document.body.innerHTML = document.getElementById(billContent).innerHTML;
+        localStorage.setItem('billData',JSON.stringify(this.itemsArray))
+        window.print();
+        location.reload();
+    }
 
 }
 

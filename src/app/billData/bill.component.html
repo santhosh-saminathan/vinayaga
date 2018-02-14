@@ -61,10 +61,10 @@
             <label>Select Type of Bill :</label>
             <br>
             <select class="w-150" style="background:none" tabindex="-1" [(ngModel)]="selectedBillcopy" (change)="billCopyType(selectedBillcopy)">
-                <option value="Original">Original</option>
+                <option value="Original for Recipient">Original</option>
                 <option value="Duplicate">Duplicate</option>
                 <option value="Triplicate">Triplicate</option>
-                <option value="" selected>None</option>
+                <option value="none" selected>None</option>
             </select>
         </div>
     </div>
@@ -184,7 +184,7 @@
         </div>
     </div>
 
-    <div class="center_align">
+    <div class="center_align" [hidden]="itemsArray.length==0">
         <br>
         <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
     </div>
@@ -280,7 +280,8 @@
                             <p>Triplicate</p>
                         </div>
                         <div *ngIf="selectedCompany.billDifferentType">
-                            <p>{{billFormatType}}</p>
+                            <p *ngIf="billFormatType !='none'">{{billFormatType}}</p>
+                            <p *ngIf="billFormatType =='none'"> </p>
                         </div>
                     </div>
                 </div>
@@ -289,7 +290,7 @@
                 </div>
                 <div class="row border_top">
                     <div class="col-xs-3">
-                        <span class="singleLine">Payment of this bill falls due on:-</span>
+                        <span>Payment of this bill falls due on:-</span>
                     </div>
                     <div class="col-xs-9 border_left">
                         <div>
@@ -323,12 +324,12 @@
 
                 </div>
                 <div class="row billTable">
-                    <table class="customTable" style="min-height:400px">
+                    <table class="customTable" style="min-height:300px">
                         <tr class="border_bottom border_top">
                             <th height="4" class="fix-height" style="border-left:none">SL.NO</th>
                             <th height="4" class="fix-height">SERVICE
-                                <br> ACCOUNTING CODE</th>
-                            <th height="4" class="fix-height" style="width:400px">
+                                <br> ACCOUNTING&nbsp;CODE</th>
+                            <th height="4" class="fix-height" style="width:300px">
                                 <span>DESCRIPTION OF SERVICE</span>
                             </th>
                             <th height="4" class="fix-height">QTY</th>
@@ -339,7 +340,9 @@
                             <td height="4" class="fix-height" style="border-left:none">{{i+1}}</td>
                             <td height="4" class="fix-height">{{selectedCompany.serviceAccountCode}}</td>
                             <td height="4" class="fix-height">{{data.desc}}</td>
-                            <td height="4" class="fix-height">{{data.qty}} Nos</td>
+                            <td height="4" class="fix-height singleLine">&nbsp;{{data.qty}}&nbsp;
+                                <span *ngIf="data.qty == 1">No</span>
+                                <span *ngIf="data.qty > 1">Nos</span>&nbsp;</td>
                             <td height="4" class="fix-height">{{data.rate}}</td>
                             <td height="4" class="fix-height">{{data.total}}</td>
                         </tr>
@@ -351,11 +354,13 @@
                             <td> </td>
                             <td> </td>
                         </tr>
-                        <tr>
+                        <tr *ngIf="selectedCompany.displayTotNos">
                             <td height="4" class="fix-height" style="border-left:none"> &nbsp;</td>
                             <td height="4" class="fix-height"></td>
-                            <td height="4" class="fix-height">Total Items</td>
-                            <td height="4" class="fix-height">{{totalQuantityOfItems}} Nos</td>
+                            <td height="4" class="fix-height" style="text-align:right">Total Items &nbsp;</td>
+                            <td height="4" class="fix-height singleLine">&nbsp;{{totalQuantityOfItems}}&nbsp;
+                                <span *ngIf="totalQuantityOfItems == 1">No</span>
+                                <span *ngIf="totalQuantityOfItems > 1">Nos</span>&nbsp;</td>
                             <td height="4" class="fix-height"></td>
                             <td height="4" class="fix-height"></td>
                         </tr>
@@ -409,8 +414,11 @@
                 </div>
             </div>
         </div>
-        <button (click)="submit('billContent')">submit </button>
-
+        <div style="text-align:right">
+            <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && selectedCompany.billDifferentType &&  billFormatType != 'none'" class="btn" (click)="print('billContent')">Print</button>
+            <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && !selectedCompany.billDifferentType || (selectedCompany.billDifferentType && billFormatType == 'none')"
+                class="btn" (click)="submit('billContent')">Print and Download</button>
+        </div>
     </div>
 
 </div>
