@@ -43,10 +43,6 @@ export class BillComponent {
                     'name': 'Non alloy steel impact',
                     'rate': 63,
                     'pieces': true
-                },{
-                    'name': 'Stainless steel full length impact',
-                    'rate': 420,
-                    'pieces': false
                 }, {
                     'name': 'Stainless steel IGC',
                     'rate': 84,
@@ -54,6 +50,10 @@ export class BillComponent {
                 },  {
                     'name': 'Stainless steel IGC G48',
                     'rate': 84,
+                    'pieces': false
+                },{
+                    'name': 'Stainless steel full length impact',
+                    'rate': 420,
                     'pieces': false
                 }, {
                     'name': 'Non alloy steel full length impact',
@@ -64,14 +64,62 @@ export class BillComponent {
                     'rate': 84,
                     'pieces': false
                 }, {
-                    'name': 'Stainless steel weld test plate V groove',
+                    'name': 'Stainless steel 16mm weld test plate V groove',
                     'rate': 420,
                     'pieces': false
                 }, {
-                    'name': 'Non alloy steel weld test plate V groove',
+                    'name': 'Non alloy steel 16mm weld test plate V groove',
                     'rate': 420,
                     'pieces': false
-                }
+                }, {
+                    'name': 'Stainless steel test bar cutting',
+                    'rate': 157,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel test bar cutting',
+                    'rate': 105,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel test block cutting',
+                    'rate': 157,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel test block cutting',
+                    'rate': 105,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel 16mm weld test plate tensile',
+                    'rate': 525,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel 16mm weld test plate impact',
+                    'rate': 241,
+                    'pieces': false
+                },{
+                    'name': 'Stainless steel 16mm weld test plate bend',
+                    'rate': 315,
+                    'pieces': false
+                },{
+                    'name': 'Stainless steel 16mm weld test plate micro',
+                    'rate': 262,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel 16mm weld test plate tensile',
+                    'rate': 420,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel 16mm weld test plate impact',
+                    'rate': 210,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel 16mm weld test plate bend',
+                    'rate': 272,
+                    'pieces': false
+                }, {
+                    'name': 'Non alloy steel 16mm weld test plate micro',
+                    'rate': 210,
+                    'pieces': false
+                },
             ]
         },
         {
@@ -83,7 +131,7 @@ export class BillComponent {
             stateCode: '33',
             gst: '33AACCA2285Q1ZF',
             //Billformat: true,
-            serviceAccountCode:998931,
+            serviceAccountCode:998898,
             ourDc:false,
             yourDc:true,
             billDifferentType:false,
@@ -94,20 +142,20 @@ export class BillComponent {
                     'rate': 84,
                     'pieces': true
                 }, {
-                    'name': 'Stainless full length impact',
-                    'rate': 420,
-                    'pieces': false
-                }, {
-                    'name': 'Stainless steel IGC',
-                    'rate': 84,
-                    'pieces': false
-                }, {
                     'name': 'Non alloy steel impact',
                     'rate': 63,
                     'pieces': true
                 }, {
+                    'name': 'Stainless steel IGC',
+                    'rate': 84,
+                    'pieces': false
+                },  {
                     'name': 'Stainless steel IGC G48',
                     'rate': 84,
+                    'pieces': false
+                },{
+                    'name': 'Stainless steel full length impact',
+                    'rate': 420,
                     'pieces': false
                 }, {
                     'name': 'Non alloy steel full length impact',
@@ -116,14 +164,6 @@ export class BillComponent {
                 }, {
                     'name': 'Stainless steel IBR bend',
                     'rate': 84,
-                    'pieces': false
-                }, {
-                    'name': 'Stainless steel weld test plate V groove',
-                    'rate': 420,
-                    'pieces': false
-                }, {
-                    'name': 'Non alloy steel weld test plate V groove',
-                    'rate': 420,
                     'pieces': false
                 }
             ]
@@ -171,32 +211,32 @@ export class BillComponent {
             state: 'Tamilnadu',
             stateCode: '33',
             //Billformat: true,
-            serviceAccountCode:998931,
+            serviceAccountCode:998898,
             ourDc:false,
             yourDc:true,
             gst: '33AACCA2285Q1ZF',
             billDifferentType:false,
             displayTotNos:false,
             items: [
-                {
+               {
                     'name': 'Stainless steel impact',
                     'rate': 84,
                     'pieces': true
-                }, {
-                    'name': 'Stainless full length impact',
-                    'rate': 420,
-                    'pieces': false
-                }, {
-                    'name': 'Stainless steel IGC',
-                    'rate': 84,
-                    'pieces': false
                 }, {
                     'name': 'Non alloy steel impact',
                     'rate': 63,
                     'pieces': true
                 }, {
+                    'name': 'Stainless steel IGC',
+                    'rate': 84,
+                    'pieces': false
+                },  {
                     'name': 'Stainless steel IGC G48',
                     'rate': 84,
+                    'pieces': false
+                },{
+                    'name': 'Stainless steel full length impact',
+                    'rate': 420,
                     'pieces': false
                 }, {
                     'name': 'Non alloy steel full length impact',
@@ -205,14 +245,6 @@ export class BillComponent {
                 }, {
                     'name': 'Stainless steel IBR bend',
                     'rate': 84,
-                    'pieces': false
-                }, {
-                    'name': 'Stainless steel weld test plate V groove',
-                    'rate': 420,
-                    'pieces': false
-                }, {
-                    'name': 'Non alloy steel weld test plate V groove',
-                    'rate': 420,
                     'pieces': false
                 }
             ]
@@ -225,7 +257,7 @@ export class BillComponent {
             city: 'Coimbatore-641107',
             state: 'Tamilnadu',
             stateCode: '33',
-            gst: '33AAICS1449JIZ9',
+            gst: '33AAICS1449J1Z9',
             //Billformat: false,
             serviceAccountCode:998931,
             ourDc:false,
@@ -265,7 +297,7 @@ export class BillComponent {
                 },
                 {
                     'name': 'Stainless Steel Hardness',
-                    'rate': 70.0,
+                    'rate': 100,
                     'pieces': false
                 },
                 {
@@ -274,58 +306,47 @@ export class BillComponent {
                     'pieces': false
                 },
                 {
-                    'name': 'Carbon Steel Hardness Cutting Purpose',
+                    'name': 'Stainless Steel IGC-E',
                     'rate': 150,
                     'pieces': false
                 },
                 {
-                    'name': 'Stainless Steel Weld test plate 40mm',
-                    'rate': 70.0,
-                    'pieces': false
-                },
-                {
-                    'name': 'Carbon Steel Weld test plate 40mm',
-                    'rate': 700,
-                    'pieces': false
-                },
-                {
-                    'name': 'Stainless Steel IGC (E)',
-                    'rate': 150,
-                    'pieces': false
-                },
-                {
-                    'name': 'Carbon Steel Bend',
+                    'name': 'Carbon Steel IBR Bend',
                     'rate': 120,
                     'pieces': false
                 }, {
-                    'name': 'Carbon Steel Test Block',
-                    'rate': 100,
+                    'name': 'Carbon Steel Test Plate 16mm V groove',
+                    'rate': 400,
                     'pieces': false
                 }, {
-                    'name': 'Carbon Steel V groove ',
+                    'name': 'stainless Steel Test Plate 16mm V groove',
+                    'rate': 400,
+                    'pieces': false
+                }, {
+                    'name': 'Carbon Steel Test Plate 40mm V groove',
                     'rate': 700,
                     'pieces': false
                 }, {
-                    'name': 'Carbon Steel UT Block',
-                    'rate': 100,
+                    'name': 'stainless Steel Test Plate 40mm V groove',
+                    'rate': 700,
                     'pieces': false
                 },
                 {
-                    'name': 'Carbon Steel Test Plate 40mm Tensile Specimen',
-                    'rate': 450,
+                    'name': 'Carbon Steel Test Plate 16mm Tensile',
+                    'rate': 350,
                     'pieces': false
                 },
                 {
-                    'name': 'Carbon Steel Test Plate Bend Specimen',
-                    'rate': 300,
+                    'name': 'Carbon Steel Test Plate 16mm Bend ',
+                    'rate': 200,
                     'pieces': false
                 }, {
-                    'name': 'Carbon Steel Test Plate Macro Specimen ',
-                    'rate': 300,
+                    'name': 'Carbon Steel Test Plate 16mm Macro ',
+                    'rate': 200,
                     'pieces': false
                 }, {
                     'name': 'Carbon Steel Test Plate Impact',
-                    'rate': 125,
+                    'rate': 200,
                     'pieces': true
                 }]
         },
@@ -351,6 +372,14 @@ export class BillComponent {
                     'name': 'Stainless Steel Tensile Test Bar ',
                     'rate': 50,
                     'pieces': false
+                },{
+                'name': 'Non Alloy Steel impact',
+                'rate': 60,
+                'pieces': true
+                }, {
+                    'name': 'Stainless Steel impact ',
+                    'rate': 80,
+                    'pieces': true
                 }
             ]
         },
@@ -369,38 +398,25 @@ export class BillComponent {
             billDifferentType:true,
             displayTotNos:true,
             items: [{
-                    'name': 'Stainless steel impact',
-                    'rate': 55,
-                    'pieces': true
-                }, {
                     'name': 'Non Alloy steel impact',
-                    'rate': 35,
+                    'rate': 80,
                     'pieces': true
-                }, {
-                    'name': 'Stainless steel impact IGC bend',
-                    'rate': 140,
+                },{
+                    'name': 'Stainless steel impact',
+                    'rate': 100,
+                    'pieces': true
+                },  {
+                    'name': 'Stainless steel IGC-B',
+                    'rate': 25,
                     'pieces': false
                 }, {
-                    'name': 'Stainless steel impact IGC (A) ',
-                    'rate': 15,
+                    'name': 'Stainless steel IGC-E ',
+                    'rate': 100,
                     'pieces': false
-                }, {
-                    'name': 'Stainless steel full length impact',
-                    'rate': 165,
-                    'pieces': true
-                }, {
-                    'name': 'Non Alloy steel full length impact',
-                    'rate': 145,
-                    'pieces': true
-                },
+                }, 
                 {
-                    'name': 'Non Alloy steel spectro sample',
-                    'rate': 125,
-                    'pieces': false
-                },
-                {
-                    'name': 'Non Alloy steel IBR bend',
-                    'rate': 155,
+                    'name': 'Non Alloy steel bend',
+                    'rate': 175,
                     'pieces': false
                 }
             ]
@@ -420,31 +436,18 @@ export class BillComponent {
             billDifferentType:false,
             displayTotNos:false,
             items: [{
-                    'name': 'Stainless steel Impact',
-                    'rate': 100,
-                    'pieces': true
+                    'name': 'Non Alloy steel tensile bar',
+                    'rate': 45,
+                    'pieces': false
                 }, {
                     'name': 'Non Alloy steel Impact',
-                    'rate': 80,
+                    'rate': 45,
                     'pieces': true
                 }, {
-                    'name': 'Stainless steel IGC(E) ',
-                    'rate': 100,
-                    'pieces': true
-                }, {
-                    'name': 'Non Alloy steel Round Bar',
-                    'rate': 150,
+                    'name': 'Stainless steel tensile bar ',
+                    'rate': 55,
                     'pieces': false
-                }, {
-                    'name': 'Non Alloy steel Bend',
-                    'rate': 175,
-                    'pieces': false
-                },
-                {
-                    'name': 'Non Alloy steel IBR Bend',
-                    'rate': 175,
-                    'pieces': true
-                }
+                }, 
             ]
 
         },
@@ -476,7 +479,7 @@ export class BillComponent {
                     'rate': 140,
                     'pieces': false
                 }, {
-                    'name': 'Stainless steel impact IGC A',
+                    'name': 'Stainless steel IGC-A',
                     'rate': 15,
                     'pieces': false
                 }, {
@@ -487,10 +490,21 @@ export class BillComponent {
                     'name': 'Non Alloy steel full length impact',
                     'rate': 145,
                     'pieces': true
-                },
-                {
-                    'name': 'Non Alloy steel spectro sample',
-                    'rate': 125,
+                },{
+                    'name': 'Stainless steel test block impact',
+                    'rate': 55,
+                    'pieces': true,
+                }, {
+                    'name': 'Non Alloy steel test block impact',
+                    'rate': 35,
+                    'pieces': true,
+                }, {
+                    'name': 'Stainless steel  test block IGC bend',
+                    'rate': 140,
+                    'pieces': false
+                }, {
+                    'name': 'Stainless steel test block  IGC-A',
+                    'rate': 15,
                     'pieces': false
                 },
                 {
@@ -535,47 +549,6 @@ export class BillComponent {
             ]
 
 
-        },
-        {
-            code: 'URCAAPL',
-            name: 'UR Castings And Alloys Private Limited',
-            address: 'S.F.No-76&80,Thirumalayampalayam Post',
-            city: 'Coimbatore-641105',
-            state: 'Tamilnadu',
-            stateCode: '33',
-            gst: '33AAACU7496B1ZD',
-            //Billformat: true,
-            serviceAccountCode:998931,
-            ourDc:false,
-            yourDc:true,
-            billDifferentType:false,
-            displayTotNos:false,
-            items: [{
-                    'name': 'Stainless Steel Tensile Test Bar',
-                    'rate': 55,
-                    'pieces': false
-                }, {
-                    'name': 'Non Alloy Steel Tensile Test Bar',
-                    'rate': 45,
-                    'pieces': false
-                }, {
-                    'name': 'Non Alloy Steel Impact',
-                    'rate': 45,
-                    'pieces': false
-                }, {
-                    'name': 'Stainless Steel Impact',
-                    'rate': 70,
-                    'pieces': true
-                }, {
-                    'name': 'Weld Test Plate Stainless Steel Tensile',
-                    'rate': 450,
-                    'pieces': false
-                },
-                {
-                    'name': 'Weld Test Plate Stainless Steel Impact',
-                    'rate': 250,
-                    'pieces': true
-                }]
         },
         {
             code: 'VSPL',
