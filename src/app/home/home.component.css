@@ -1,81 +1,31 @@
-.companySelection{
 
+.card-outer-border{
+  border:2px solid #60DFE8;
+  /* border: 2px solid #FFDE89; */
+  border-radius: 5px;
+  margin: 15px;
+  box-shadow: 0 3px 6px rgba(8, 169, 243, 0.16), 0 3px 6px rgba(7, 218, 255, 0.23);
 }
-.company{
-    cursor: pointer;
-    line-height:25px;
+.card-outer-border :hover{
+  color: black
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+.card-inner-design{
+  background: #DAF7FA;
+  /* background: #FFF7E2; */
+  height: 75px;
+  display: table;
+  width:100%;
+  padding: 0px 10px;
+  cursor: pointer;
+  /* text-align: center; */
 }
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
+.card-data{
+  /* color:#0097A4; */
+  color: #4a5152;
+  vertical-align: middle;
+  display: table-cell;
 }
-
-@-webkit-keyframes spin {
-    
-    0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-    
-  }
-  
-  @keyframes spin {
-    
-    0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
-    
-  }
-  
-  body {
-    margin: 0;
-    background: #eee;
-    
-    font-family: "Roboto", sans-serif;
-    color: #333;
-  }
-  
-  .container {
-    width: 300px;
-    margin: 0 auto;
-    
-    padding: 0 32px;
-    box-sizing: border-box;
-  }
-  
-  .card {
-    margin: 12px 0;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    background: white;
-    min-height: 80px;
-    display: flex;
-    cursor: pointer;
-  }
-  
-  
-  
-  @media screen and (max-width: 700px) {
-    
-    .container {
-      width: 100%;
-    }
-}  
+.card-data span{
+  font-size: 14px;
+  font-weight: bold;
+}

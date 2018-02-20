@@ -1,4 +1,4 @@
-<div class="row" style="padding-top:20px">
+<!-- <div class="row" style="padding-top:20px">
   <div class="col-sm-8">
     <span style="font-size: 16px;font-weight: bold;">Select company to generate bill</span>
   </div>
@@ -12,15 +12,26 @@
       <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-sm-4" *ngFor="let item of companyData; let i = index">
     <div class="card">
       <div style="padding: 15px;font-weight: bold;" (click)="createBill(item.code)">&nbsp;&nbsp;{{i+1}}.&nbsp;{{item.name}}</div>
 
     </div>
   </div>
+</div> -->
+<br><br>
+<div class="col-sm-4" *ngFor="let item of companyData; let i = index">
+<div class="card-outer-border">
+  <div (click)="createBill(item.code)" class="card-inner-design">
+    <div class="card-data">
+      <span>{{i+1}}. {{item.name}}</span>
+    </div>
+  </div>
 </div>
+</div>
+
 
 

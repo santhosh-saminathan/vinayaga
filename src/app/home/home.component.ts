@@ -3,6 +3,8 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 // import { Constants } from "../constants/companyAddress";
+import { Constants } from './../constants/companyAddress';
+
 
 @Component({
     selector: 'home',
@@ -21,7 +23,6 @@ export class HomeComponent {
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute) {
         setInterval(() => {
-            //this.time = new Date();
             this.newTime();
         }, 1);
     }
@@ -32,44 +33,9 @@ export class HomeComponent {
         } else {
             this.upcomingInvoice = localStorage.getItem('upcomingInvoice')
         }
-        // console.log(this.constants.companyAddress())
-        this.companyData = [{
-            code: 'AVCL',
-            name: 'Anugraha Valve Castings Limited',
-            address: '391/2, Sengoda goundan Pudur'
-        }, {
-            code: 'AVCL5',
-            name: 'Anugraha Valve Castings Limited(Unit-V)'
-        }, {
-            code: 'AVCL6',
-            name: 'Anugraha Valve Castings Limited(Unit-VI)'
-        }, {
-            code: 'URCAAPL',
-            name: 'UR Castings And Alloys Private Limited'
-        }, {
-            code: 'REW',
-            name: 'Rukmani Engineering Works'
-        }, {
-            code: 'VSPL',
-            name: 'Veeyes Steelcast Private Limited '
-        }, 
-        {
-            code: 'MASPL',
-            name: 'Mira Alloy Steels Private Limited'
-        },{
-            code: 'SSACIPL',
-            name: 'S.S.A Castings India Private Limited'
-        }, {
-            code: 'SRI',
-            name: 'Sri Ranganather Industries'
-        }, {
-            code: 'SRVACPL',
-            name: 'Sri Ranganathar Valves And Control Private Limited'
-        }, {
-            code: 'SRVPL',
-            name: 'Sri Ranganathar Valves Private Limited'
-        }
-    ]
+   
+        this.companyData = Constants.companyAddress();
+  
 
         this.getPersentTime();
 
