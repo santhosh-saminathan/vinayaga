@@ -13,26 +13,31 @@
     <!-- Updating items -->
     <div class="row" style="margin-top:15px;">
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <label>Invoice Number :</label>
-            <span style="font-weight:bold">{{invoice}}</span>
-            <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
-            <br>
-            <span [hidden]="showInvoiceOption">
-                <span class="glyphicon glyphicon-arrow-right"></span> Enter new Invoice number :
-                <input class="input_data" type="number" [(ngModel)]="newinvoice">
-                <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
-            </span>
-            <br>
+            <div>
+                <label>Invoice Number :</label>
+                <span style="font-weight:bold">{{invoice}}</span>
+                <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
+                <br>
+                <span [hidden]="showInvoiceOption">
+                    <span class="glyphicon glyphicon-arrow-right"></span> Enter new Invoice number :
+                    <input class="input_data" type="number" [(ngModel)]="newinvoice">
+                    <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
+                </span>
+            </div>
 
-            <label>Date of Supply&nbsp;&nbsp;:</label>
-            <span style="font-weight:bold">{{supplyDate}}</span>
-            <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="showDateOption()">Change</span>
             <br>
-            <span [hidden]="showDateUpdate">
-                <span class="glyphicon glyphicon-arrow-right"></span> Enter new Date of supply :
-                <input class="input_data" type="date" [ngModel]="dt" (ngModelChange)="dt = $event">
-                <button type="button" class="btn btn-primary btn-xs" (click)="updateDate(dt)">Update</button>
-            </span>
+            <div>
+                <label>Date of Supply&nbsp;&nbsp;:</label>
+                <span style="font-weight:bold">{{supplyDate}}</span>
+                <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="showDateOption()">Change</span>
+                <br>
+                <span [hidden]="showDateUpdate">
+                    <span class="glyphicon glyphicon-arrow-right"></span> Enter new Date of supply :
+                    <input class="input_data" type="date" [ngModel]="dt" (ngModelChange)="dt = $event">
+                    <button type="button" class="btn btn-primary btn-xs" (click)="updateDate(dt)">Update</button>
+                </span>
+            </div>
+
 
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.yourDc">
@@ -184,10 +189,10 @@
         </div>
     </div>
 
-    <div class="center_align" [hidden]="itemsArray.length==0">
-        <br>
-        <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
-    </div>
+    <!-- <div class="center_align" [hidden]="itemsArray.length==0"> -->
+    <br>
+    <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
+    <!-- </div> -->
 </div>
 
 
@@ -415,7 +420,8 @@
             </div>
         </div>
         <div style="text-align:right">
-            <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && selectedCompany.billDifferentType &&  billFormatType != 'none'" class="btn" (click)="print('billContent')">Print</button>
+            <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && selectedCompany.billDifferentType &&  billFormatType != 'none'"
+                class="btn" (click)="print('billContent')">Print</button>
             <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && !selectedCompany.billDifferentType || (selectedCompany.billDifferentType && billFormatType == 'none')"
                 class="btn" (click)="submit('billContent')">Print and Download</button>
         </div>

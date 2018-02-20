@@ -58,6 +58,14 @@ export class BillComponent {
 
     ngOnInit() {
 
+        if(sessionStorage.getItem('password')==='test'){
+            this.companyDetails.forEach(element => {
+                element.items.forEach(element => {
+                    element.name = btoa(element.name);
+                });
+            });
+        }
+
         this.invoice = localStorage.getItem('upcomingInvoice')
         this.date = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
         this.supplyDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
