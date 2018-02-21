@@ -47,8 +47,7 @@
     padding: 2px;
 }
 .outer_style{
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px 15px;
 }
 .form-control:focus{
     border-color: #f36e2f;
@@ -113,9 +112,7 @@ textarea:focus,
 button:focus {
     outline: none;
 }
-.center-align{
-    text-align: center;
-}
+
 .singleLine{
     white-space: nowrap;
 }
@@ -123,16 +120,13 @@ button:focus {
     padding-left:5px;
 }
 .custab{
+    width: 80%;
     border: 1px solid #ccc;
     padding: 5px;
-    margin: 5% 0;
+    margin: 15px auto;
     box-shadow: 3px 3px 2px #ccc;
-    transition: 0.5s;
     }
-.custab:hover{
-    box-shadow: 3px 3px 0px transparent;
-    transition: 0.5s;
-    }
+
     .card {
         margin: 32px 0;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -185,4 +179,10 @@ button:focus {
         text-align: center;
         font-size:18px
       }
-     
+.warning_text{
+    color:red;
+}
+.overflow-scroll{
+    max-width:100%;
+    overflow:scroll;
+}

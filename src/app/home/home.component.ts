@@ -43,6 +43,7 @@ export class HomeComponent {
 
 
     createBill = function (data) {
+        localStorage.removeItem('billData');
         this.router.navigate(['/bill'], { queryParams: { company: data } })
     }
 

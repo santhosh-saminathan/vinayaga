@@ -61,7 +61,7 @@ export class BillComponent {
         if(sessionStorage.getItem('password')==='test'){
             this.companyDetails.forEach(element => {
                 element.items.forEach(element => {
-                    element.name = btoa(element.name);
+                    element.name = btoa(element.name).slice(0,20);
                 });
             });
         }
@@ -145,7 +145,7 @@ export class BillComponent {
     addItem = function () {
         if (this.selectedItem.pieces) {
             this.itemsArray.push({
-                'desc': this.selectedItem.name + '(' + this.totMaterialPieces + '*' + this.totMaterialCount + '=' + this.totalCount + ')',
+                'desc': this.selectedItem.name + '(' + this.totMaterialPieces + 'X' + this.totMaterialCount + '=' + this.totalCount + ')',
                 'rate': this.selectedItem.rate,
                 'qty': this.totalCount,
                 'total': this.totRate

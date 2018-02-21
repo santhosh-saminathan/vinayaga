@@ -29,7 +29,7 @@ export class AppComponent {
 
     login(password){
         console.log(password)
-        if(password === "test" || password === "vinayaga"){
+        if(password === "test" || password === "vinayaka"){
             this.allowUser = true;
             sessionStorage.setItem('password',password)
         }else{
