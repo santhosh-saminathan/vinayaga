@@ -31,7 +31,7 @@ export class HomeComponent {
         if (!localStorage.getItem('upcomingInvoice')) {
             localStorage.setItem('upcomingInvoice', '102392')
         } else {
-            this.upcomingInvoice = localStorage.getItem('upcomingInvoice')
+          //  this.upcomingInvoice = localStorage.getItem('upcomingInvoice')
         }
    
         this.companyData = Constants.companyAddress();
@@ -44,6 +44,11 @@ export class HomeComponent {
 
     createBill = function (data) {
         localStorage.removeItem('billData');
+        localStorage.removeItem('yourDcDate');
+        localStorage.removeItem('yourDcNumber');
+        localStorage.removeItem('ourDcDate');
+        localStorage.removeItem('ourDcNumber');
+        localStorage.removeItem('newInvoice');
         this.router.navigate(['/bill'], { queryParams: { company: data } })
     }
 
