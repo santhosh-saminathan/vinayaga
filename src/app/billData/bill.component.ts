@@ -111,6 +111,9 @@ export class BillComponent {
             this.invoice = localStorage.getItem('upcomingInvoice');
         }
 
+        if(localStorage.getItem('saved')){
+            this.backToHome();
+        }
 
     }
 
@@ -121,6 +124,7 @@ export class BillComponent {
         localStorage.removeItem('ourDcDate');
         localStorage.removeItem('ourDcNumber');
         localStorage.removeItem('newInvoice');
+        localStorage.removeItem('saved');
         this.router.navigate(['/home']);
 
     }
@@ -326,7 +330,7 @@ export class BillComponent {
         localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice'))).toString());
         }else{
             localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice')) + 1).toString());
- 
+            localStorage.setItem('saved','true');
         }
         setTimeout(function () {
             window.print();

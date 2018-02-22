@@ -241,7 +241,7 @@ let companyDetails = [
         serviceAccountCode:998931,
         ourDc:false,
         yourDc:true,
-        billDifferentType:true,
+        billDifferentType:false,
         displayTotNos:false,
         items: [
             {
