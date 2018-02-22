@@ -21,9 +21,12 @@
 
 <div *ngIf="!allowUser" style="margin-top:100px;text-align:center">
     <div *ngIf="showWarning"><span style="color:red">Incorrect Password</span></div>
+   <form id="loginForm">
     <label>Enter Password to Proceed : </label>
-    <input autofocus type="text" [(ngModel)]="password">
-    <button style="margin-left:10px" class="btn btn-sm" (click)="login(password)">Login</button>
+    <input autofocus type="password" [(ngModel)]="password" name="password">
+</form>
+<br>
+    <button type="submit" form="loginForm" style="margin-left:10px" class="btn btn-sm btn-primary" (click)="login(password)">Login</button>
 
 </div>
 <div *ngIf="allowUser">
