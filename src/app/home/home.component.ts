@@ -29,7 +29,7 @@ export class HomeComponent {
 
     ngOnInit() {
         if (!localStorage.getItem('upcomingInvoice')) {
-            localStorage.setItem('upcomingInvoice', '102392')
+            localStorage.setItem('upcomingInvoice', '0001')
         } else {
           //  this.upcomingInvoice = localStorage.getItem('upcomingInvoice')
         }
