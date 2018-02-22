@@ -9,6 +9,10 @@ export class AppComponent {
   date:any;
   day:any;
   time:any;
+  allowUser:boolean = false;
+  password:any;
+  showWarning:boolean = false; 
+
   constructor (){
       setInterval(() => {
           //this.time = new Date();
@@ -17,11 +21,21 @@ export class AppComponent {
   }
 
   ngOnInit(){
-     
-
       this.getPersentTime();
-     
-  }
+      if(sessionStorage.getItem('password')){
+          this.login(sessionStorage.getItem('password'));
+      }
+    }
+
+    login(password){
+        if(password === "test" || password === "vin1912"){
+            this.allowUser = true;
+            sessionStorage.setItem('password',password)
+        }else{
+            this.allowUser = false;
+            this.showWarning = true;
+        }
+    }
 
 
    getPersentTime = function(){

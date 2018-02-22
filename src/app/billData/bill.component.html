@@ -1,366 +1,433 @@
-
-    <div class="row" style="padding:15px;">
-        <button style="margin-left:10px" type="button" class="btn btn-xs" (click)="backToHome()"><span style="transform: rotate(-180deg)" class="glyphicon glyphicon-share-alt"> </span> Back</button>
-    </div>
-
-    <br>
-
-    <div class="row">
-        <div class="col-sm-8" >
-            <span style="font-weight:bold;font-size:24px;">{{selectedCompany.name}}</span><br>
-            <span >Invoice Number :</span> <span style="font-weight:bold">{{invoice}}</span> <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
-            <br>
-            <span [hidden]="showInvoiceOption"><span class="glyphicon glyphicon-arrow-right"></span> Enter new Invoice number :
-                <input type="number" [(ngModel)]="newinvoice" >
-                <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
-            </span>
-
-            <span>Date of Supply&nbsp;&nbsp;:</span> <span style="font-weight:bold">{{supplyDate}}</span> <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="showDateOption()">Change</span>
-            <br>
-            <span [hidden]="showDateUpdate"><span class="glyphicon glyphicon-arrow-right"></span> Enter new Date of supply :
-                <input  type="date" [ngModel]="dt" (ngModelChange)="dt = $event">
-                <button type="button" class="btn btn-primary btn-xs" (click)="updateDate(dt)">Update</button>
-            </span>
+<div>
+    <div>
+        <!-- Heading and back button -->
+        <div class="row outer_style">
+            <div class="col-xs-12 col-sm-2">
+                <button style="margin-top:5px" tabindex="-1" type="button" class="btn btn-xs" (click)="backToHome()">
+                    <span style="transform: rotate(-180deg)" class="glyphicon glyphicon-share-alt"></span> Back</button>
+            </div>
+            <div class="col-xs-12 col-sm-8 center_align">
+                <span style="font-size:24px">{{selectedCompany.name}}</span>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <span style="font-weight:bold;" *ngIf="selectedCompany.differentType">Select Copy</span>
-            <select *ngIf="selectedCompany.differentType" [(ngModel)]="selectedBillcopy" (change)="BillCopy(selectedBillcopy)">
-                <option value="Copy" selected>Selected Copy</option>
-                <option value="Original">Original</option>
-                <option value="Duplicate">Duplicate</option>
-                <option value="Triplicate">Triplicate</option>
-            </select>
-        </div>
-    </div>
     
-    <br>
-
-    <div class="row">
-        <div class="col-sm-6">
-            <span style="font-weight:bold;">Select Item</span>
-            <select  [(ngModel)]="selectedItemName" (change)="newItem(selectedItemName)">
-                <option value="{{item.name}}" *ngFor="let item of selectedCompany.items">{{item.name}}</option>
-                <option value="newItem">+ Add New</option>
-
-            </select>
+        <!-- Updating items -->
+        <div class="row outer_style">
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div>
+                    <label>Invoice Number :</label>
+                    <span style="font-weight:bold">{{invoice}}</span>
+                    <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
+                    <br>
+                    <span [hidden]="showInvoiceOption">
+                        <span class="glyphicon glyphicon-arrow-right"></span> Enter new Invoice number :
+                        <input class="input_data" type="number" [(ngModel)]="newinvoice">
+                        <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
+                    </span>
+                </div>
+    
+                <br>
+                <div>
+                    <label>Date of Supply&nbsp;&nbsp;:</label>
+                    <span style="font-weight:bold">{{supplyDate}}</span>
+                    <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="showDateOption()">Change</span>
+                    <br>
+                    <span [hidden]="showDateUpdate">
+                        <span class="glyphicon glyphicon-arrow-right"></span> Enter new Date of supply :
+                        <input class="input_data" type="date" [ngModel]="dt" (ngModelChange)="dt = $event">
+                        <button type="button" class="btn btn-primary btn-xs" (click)="updateDate(dt)">Update</button>
+                    </span>
+                </div>
+    
+    
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.yourDc">
+                <div>
+                    <label>Your DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="yourDcNumber">
+                </div>
+                <br>
+                <div>
+                    <label>Your DC Date&nbsp;&nbsp;:</label>
+                    <input tabindex="-1" class="w-150" type="date" [ngModel]="yourDcDate" (ngModelChange)="yourDcDate = $event">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.ourDc">
+                <div>
+                    <label>Our DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="ourDcNumber">
+                </div>
+                <br>
+                <div>
+                    <label>Our DC Date&nbsp;&nbsp;:</label>
+                    <input tabindex="-1" class="w-150" type="date" [ngModel]="ourDcDate" (ngModelChange)="ourDcDate = $event">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.billDifferentType">
+                <label>Select Type of Bill :</label>
+                <br>
+                <select class="w-150" style="background:none" tabindex="-1" [(ngModel)]="selectedBillcopy" (change)="billCopyType(selectedBillcopy)">
+                    <option value="Original for Recipient">Original</option>
+                    <option value="Duplicate">Duplicate</option>
+                    <option value="Triplicate">Triplicate</option>
+                    <option value="none" selected>None</option>
+                </select>
+            </div>
         </div>
-
-        <!-- <div class="col-sm-6">
-                <button class="btn btn-sm btn-primary" style="font-weight:bold;">Add New Item</button>
-        </div> -->
-
-        <div class="col-sm-12">
-                <table class="table table-striped custab" *ngIf="selectedItemName && selectedItemName!='newItem'">
-                        <thead>
-                            <tr>
-                                <th>Select Item</th>
-                                <th>Total Pieces</th>
-                                <th>Rate</th>
-                                <th>Total Rate</th>
-                                <th>Add</th>
-                            </tr>
-                        </thead>
+    
+        <!-- Select Item -->
+        <div class="row outer_style">
+    
+            <div class="col-xs-12 col-sm-4 ">
+                <label>Select Item:</label>
+                <select autofocus [(ngModel)]="selectedItemName" (change)="newItem(selectedItemName)" class="form-control">
+                    <option value="{{item.name}}" *ngFor="let item of selectedCompany.items">{{item.name}}</option>
+                    <option value="newItem">+Add New</option>
+                </select>
+            </div>
+    
+            <div class="col-xs-12 overflow-scroll">
+                <table class="table table-striped custab colorfulFocus" *ngIf="selectedItemName && selectedItemName!='newItem'">
+                    <thead>
                         <tr>
-                            <td><span *ngIf="selectedItemName">{{selectedItemName}}</span></td>
-                            <td *ngIf="selectedItem">
-                                <div *ngIf="!selectedItem.pieces">
-                                        <input type="number" [(ngModel)]="total" (change)="totalQty(total)"> 
-                                </div>
-                                <div *ngIf="selectedItem.pieces" class="col-xs-3" style="padding:0px">
-                                    <input style="border:none" placeholder="material" type="number" [(ngModel)]="material" (change)="materialCount(material,count)">
-                                </div>
-                                <div *ngIf="selectedItem.pieces" class="col-xs-1 center_align">*</div>
-                                <div *ngIf="selectedItem.pieces" class="col-xs-3" style="padding:0px">
-                                    <input style="border:none" placeholder="count" type="number" [(ngModel)]="count" (change)="materialCount(material,count)">
-                                </div>
-                                <div *ngIf="selectedItem.pieces" class="col-xs-1">=</div>
-                                <div *ngIf="selectedItem.pieces" class="col-xs-3"><span> &nbsp;{{totalCount}}</span></div>
-                            </td>
-                            <td *ngIf="selectedItem">{{selectedItem.rate}}</td>
-                            <td *ngIf="selectedItem">{{totRate}}</td>
-                            <td *ngIf="selectedItem"> <a class="btn btn-primary btn-xs pull-right" (click)="addItem()"><b>+</b>Add</a></td>
+                            <th>Select Item</th>
+                            <th>Total Pieces</th>
+                            <th>Rate</th>
+                            <th>Total Rate</th>
+                            <th>Add</th>
                         </tr>
-                </table>
-
-                <table class="table table-striped custab" *ngIf="selectedItemName && selectedItemName==='newItem'">
-                        <thead>
-                                <tr>
-                                    <th>Select Item</th>
-                                    <th>Total Pieces</th>
-                                    <th>Rate</th>
-                                    <th>Total Rate</th>
-                                    <th>Add</th>
-                                </tr>
-                        </thead>
-                        <tr>
-                                <td>
-                                    <input type="text" [(ngModel)]="newItemName">
-                                </td>
-                                <td >
-                                    <input type="number" [(ngModel)]="newItemTotPiece"> 
-                                 </td>
-                                <td>
-                                    <input type="number" [(ngModel)]="newItemRate">
-                                </td>
-                                <td >
-                                   <span *ngIf="newItemTotPiece && newItemRate"> {{newItemTotPiece*newItemRate}}</span>
-                                </td>
-                                <td> <a class="btn btn-primary btn-xs pull-right" (click)="addNewItem(newItemName,newItemTotPiece,newItemRate)"><b>+</b>Add</a></td>
-                        </tr>
-                </table>
-        </div>
-            
-    </div>
-           
-    <div class="row" style="width:80%;margin:0 auto">
-        <div *ngIf="itemsArray.length>0">
-            <br>
-            <table class="table table-bordered">
-                <tr>
-                    <th class="center-align">Item</th>
-                    <th class="center-align">Qty</th>
-                    <th class="center-align">Rate</th>
-                    <th class="center-align">Total</th>
-                    <th class="center-align">Remove Item</th>
-                </tr>
-                <tbody *ngFor="let data of itemsArray">
+                    </thead>
                     <tr>
-                        <td class="center-align">{{data.desc}}</td>
-                        <td class="center-align">{{data.qty}}</td>
-                        <td class="center-align">{{data.rate}}</td>
-                        <td class="center-align">{{data.total}}</td>
-                        <td class="center-align" (click)="deleteItem(data)"><span style="color: red;cursor: pointer;" class="glyphicon glyphicon-trash"></span></td>
+                        <td>
+                            <span *ngIf="selectedItemName">{{selectedItemName}}</span>
+                        </td>
+                        <td *ngIf="selectedItem">
+                            <div *ngIf="!selectedItem.pieces">
+                                <input class="colorfulFocus input_data" type="number" [(ngModel)]="total" (change)="totalQty(total)">
+                            </div>
+                            <div *ngIf="selectedItem.pieces" class="col-md-3" style="padding:0px">
+                                <input style="width:100%" class="colorfulFocus input_data" placeholder="material" type="number" [(ngModel)]="material" (change)="materialCount(material,count)">
+                            </div>
+                            <div *ngIf="selectedItem.pieces" class="col-md-1 center_align"> X</div>
+                            <div *ngIf="selectedItem.pieces" class="col-md-3" style="padding:0px">
+                                <input style="width:100%" class="colorfulFocus input_data" placeholder="count" type="number" [(ngModel)]="count" (change)="materialCount(material,count)">
+                            </div>
+                            <div *ngIf="selectedItem.pieces" class="col-md-1"> =</div>
+                            <div *ngIf="selectedItem.pieces" class="col-md-3">
+                                <span> &nbsp;{{totalCount}}</span>
+                            </div>
+                        </td>
+                        <td *ngIf="selectedItem">{{selectedItem.rate}}</td>
+                        <td *ngIf="selectedItem">{{totRate}}</td>
+                        <td *ngIf="selectedItem">
+                            <button  class="btn btn-info btn-xs colorfulFocus" (click)="addItem()">
+                                <b>+</b>Add</button>
+                        </td>
                     </tr>
-                </tbody>
-            </table>
+                </table>
+                <table class="table table-striped custab" *ngIf="selectedItemName && selectedItemName==='newItem'">
+                    <thead>
+                        <tr>
+                            <th>Select Item</th>
+                            <th>Total Pieces</th>
+                            <th>Rate</th>
+                            <th>Total Rate</th>
+                            <th>Add</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>
+                            <input class="colorfulFocus input_data" type="text" [(ngModel)]="newItemName">
+                        </td>
+                        <td>
+                            <input class="colorfulFocus input_data" type="number" [(ngModel)]="newItemTotPiece">
+                        </td>
+                        <td>
+                            <input class="colorfulFocus input_data" type="number" [(ngModel)]="newItemRate">
+                        </td>
+                        <td>
+                            <span *ngIf="newItemTotPiece && newItemRate"> {{newItemTotPiece*newItemRate}}</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-info btn-xs colorfulFocus center_align" (click)="addNewItem(newItemName,newItemTotPiece,newItemRate)">
+                                <b>+</b>Add</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    
+    
+    
+        </div>
+    
+        <!-- Selected Item table and Generate bill button -->
+        <div class="row">
+            <div class="col-xs-12">
+                <br>
+                <div *ngIf="itemsArray.length>0" class="overflow-scroll">
+                    <table class="table table-bordered" style="width:60%;margin:0 auto">
+                        <tr>
+                            <th class="center_align">Item</th>
+                            <th class="center_align">Qty</th>
+                            <th class="center_align">Rate</th>
+                            <th class="center_align">Total</th>
+                            <th class="center_align">Remove Item</th>
+                        </tr>
+                        <tbody *ngFor="let data of itemsArray">
+                            <tr>
+                                <td class="center_align">{{data.desc}}</td>
+                                <td class="center_align">{{data.qty}}</td>
+                                <td class="center_align">{{data.rate}}</td>
+                                <td class="center_align">{{data.total}}</td>
+                                <td class="center_align" (click)="deleteItem(data)">
+                                    <span style="color: red;cursor: pointer;" class="glyphicon glyphicon-trash"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+        <div class="center_align" [hidden]="itemsArray.length==0">
+        <br>
+        <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
         </div>
     </div>
-        
-              
-    <div [hidden]="displayBill" class="center-align">
-        <button class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
-    </div>
-        
+</div>
 
-    
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close" id="close">&times;</span>
-                <div id="billContent">
-                    <div class="bill_outer_design border">
+
+
+<!-- bill -->
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close" id="close">&times;</span>
+        <div id="billContent">
+            <div class="bill_outer_design border">
+                <div class="row">
+                    <div class="header">
+                        <img src="assets/logo.png" alt="logo" />
+                        <h2 style="font-size:33px" class="center_align">
+                            SRI&nbsp;VINAYAKA&nbsp;INDUSTRIES
+                        </h2>
+                        <p class="center_align">
+                            <span>We&nbsp;Undertake&nbsp;All&nbsp;type&nbsp;of&nbsp;Engineering&nbsp;Works</span>
+                        </p>
+
+                        <p class="center_align">
+                            <span>No.9/1,Balaji&nbsp;Garden,&nbsp;Giri&nbsp;Nagar,&nbsp;P&T&nbsp;Colony&nbsp;Road,&nbsp;Coimbatore-641030.&nbsp;Mobile&nbsp;No:&nbsp;9443683219</span>
+                        </p>
+
+                        <p class="center_align">
+                            <span>GSTIN: 33AOCPK6138F1Z8&nbsp;&nbsp;&nbsp;State-&nbsp;Tamil&nbsp;Nadu&nbsp;&nbsp;&nbsp;State Code
+                                - 33</span>
+                        </p>
+                    </div>
+
+
+                </div>
+                <div class="row border_top">
+                    <div class="col-xs-4 center_align">TAX&nbsp;INVOICE</div>
+                    <div class="col-xs-8 border_left">
                         <div class="row">
-                                <div class="col-sm-2">
-                                        <img src="assets\logo.jpg" style="height:120px">
-                                </div>
-                                <div class="col-sm-10" style="margin-top: -10px;
-                                text-align: center;
-                                position: absolute;margin-left:120px">
-                                    <h2><b>SRI&nbsp;VINAYAKA&nbsp;INDUSTRIES</b></h2>
-                                    <span><b>We&nbsp;Undertake&nbsp;All&nbsp;type&nbsp;of&nbsp;Engineering&nbsp;Works</b></span>
-                                    <br>
-                                    <span>No.9/1,Balaji&nbsp;Garden,&nbsp;Giri&nbsp;Nagar,&nbsp;P&T&nbsp;Colony&nbsp;Road,&nbsp;Coimbatore-641030.&nbsp;Mobile&nbsp;No:&nbsp;9443683219</span>
-                                    <br>
-                                    <span><b>GSTIN: 33AOCPK6138F1Z8&nbsp;&nbsp;&nbsp;State-&nbsp;Tamil&nbsp;Nadu&nbsp;&nbsp;&nbsp;State Code - 33</b></span>
-                                </div>
-                        </div>
-                        <div class="row border_top">
-                            <div class="col-xs-4 center_align">TAX&nbsp;INVOICE</div>
-                            <div class="col-xs-8 border_left">
-                                <div class="row">
-                                    <div class="col-xs-6 singleLine">INVOICE NO : {{invoice}}</div>
-                                    <div class="col-xs-6 singleLine">DATE : {{date}} </div>
-                                    <div class="col-xs-12 singleLine">RULE&nbsp;7(1)&nbsp;Under&nbsp;Section&nbsp;31&nbsp;of&nbsp;GST&nbsp;RULES&nbsp;2017</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row border_top">
-                            <span style="padding-left:10px">Recipient&nbsp;&&nbsp;Address&nbsp;of&nbsp;Delivery: </span>
-                        </div>
-                        <div class="row border_top">
-                            <div class="col-xs-10 border_right">
-                                <span>To</span>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;Name</td>
-                                            <td>:</td>
-                                            <td class="p-l-space">{{selectedCompany.name}},</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;Address</td>
-                                            <td>:</td>
-                                            <td class="p-l-space">{{selectedCompany.address}},</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;City</td>
-                                            <td>:</td>
-                                            <td class="p-l-space">{{selectedCompany.city}}.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;State</td>
-                                            <td>:</td>
-                                            <td class="p-l-space">{{selectedCompany.state}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;State Code</td>
-                                            <td>:</td>
-                                            <td class="p-l-space">{{selectedCompany.stateCode}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;GSTIN No</td>
-                                            <td>:</td>
-                                            <td class="p-l-space">{{selectedCompany.gst}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-xs-2" style="padding-top:2%">
-                                <div>
-                                    <p  *ngIf="!selectedCompany.Bill">Original</p>
-                                    <p  *ngIf="!selectedCompany.Bill">Duplicate</p>
-                                    <p  *ngIf="!selectedCompany.Bill">Triplicate</p>                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row border_top center_align">
-                            <span>Tax&nbsp;is&nbsp;Payable&nbsp;on&nbsp;Reverse&nbsp;Charge&nbsp;Basis&nbsp;:&nbsp;No</span>
-                        </div>
-                        <div class="row border_top">
-                            <div class="col-xs-4">
-                                <span class="singleLine">Payment&nbsp;of&nbsp;this&nbsp;bill&nbsp;falls&nbsp;due&nbsp;on&nbsp;: -</span>
-                            </div>
-                            <div class="col-xs-8 border_left" >
-                                <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>Name of Service</td>
-                                                <td>:</td>
-                                                <td class="p-l-space">Manufacturing Services –Iron and Steel Casting</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Service A/C Code</td>
-                                                <td>:</td>
-                                                <td class="p-l-space">998931</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Date & Time of Supply</td>
-                                                <td>:</td>
-                                                <td class="p-l-space">{{supplyDate}}</td>
-                                            <!-- <span>  
-                                                <td style="white-space:nowrap">Your DC No</td>
-                                                <td>-</td>
-                                                <td class="p-l-space">{{supplyDate}}</td>
-                                            </span> -->
-                                                </tr>
-                                            <tr>
-                                                    <td>Place</td>
-                                                    <td>:</td>
-                                                    <td class="p-l-space">Coimbatore</td>
-                                                    <!-- <span>
-                                                    <td>Date</td>
-                                                    <td>-</td>
-                                                    <td class="p-l-space">{{supplyDate}}</td>
-                                                    </span> -->
-                                            </tr>
-                                        </tbody>
-                                </table>
-                            </div>
-                            <!-- <div class="col-xs-2">
-                                    <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td style="white-space:nowrap">Your DC No</td>
-                                                    <td>-</td>
-                                                    <td class="p-l-space">{{supplyDate}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Date</td>
-                                                    <td>-</td>
-                                                    <td class="p-l-space">{{supplyDate}}</td>
-                                                </tr>
-                                            </tbody>
-                                    </table>
-                            </div> -->
-                                
-                        </div>
-                        <div class="row billTable">
-                            <table class="customTable">
-                                <tr class="border_bottom border_top">
-                                    <th style="border-left:none">SL.NO</th>
-                                    <th>SERVICE
-                                        <br> ACCOUNTING CODE</th>
-                                    <th>
-                                        <span>DESCRIPTION OF SERVICE</span>
-                                        
-                                      
-                                    </th>
-                                    <th>QTY</th>
-                                    <th style="width:100px">RATE</th>
-                                    <th style="width:100px">AMOUNT IN Rs</th>
-                                </tr>
-                                <tr *ngFor="let data of itemsArray; let i = index">
-                                    <td style="border-left:none">{{i+1}}</td>
-                                    <td>99879</td>
-                                    <td>{{data.desc}}</td>
-                                    <td>{{data.qty}} Nos</td>
-                                    <td>{{data.rate}}</td>
-                                    <td>{{data.total}}</td>
-                                </tr>
-                                <tr style="height:100px">
-                                    <td style="border-left:none"> &nbsp;</td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="row" style="display:-webkit-box">
-                            <div style="width:calc(100% - 99px);text-align:right;padding-right:10px" class="border_right">Total</div>
-                            <div style="width:100px;text-align:center">{{grandTotal}}</div>
-                        </div>
-                        <div class="row border_top" style="display:-webkit-box">
-                            <div style="width:calc(100% - 199px);text-align:center;" class="border_right">CGST 9%</div>
-                            <div style="width:200px;text-align:center">{{cgstRupee}}</div>
-                        </div>
-                        <div class="row border_top" style="display:-webkit-box">
-                            <div style="width:calc(100% - 199px);text-align:center;" class="border_right">SGST 9%</div>
-                            <div style="width:200px;text-align:center">{{sgstRupee}}</div>
-                        </div>
-                        <div class="row border_top" style="display:-webkit-box">
-                            <div style="width:calc(100% - 199px);text-align:center;" class="border_right">GRAND TOTAL</div>
-                            <div style="width:200px;text-align:center">{{totIncGst}}</div>
-                        </div>
-                        <div class="row border_top" style="padding-left:10px">
-                            <div>CGST Rupees in words&nbsp;&nbsp;&nbsp;:<span> {{cgstRupeeWord}} rupees only.</span></div>
-                            <div>SGST Rupees in words&nbsp;&nbsp;&nbsp;:<span> {{sgstRupeeWord}} rupees only.</span></div>
-                            <div>GRAND TOTAL in words&nbsp;:<span> {{totIncGstRupeeWord}} rupees only.</span></div>
-                        </div>
-                        <div class="row border_top" style="display:-webkit-box">
-                            <div style="width:calc(100% - 199px);text-align:center;" class="border_right">
-                                <br>
-                                <span>
-                                Certified that the particulars given above are true and correct and the amount indicated represent the price actually and that there is no flow of additional consideration directly or indirectly or indirectly from the buyers.
-                            </span>
-                            </div>
-                            <div style="width:200px;text-align:center">
-                                <span>
-                                For Sri Vinayaka Industries
-                            </span>
-                                <br>
-                                <br>
-                                <br>
-                                <span>Authorised Signatory</span>
-                            </div>
+                            <div class="col-xs-6 singleLine">INVOICE NO : {{invoice}}</div>
+                            <div class="col-xs-6 singleLine">DATE : {{date}} </div>
+                            <div class="col-xs-12 singleLine">RULE&nbsp;7(1)&nbsp;Under&nbsp;Section&nbsp;31&nbsp;of&nbsp;GST&nbsp;RULES&nbsp;2017</div>
                         </div>
                     </div>
                 </div>
-                <button (click)="submit('billContent')">submit </button>
+                <div class="row border_top">
+                    <span style="padding-left:10px">Recipient&nbsp;&&nbsp;Address&nbsp;of&nbsp;Delivery: </span>
+                </div>
+                <div class="row border_top">
+                    <div class="col-xs-10 border_right">
+                        <span>To</span>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Name</td>
+                                    <td>:</td>
+                                    <td class="p-l-space">{{selectedCompany.name}},</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;Address</td>
+                                    <td>:</td>
+                                    <td class="p-l-space">{{selectedCompany.address}},</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;City</td>
+                                    <td>:</td>
+                                    <td class="p-l-space">{{selectedCompany.city}}.</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;State</td>
+                                    <td>:</td>
+                                    <td class="p-l-space">{{selectedCompany.state}}</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;State Code</td>
+                                    <td>:</td>
+                                    <td class="p-l-space">{{selectedCompany.stateCode}}</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;GSTIN No</td>
+                                    <td>:</td>
+                                    <td class="p-l-space">{{selectedCompany.gst}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-2" style="padding-top:2%">
+                        <div *ngIf="!selectedCompany.billDifferentType">
+                            <p>Original</p>
+                            <p>Duplicate</p>
+                            <p>Triplicate</p>
+                        </div>
+                        <div *ngIf="selectedCompany.billDifferentType">
+                            <p *ngIf="billFormatType !='none'">{{billFormatType}}</p>
+                            <p *ngIf="billFormatType =='none'"> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border_top center_align">
+                    <span>Tax&nbsp;is&nbsp;Payable&nbsp;on&nbsp;Reverse&nbsp;Charge&nbsp;Basis&nbsp;:&nbsp;No</span>
+                </div>
+                <div class="row border_top">
+                    <div class="col-xs-3">
+                        <span>Payment of this bill falls due on:-</span>
+                    </div>
+                    <div class="col-xs-9 border_left">
+                        <div>
+                            <span style="white-space: nowrap;font-weight:bold">Name of Service : Manufacturing Services –Iron and Steel Casting</span>
+                            <br>
+                            <span class="singleLine">Service A/C Code : {{selectedCompany.serviceAccountCode}}</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4" style="padding-left:0px">
+                                <span class="singleLine">Date of Supply : {{supplyDate}}</span>
+                                <br>
+                                <span class="singleLine">Place : Coimbatore</span>
+                            </div>
+                            <div class="col-xs-4" *ngIf="selectedCompany.ourDc">
+                                <span class="singleLine">Our Dc No: {{ourDcNumber}} <span class="warning_text" *ngIf="!ourDcNumber">Missing</span></span>
+                                <br>
+                                <span class="singleLine">Date: {{ourDcDateData}} <span class="warning_text" *ngIf="!ourDcDateData">Missing</span></span>
+                            </div>
+                            <div class="col-xs-4" *ngIf="!selectedCompany.ourDc">
 
+                            </div>
+                            <div class="col-xs-4" *ngIf="selectedCompany.yourDc">
+                                <span class="singleLine">Your Dc No: {{yourDcNumber}}<span class="warning_text" *ngIf="!yourDcNumber">Missing</span></span>
+                                <br>
+                                <span class="singleLine">Date: {{yourDcDateData}}<span class="warning_text" *ngIf="!yourDcDateData">Missing</span></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="row billTable">
+                    <table class="customTable" style="min-height:300px">
+                        <tr class="border_bottom border_top">
+                            <th height="4" class="fix-height" style="border-left:none">SL.NO</th>
+                            <th height="4" class="fix-height">SERVICE
+                                <br> ACCOUNTING&nbsp;CODE</th>
+                            <th height="4" class="fix-height" style="width:300px">
+                                <span>DESCRIPTION OF SERVICE</span>
+                            </th>
+                            <th height="4" class="fix-height">QTY</th>
+                            <th height="4" class="fix-height" style="width:60px">RATE</th>
+                            <th height="4" class="fix-height" style="width:100px">AMOUNT IN Rs</th>
+                        </tr>
+                        <tr *ngFor="let data of itemsArray; let i = index">
+                            <td height="4" class="fix-height" style="border-left:none">{{i+1}}</td>
+                            <td height="4" class="fix-height">{{selectedCompany.serviceAccountCode}}</td>
+                            <td height="4" class="fix-height" style="text-align:left">&nbsp;{{data.desc}}</td>
+                            <td height="4" class="fix-height singleLine">&nbsp;{{data.qty}}&nbsp;
+                                <span *ngIf="data.qty == 1">No</span>
+                                <span *ngIf="data.qty > 1">Nos</span>&nbsp;</td>
+                            <td height="4" class="fix-height">{{data.rate}}</td>
+                            <td height="4" class="fix-height">{{data.total}}</td>
+                        </tr>
+                        <tr>
+                            <td style="border-left:none"> &nbsp;</td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                        </tr>
+                        <tr *ngIf="selectedCompany.displayTotNos">
+                            <td height="4" class="fix-height" style="border-left:none"> &nbsp;</td>
+                            <td height="4" class="fix-height"></td>
+                            <td height="4" class="fix-height" style="text-align:right">Total Items &nbsp;</td>
+                            <td height="4" class="fix-height singleLine">&nbsp;{{totalQuantityOfItems}}&nbsp;
+                                <span *ngIf="totalQuantityOfItems == 1">No</span>
+                                <span *ngIf="totalQuantityOfItems > 1">Nos</span>&nbsp;</td>
+                            <td height="4" class="fix-height"></td>
+                            <td height="4" class="fix-height"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row" style="display:-webkit-box">
+                    <div style="width:calc(100% - 99px);text-align:right;padding-right:10px" class="border_right">Total</div>
+                    <div style="width:100px;text-align:center">{{grandTotal}}</div>
+                </div>
+                <div class="row border_top" style="display:-webkit-box">
+                    <div style="width:calc(100% - 199px);text-align:center;" class="border_right">CGST 9%</div>
+                    <div style="width:200px;text-align:center">{{cgstRupee}}</div>
+                </div>
+                <div class="row border_top" style="display:-webkit-box">
+                    <div style="width:calc(100% - 199px);text-align:center;" class="border_right">SGST 9%</div>
+                    <div style="width:200px;text-align:center">{{sgstRupee}}</div>
+                </div>
+                <div class="row border_top" style="display:-webkit-box">
+                    <div style="width:calc(100% - 199px);text-align:center;" class="border_right">GRAND TOTAL</div>
+                    <div style="width:200px;text-align:center">{{totIncGst}}</div>
+                </div>
+                <div class="row border_top" style="padding-left:10px">
+                    <div>CGST Rupees in words&nbsp;&nbsp;&nbsp;:
+                        <span> {{cgstRupeeWord}} rupees only.</span>
+                    </div>
+                    <div>SGST Rupees in words&nbsp;&nbsp;&nbsp;:
+                        <span> {{sgstRupeeWord}} rupees only.</span>
+                    </div>
+                    <div>GRAND TOTAL in words&nbsp;:
+                        <span> {{totIncGstRupeeWord}} rupees only.</span>
+                    </div>
+                </div>
+                <div class="row border_top" style="display:-webkit-box">
+                    <div style="width:calc(100% - 199px);text-align:center;" class="border_right">
+                        <br>
+                        <span>
+                            Certified that the particulars given above are true and correct and the amount indicated represent the price actually and
+                            that there is no flow of additional consideration directly or indirectly or indirectly from the
+                            buyers.
+                        </span>
+                    </div>
+                    <div style="width:200px;text-align:center">
+                        <span>
+                            For Sri Vinayaka Industries
+                        </span>
+                        <br>
+                        <br>
+                        <br>
+                        <span>Authorised Signatory</span>
+                    </div>
+                </div>
             </div>
-
         </div>
+        <div style="text-align:right">
+            <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && selectedCompany.billDifferentType &&  billFormatType != 'none'"
+                class="btn" (click)="print('billContent')">Print</button>
+            <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && !selectedCompany.billDifferentType || (selectedCompany.billDifferentType && billFormatType == 'none')"
+                class="btn" (click)="submit('billContent')">Print and Download</button>
+        </div>
+    </div>
+
+</div>
+<!-- End bill -->
