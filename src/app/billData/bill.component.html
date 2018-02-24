@@ -190,7 +190,7 @@
     
         <div class="center_align" [hidden]="itemsArray.length==0">
         <br>
-        <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
+        <button class="btn btn-sm btn-primary colorfulFocus" id="myBtn" (click)="loadBill()">Generate bill</button>
         </div>
     </div>
 </div>
@@ -288,6 +288,7 @@
                         <div *ngIf="selectedCompany.billDifferentType">
                             <p *ngIf="billFormatType !='none'">{{billFormatType}}</p>
                             <p *ngIf="billFormatType =='none'"> </p>
+                            <p class="warning_text" *ngIf="!billFormatType"> Missing </p>
                         </div>
                     </div>
                 </div>

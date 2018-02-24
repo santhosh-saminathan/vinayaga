@@ -66,7 +66,7 @@ export class BillComponent {
             });
         }
 
-       
+
         this.date = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
         this.supplyDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
 
@@ -91,40 +91,40 @@ export class BillComponent {
             }
         }
 
-        if (localStorage.getItem("billData"))
-            this.itemsArray = JSON.parse(localStorage.getItem("billData"));
-        if(localStorage.getItem("yourDcDate")){
-            this.yourDcDate = localStorage.getItem('yourDcDate');
+        if (sessionStorage.getItem("billData"))
+            this.itemsArray = JSON.parse(sessionStorage.getItem("billData"));
+        if (sessionStorage.getItem("yourDcDate")) {
+            this.yourDcDate = sessionStorage.getItem('yourDcDate');
         }
-        if(localStorage.getItem('yourDcNumber')){
-            this.yourDcNumber = localStorage.getItem('yourDcNumber')
+        if (sessionStorage.getItem('yourDcNumber')) {
+            this.yourDcNumber = sessionStorage.getItem('yourDcNumber')
         }
-        if(localStorage.getItem('ourDcDate')){
-            this.ourDcDate = localStorage.getItem('ourDcDate')
+        if (sessionStorage.getItem('ourDcDate')) {
+            this.ourDcDate = sessionStorage.getItem('ourDcDate')
         }
-        if(localStorage.getItem('ourDcNumber')){
-            this.ourDcNumber = localStorage.getItem('ourDcNumber');
+        if (sessionStorage.getItem('ourDcNumber')) {
+            this.ourDcNumber = sessionStorage.getItem('ourDcNumber');
         }
-        if(localStorage.getItem('newInvoice')){
+        if (localStorage.getItem('newInvoice')) {
             this.invoice = localStorage.getItem('newInvoice');
-        }else{
+        } else {
             this.invoice = localStorage.getItem('upcomingInvoice');
         }
 
-        if(localStorage.getItem('saved')){
+        if (sessionStorage.getItem('saved')) {
             this.backToHome();
         }
 
     }
 
     backToHome = function () {
-        localStorage.removeItem('billData');
-        localStorage.removeItem('yourDcDate');
-        localStorage.removeItem('yourDcNumber');
-        localStorage.removeItem('ourDcDate');
-        localStorage.removeItem('ourDcNumber');
+        sessionStorage.removeItem('billData');
+        sessionStorage.removeItem('yourDcDate');
+        sessionStorage.removeItem('yourDcNumber');
+        sessionStorage.removeItem('ourDcDate');
+        sessionStorage.removeItem('ourDcNumber');
         localStorage.removeItem('newInvoice');
-        localStorage.removeItem('saved');
+        sessionStorage.removeItem('saved');
         this.router.navigate(['/home']);
 
     }
@@ -226,14 +226,14 @@ export class BillComponent {
                 this.showPrintOption = true;
                 window.alert("Your DC Number not available");
             } else {
-                localStorage.setItem('yourDcNumber', this.yourDcNumber);
+                sessionStorage.setItem('yourDcNumber', this.yourDcNumber);
             }
             if (!this.yourDcDate) {
                 this.showPrintOption = true;
                 window.alert("Your DC Date not available");
             } else {
                 this.yourDcDateData = this.yourDcDate.split('-')[2] + '/' + this.yourDcDate.split('-')[1] + '/' + this.yourDcDate.split('-')[0]
-                localStorage.setItem('yourDcDate', this.yourDcDate);
+                sessionStorage.setItem('yourDcDate', this.yourDcDate);
             }
         }
         if (this.selectedCompany.ourDc) {
@@ -241,14 +241,14 @@ export class BillComponent {
                 this.showPrintOption = true;
                 window.alert("Our DC Number not available");
             } else {
-                localStorage.setItem('ourDcNumber', this.ourDcNumber);
+                sessionStorage.setItem('ourDcNumber', this.ourDcNumber);
             }
             if (!this.ourDcDate) {
                 this.showPrintOption = true;
                 window.alert("Our DC Date not available");
             } else {
                 this.ourDcDateData = this.ourDcDate.split('-')[2] + '/' + this.ourDcDate.split('-')[1] + '/' + this.ourDcDate.split('-')[0]
-                localStorage.setItem('ourDcDate', this.ourDcDate);
+                sessionStorage.setItem('ourDcDate', this.ourDcDate);
             }
 
 
@@ -306,31 +306,29 @@ export class BillComponent {
     }
 
     submit = function (billContent) {
+        sessionStorage.setItem('saved', 'true');
         const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
         document.body.innerHTML = document.getElementById(billContent).innerHTML;
-        localStorage.setItem('billData', JSON.stringify(this.itemsArray))
+        sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
 
         const doc = new jsPDF();
-        // pdf.fromHTML($('#billContent'), () => {
-        // });
-        // pdf.save("sample.pdf");
-
-        // doc.fromHTML($('#billContent').html(), 15, 15, {
-        //     'width': 170
-        // });
-        // doc.save('sample-file.pdf');
 
 
         html2pdf(document.body, {
             margin: 0.5,
             filename: this.invoice + "(" + new Date().getDate() + "-" + (new Date().getMonth() + 1) + ").pdf",
         });
-        if(this.invoice<localStorage.getItem('upcomingInvoice')){
-        localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice'))).toString());
-        }else{
+
+        if (localStorage.getItem('newInvoice')) {
+
+            if (this.invoice > localStorage.getItem('upcomingInvoice')) {
+                localStorage.setItem('upcomingInvoice', (parseInt(this.invoice) + 1).toString());
+            } else {
+                console.log("no change in invoice")
+            }
+        } else {
             localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice')) + 1).toString());
-            localStorage.setItem('saved','true');
         }
         setTimeout(function () {
             window.print();
@@ -342,7 +340,7 @@ export class BillComponent {
         const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
         document.body.innerHTML = document.getElementById(billContent).innerHTML;
-        localStorage.setItem('billData', JSON.stringify(this.itemsArray))
+        sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
         window.print();
         location.reload();
     }
