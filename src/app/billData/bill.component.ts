@@ -68,7 +68,12 @@ export class BillComponent {
 
 
         this.date = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
-        this.supplyDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+        if(sessionStorage.getItem('supplyDate')){
+            this.supplyDate = sessionStorage.getItem('supplyDate');
+        }else{
+            this.supplyDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+
+        }
 
         this.companyDetails.forEach(element => {
             if (element.code === this.activatedRoute.snapshot.queryParams["company"]) {
@@ -123,6 +128,7 @@ export class BillComponent {
         sessionStorage.removeItem('yourDcNumber');
         sessionStorage.removeItem('ourDcDate');
         sessionStorage.removeItem('ourDcNumber');
+        sessionStorage.removeItem('supplyDate');
         localStorage.removeItem('newInvoice');
         sessionStorage.removeItem('saved');
         this.router.navigate(['/home']);
@@ -221,6 +227,9 @@ export class BillComponent {
                 this.calculateGst();
             }
         });
+        if (this.supplyDate) {
+            sessionStorage.setItem('supplyDate', this.supplyDate);
+        }
         if (this.selectedCompany.yourDc) {
             if (!this.yourDcNumber) {
                 this.showPrintOption = true;
