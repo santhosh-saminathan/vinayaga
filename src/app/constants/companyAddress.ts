@@ -424,7 +424,7 @@ let companyDetails = [
     },
     {
         code: 'SRI',
-        name: 'Sri Ranganather Industries',
+        name: 'Sri Ranganather Industries Private Limited',
         Bill: true,
         address: '12/45,Thadagam main road',
         city: 'Coimbatore-641025',
