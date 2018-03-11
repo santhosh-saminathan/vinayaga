@@ -5,6 +5,7 @@ import * as jsPDF from "jspdf";
 import * as html2canvas from 'html2canvas';
 import * as html2pdf from 'html2pdf.js';
 import { Constants } from './../constants/companyAddress';
+import { BillService } from './../services/bill.service';
 declare var $: any;
 
 @Component({
@@ -54,9 +55,15 @@ export class BillComponent {
     ourDcNumber: any;
     ourDcDate: any;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe) { }
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe,private billService:BillService) { }
 
     ngOnInit() {
+
+        this.billService.storeBill().subscribe(data=>{
+            console.log(data);
+        },err=>{
+            console.log(err);
+        })
 
         if (sessionStorage.getItem('password') === 'test') {
             this.companyDetails.forEach(element => {
