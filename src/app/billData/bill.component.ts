@@ -59,11 +59,7 @@ export class BillComponent {
 
     ngOnInit() {
 
-        this.billService.storeBill().subscribe(data=>{
-            console.log(data);
-        },err=>{
-            console.log(err);
-        })
+       
 
         if (sessionStorage.getItem('password') === 'test') {
             this.companyDetails.forEach(element => {
@@ -322,7 +318,24 @@ export class BillComponent {
     }
 
     submit = function (billContent) {
-        sessionStorage.setItem('saved', 'true');
+        let data = {
+            'invoice':this.invoice,
+            'totalAmount':this.grandTotal,
+            'totWithGst':this.totIncGst,
+            'cgst':this.cgstRupee,
+            'sgst':this.sgstRupee,
+            'items':this.itemsArray,
+            'companyName':this.selectedCompany.name,
+            'supplyDate':this.supplyDate,
+            'yourDcNumber':this.yourDcNumber?this.yourDcNumber:null,
+            'yourDcDate':this.yourDcDateData?this.yourDcDateData:null,
+            'ourDcDate':this.ourDcDateData?this.ourDcDateData:null,
+            'ourDcNumber':this.ourDcNumber?this.ourDcNumber:null,
+        }
+
+        this.billService.storeBill(data).subscribe(data=>{
+            console.log(data);
+            sessionStorage.setItem('saved', 'true');
         const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
         document.body.innerHTML = document.getElementById(billContent).innerHTML;
@@ -350,9 +363,18 @@ export class BillComponent {
             window.print();
             location.reload();
         }, 1000)
+        },err=>{
+            console.log(err);
+        })
+
+
+        
     }
 
     print = function (billContent) {
+
+    
+
         const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
         document.body.innerHTML = document.getElementById(billContent).innerHTML;
