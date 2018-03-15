@@ -55,11 +55,11 @@ export class BillComponent {
     ourDcNumber: any;
     ourDcDate: any;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe,private billService:BillService) { }
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe, private billService: BillService) { }
 
     ngOnInit() {
 
-       
+
 
         if (sessionStorage.getItem('password') === 'test') {
             this.companyDetails.forEach(element => {
@@ -71,9 +71,9 @@ export class BillComponent {
 
 
         this.date = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
-        if(sessionStorage.getItem('supplyDate')){
+        if (sessionStorage.getItem('supplyDate')) {
             this.supplyDate = sessionStorage.getItem('supplyDate');
-        }else{
+        } else {
             this.supplyDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
 
         }
@@ -317,25 +317,40 @@ export class BillComponent {
         }
     }
 
-    submit = function (billContent) {
+    storeUsingApi = function () {
+
+        console.log("Called");
         let data = {
-            'invoice':this.invoice,
-            'totalAmount':this.grandTotal,
-            'totWithGst':this.totIncGst,
-            'cgst':this.cgstRupee,
-            'sgst':this.sgstRupee,
-            'items':this.itemsArray,
-            'companyName':this.selectedCompany.name,
-            'supplyDate':this.supplyDate,
-            'yourDcNumber':this.yourDcNumber?this.yourDcNumber:null,
-            'yourDcDate':this.yourDcDateData?this.yourDcDateData:null,
-            'ourDcDate':this.ourDcDateData?this.ourDcDateData:null,
-            'ourDcNumber':this.ourDcNumber?this.ourDcNumber:null,
+            'invoice': this.invoice,
+            'totalAmount': this.grandTotal,
+            'totWithGst': this.totIncGst,
+            'cgst': this.cgstRupee,
+            'sgst': this.sgstRupee,
+            'items': this.itemsArray,
+            'companyName': this.selectedCompany.name,
+            'supplyDate': this.supplyDate,
+            'yourDcNumber': this.yourDcNumber ? this.yourDcNumber : null,
+            'yourDcDate': this.yourDcDateData ? this.yourDcDateData : null,
+            'ourDcDate': this.ourDcDateData ? this.ourDcDateData : null,
+            'ourDcNumber': this.ourDcNumber ? this.ourDcNumber : null,
         }
 
-        this.billService.storeBill(data).subscribe(data=>{
+        this.billService.storeBill(data).subscribe(data => {
             console.log(data);
-            sessionStorage.setItem('saved', 'true');
+        }, err => {
+            console.log(err);
+        })
+
+
+    }
+
+    submit = function (billContent) {
+
+
+        this.storeUsingApi()
+
+
+        sessionStorage.setItem('saved', 'true');
         const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
         document.body.innerHTML = document.getElementById(billContent).innerHTML;
@@ -363,25 +378,21 @@ export class BillComponent {
             window.print();
             location.reload();
         }, 1000)
-        },err=>{
-            console.log(err);
-        })
 
 
-        
     }
 
-    print = function (billContent) {
+    // print = function (billContent) {
 
-    
 
-        const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
-        document.body.innerHTML = document.getElementById(billContent).innerHTML;
-        sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
-        window.print();
-        location.reload();
-    }
+    //     const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
+
+    //     document.body.innerHTML = document.getElementById(billContent).innerHTML;
+    //     sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
+    //     // window.print();
+    //     // location.reload();
+    // }
 
 }
 

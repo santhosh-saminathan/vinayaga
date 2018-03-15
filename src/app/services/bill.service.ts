@@ -14,5 +14,10 @@ export class BillService {
         return this.http.post("http://localhost:5000/store/bill",data);
     }
 
+    getDetails(){
+        return this.http.get("http://localhost:5000/bill");
+
+    }
+
    
 }

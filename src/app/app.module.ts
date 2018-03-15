@@ -10,11 +10,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BillComponent } from './billData/bill.component';
 import { BillService } from '././services/bill.service';
+import { DetailsComponent } from './details/details.component';
+
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: '', component: HomeComponent},
-  { path: 'bill', component:BillComponent}
+  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
+  { path: 'bill', component: BillComponent },
+  { path: 'details', component: DetailsComponent }
 ];
 
 @NgModule({
@@ -22,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     BillComponent,
-    NumberToWordsPipe
+    NumberToWordsPipe,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [NumberToWordsPipe,BillService,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [NumberToWordsPipe, BillService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

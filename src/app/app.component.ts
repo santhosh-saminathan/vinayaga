@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   password:any;
   showWarning:boolean = false; 
 
-  constructor (){
+  constructor (private router: Router, private activatedRoute: ActivatedRoute){
       setInterval(() => {
           //this.time = new Date();
           this.newTime();
@@ -95,7 +96,9 @@ export class AppComponent {
       this.time = h+':'+m+':'+s+' '+ampm;
    }
 
-  
+   detailsPage(){
+    this.router.navigate(['/details']);
+   }
 
  
 
