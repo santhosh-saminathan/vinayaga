@@ -1,0 +1,14 @@
+.input_date{
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 3px;
+}
+
+.nowrap{
+    white-space: nowrap;
+}
+
+.highlight{
+    font-size: 16px;
+    font-weight: bold;
+}

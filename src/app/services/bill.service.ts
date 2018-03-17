@@ -9,15 +9,13 @@ export class BillService {
     constructor(private http: HttpClient) { }
 
     storeBill(data) {
-       
-        // return this.http.post("https://nodeexpress-app.herokuapp.com/test",data);
-        return this.http.post("http://localhost:5000/store/bill",data);
+        return this.http.post("https://nodeexpress-app.herokuapp.com/store/bill", data);
     }
 
-    getDetails(data){
-        return this.http.post("http://localhost:5000/bill",data);
+    getDetails(data) {
+        return this.http.post("https://nodeexpress-app.herokuapp.com/bill", data);
 
     }
 
-   
+
 }

@@ -1,32 +1,41 @@
+<div *ngIf="showHeader">
+    <div class="row" style="background: #11deec;color: #4a5152;">
+        <div class="col-xs-6 col-sm-2">
+            <img src="assets\vinayagar.png" style="height:135px">
+        </div>
+        <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
+            <img src="assets\vinayagar.png" style="height:135px;-webkit-transform: scaleX(-1);transform: scaleX(-1);float:right">
+        </div>
+        <div class="col-xs-12 col-sm-8" style="text-align:center;">
+            <h2 style="color:black">SRI VINAYAKA INDUSTRIES</h2>
+            <h4>We Undertake All type of Engineering Works</h4>
+            <h4>No.9/1,Balaji Garden GiriNagar,P&T Colony Road,Coimbatore-641030. Mobile No:94436 83219</h4>
+        </div>
+        <div class="hidden-xs col-sm-2">
+            <img src="assets\vinayagar.png" style="height:135px;-webkit-transform: scaleX(-1);transform: scaleX(-1);float:right">
+        </div>
+    </div>
+    <div style="border-bottom:1px solid #60dfe8;background:#daf7fb;padding:5px 10px;text-align:right">
+        <span style="font-size:16px;white-space:nowrap">Date:
+            <span style="color:black;font-weight:bold">{{date}}</span>
+            <span class="hidden-xs">Day:</span>
+            <span class="hidden-xs" style="color:black;font-weight:bold">{{day}}</span> Time:
+            <span style="color:black;font-weight:bold">{{time}}</span>
+        </span>
+    </div>
 
-<div class="row" style="background: #11deec;color: #4a5152;">
-    <div class="col-xs-6 col-sm-2">
-        <img src="assets\vinayagar.png" style="height:135px">
-    </div>
-    <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
-        <img src="assets\vinayagar.png" style="height:135px;-webkit-transform: scaleX(-1);transform: scaleX(-1);float:right">
-    </div>
-    <div class="col-xs-12 col-sm-8" style="text-align:center;">
-        <h2 style="color:black">SRI VINAYAKA INDUSTRIES</h2>
-        <h4>We Undertake All type of Engineering Works</h4>
-        <h4>No.9/1,Balaji Garden GiriNagar,P&T Colony Road,Coimbatore-641030. Mobile No:94436 83219</h4>
-    </div>
-    <div class="hidden-xs col-sm-2">
-        <img src="assets\vinayagar.png" style="height:135px;-webkit-transform: scaleX(-1);transform: scaleX(-1);float:right">
-    </div>
-</div>
-<div style="border-bottom:1px solid #60dfe8;background:#daf7fb;padding:5px 10px;text-align:right">
- <span> <a target="_blank" routerLink="/details">Get all details</a> </span>   <span  style="font-size:16px;white-space:nowrap">Date: <span style="color:black;font-weight:bold">{{date}}</span> <span class="hidden-xs">Day:</span> <span class="hidden-xs" style="color:black;font-weight:bold">{{day}}</span> Time: <span style="color:black;font-weight:bold">{{time}}</span></span>
-</div>
+    <div *ngIf="!allowUser" style="margin-top:100px;text-align:center">
+        <div *ngIf="showWarning">
+            <span style="color:red">Incorrect Password</span>
+        </div>
+        <form id="loginForm">
+            <label>Enter Password to Proceed : </label>
+            <input autofocus type="password" [(ngModel)]="password" name="password">
+        </form>
+        <br>
+        <button type="submit" form="loginForm" style="margin-left:10px" class="btn btn-sm btn-primary" (click)="login(password)">Login</button>
 
-<div *ngIf="!allowUser" style="margin-top:100px;text-align:center">
-    <div *ngIf="showWarning"><span style="color:red">Incorrect Password</span></div>
-   <form id="loginForm">
-    <label>Enter Password to Proceed : </label>
-    <input autofocus type="password" [(ngModel)]="password" name="password">
-</form>
-<br>
-    <button type="submit" form="loginForm" style="margin-left:10px" class="btn btn-sm btn-primary" (click)="login(password)">Login</button>
+    </div>
 
 </div>
 <div *ngIf="allowUser">

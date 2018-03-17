@@ -1,0 +1,207 @@
+<div>
+    <h3>Filter based on:</h3>
+    <div class="row">
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label for="interval">Get data for:</label>
+                <select class="form-control" [(ngModel)]="timePeriod" (ngModelChange)="getTimeInterval($event)" name="timePeriod">
+                    <option value="presentMonth">This Month</option>
+                    <option value="lastMonth">Last Month</option>
+                    <option value="presentYear">This Year</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-2">
+
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <label>Start Date :</label>
+                    <br>
+                    <input class="input_date" type="date" [ngModel]="sdt" (ngModelChange)="sdt = $event">
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <label>End Date :</label>
+                    <br>
+                    <input class="input_date" type="date" [ngModel]="edt" (ngModelChange)="edt = $event">
+                </div>
+                <div class="col-xs-12" style="margin-top:15px;text-align:center">
+                    <button type="button" class="btn btn-primary btn-xs" (click)="customDate(sdt,edt)">submit</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="table-responsive" style="width:80%;margin:0 auto">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>S.NO</th>
+                <th>Invoice</th>
+                <th class="nowrap">Supply Date</th>
+                <th class="nowrap">Company Name</th>
+                <th class="nowrap">Your Dc Date</th>
+                <th class="nowrap">Your Dc No</th>
+                <th class="nowrap">Bill Amount</th>
+                <th>SGST</th>
+                <th>CGST</th>
+                <th class="nowrap">Total Amount</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let data of billData; let i = index">
+            <tr>
+                <td>{{i+1}}</td>
+                <td>{{data.invoice}}</td>
+                <td>{{data.supplyDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{data.companyName}}</td>
+                <td>{{data.yourDcDate | date:'dd-MM-yyyy'}}</td>
+                <td>{{data.yourDcNumber}}</td>
+                <td>{{data.totalAmount}}</td>
+                <td>{{data.sgst}}</td>
+                <td>{{data.cgst}}</td>
+                <td>{{data.totWithGst}}</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" (click)="billDetail(data)">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+
+    </div>
+    <div class="col-xs-12 col-sm-3">
+        Total SGST :
+        <span class="highlight">{{totSgst}}</span>
+        <br> Total CGST :
+        <span class="highlight">{{totCgst}}</span>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+        Total Without GST&nbsp;&nbsp;:
+        <span class="highlight">{{totCost}}</span>
+        <br> Total Including GST:
+        <span class="highlight">{{totAmount}}</span>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bill Detail</h4>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="separateBill">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="key">Invoice</td>
+                                <td>:</td>
+                                <td>{{separateBill.invoice}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">Company Name</td>
+                                <td>:</td>
+                                <td>{{separateBill.companyName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">Supply Date</td>
+                                <td>:</td>
+                                <td>{{separateBill.supplyDate}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">Your Dc Date</td>
+                                <td>:</td>
+                                <td>{{separateBill.yourDcDate}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">Your Dc Number</td>
+                                <td>:</td>
+                                <td>{{separateBill.yourDcNumber}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">Our Dc Number</td>
+                                <td>:</td>
+                                <td>{{separateBill.ourDcNumber}}</td>
+                            </tr>
+                            <tr>
+                                <td>Our Dc Date</td>
+                                <td>:</td>
+                                <td>{{separateBill.ourDcDate}}</td>
+                            </tr>
+                            <tr>
+                                <td>Items</td>
+                                <td>:</td>
+                                <td>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th>Desc</th>
+                                            <th>Qty</th>
+                                            <th>Rate</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                        <tbody *ngFor="let item of separateBill.items">
+                                            <tr>
+                                                <td>{{item.desc}}</td>
+                                                <td>{{item.qty}}</td>
+                                                <td>{{item.rate}}</td>
+                                                <td>{{item.total}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="key">CGST Amount</td>
+                                <td>:</td>
+                                <td>{{separateBill.cgst}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">SGST Amount</td>
+                                <td>:</td>
+                                <td>{{separateBill.sgst}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Total Bill</td>
+                                <td>:</td>
+                                <td>{{separateBill.totalAmount}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total (Inc GST)</td>
+                                <td>:</td>
+                                <td>{{separateBill.totWithGst}}</td>
+                            </tr>
+                            <tr>
+                                <td class="key">Updated</td>
+                                <td>:</td>
+                                <td>
+                                    <span *ngIf="separateBill && separateBill.version === 0">No</span>
+                                    <span *ngIf="separateBill && separateBill.version === 1"></span>Updated</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

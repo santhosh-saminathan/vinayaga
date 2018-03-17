@@ -10,14 +10,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BillComponent } from './billData/bill.component';
 import { BillService } from '././services/bill.service';
-import { DetailsComponent } from './details/details.component';
+import { DataComponent } from './data/data.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: HomeComponent },
   { path: 'bill', component: BillComponent },
-  { path: 'details', component: DetailsComponent }
+  { path: 'detail', component: DataComponent }
 ];
 
 @NgModule({
@@ -26,7 +26,7 @@ const routes: Routes = [
     HomeComponent,
     BillComponent,
     NumberToWordsPipe,
-    DetailsComponent
+    DataComponent
   ],
   imports: [
     BrowserModule,

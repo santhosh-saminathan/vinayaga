@@ -334,9 +334,9 @@ export class BillComponent {
             'ourDcDate': this.ourDcDateData ? this.ourDcDateData : null,
             'ourDcNumber': this.ourDcNumber ? this.ourDcNumber : null,
         }
-
-        this.billService.storeBill(data).subscribe(data => {
-            console.log(data);
+        console.log("************",data);
+        this.billService.storeBill(data).subscribe(resdata => {
+            console.log(resdata);
         }, err => {
             console.log(err);
         })
