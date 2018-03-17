@@ -15,6 +15,8 @@ export class DataComponent {
     totAmount:number;
     totCost:number;
     separateBill:any;
+    sdt:any;
+    edt:any;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
     }
