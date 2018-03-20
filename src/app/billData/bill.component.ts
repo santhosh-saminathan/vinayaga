@@ -382,17 +382,15 @@ export class BillComponent {
 
     }
 
-    // print = function (billContent) {
+    print = function (billContent) {
 
+        const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
-
-    //     const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
-
-    //     document.body.innerHTML = document.getElementById(billContent).innerHTML;
-    //     sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
-    //     // window.print();
-    //     // location.reload();
-    // }
+        document.body.innerHTML = document.getElementById(billContent).innerHTML;
+        sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
+        window.print();
+        location.reload();
+    }
 
 }
 
