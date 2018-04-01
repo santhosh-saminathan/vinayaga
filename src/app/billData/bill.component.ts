@@ -5,6 +5,7 @@ import * as jsPDF from "jspdf";
 import * as html2canvas from 'html2canvas';
 import * as html2pdf from 'html2pdf.js';
 import { Constants } from './../constants/companyAddress';
+import { BillService } from './../services/bill.service';
 declare var $: any;
 
 @Component({
@@ -54,9 +55,11 @@ export class BillComponent {
     ourDcNumber: any;
     ourDcDate: any;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe) { }
+    constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe, private billService: BillService) { }
 
     ngOnInit() {
+
+
 
         if (sessionStorage.getItem('password') === 'test') {
             this.companyDetails.forEach(element => {
@@ -66,13 +69,17 @@ export class BillComponent {
             });
         }
 
-       
+
         this.date = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
-        this.supplyDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+        if (sessionStorage.getItem('supplyDate')) {
+            this.supplyDate = sessionStorage.getItem('supplyDate');
+        } else {
+            this.supplyDate = new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear();
+
+        }
 
         this.companyDetails.forEach(element => {
             if (element.code === this.activatedRoute.snapshot.queryParams["company"]) {
-                console.log(element)
                 this.selectedCompany = element;
             }
         });
@@ -91,40 +98,41 @@ export class BillComponent {
             }
         }
 
-        if (localStorage.getItem("billData"))
-            this.itemsArray = JSON.parse(localStorage.getItem("billData"));
-        if(localStorage.getItem("yourDcDate")){
-            this.yourDcDate = localStorage.getItem('yourDcDate');
+        if (sessionStorage.getItem("billData"))
+            this.itemsArray = JSON.parse(sessionStorage.getItem("billData"));
+        if (sessionStorage.getItem("yourDcDate")) {
+            this.yourDcDate = sessionStorage.getItem('yourDcDate');
         }
-        if(localStorage.getItem('yourDcNumber')){
-            this.yourDcNumber = localStorage.getItem('yourDcNumber')
+        if (sessionStorage.getItem('yourDcNumber')) {
+            this.yourDcNumber = sessionStorage.getItem('yourDcNumber')
         }
-        if(localStorage.getItem('ourDcDate')){
-            this.ourDcDate = localStorage.getItem('ourDcDate')
+        if (sessionStorage.getItem('ourDcDate')) {
+            this.ourDcDate = sessionStorage.getItem('ourDcDate')
         }
-        if(localStorage.getItem('ourDcNumber')){
-            this.ourDcNumber = localStorage.getItem('ourDcNumber');
+        if (sessionStorage.getItem('ourDcNumber')) {
+            this.ourDcNumber = sessionStorage.getItem('ourDcNumber');
         }
-        if(localStorage.getItem('newInvoice')){
+        if (localStorage.getItem('newInvoice')) {
             this.invoice = localStorage.getItem('newInvoice');
-        }else{
+        } else {
             this.invoice = localStorage.getItem('upcomingInvoice');
         }
 
-        if(localStorage.getItem('saved')){
+        if (sessionStorage.getItem('saved')) {
             this.backToHome();
         }
 
     }
 
     backToHome = function () {
-        localStorage.removeItem('billData');
-        localStorage.removeItem('yourDcDate');
-        localStorage.removeItem('yourDcNumber');
-        localStorage.removeItem('ourDcDate');
-        localStorage.removeItem('ourDcNumber');
+        sessionStorage.removeItem('billData');
+        sessionStorage.removeItem('yourDcDate');
+        sessionStorage.removeItem('yourDcNumber');
+        sessionStorage.removeItem('ourDcDate');
+        sessionStorage.removeItem('ourDcNumber');
+        sessionStorage.removeItem('supplyDate');
         localStorage.removeItem('newInvoice');
-        localStorage.removeItem('saved');
+        sessionStorage.removeItem('saved');
         this.router.navigate(['/home']);
 
     }
@@ -137,7 +145,6 @@ export class BillComponent {
         });
     }
     billCopyType = function (billType) {
-        console.log(billType)
         this.billFormatType = billType;
     }
 
@@ -202,7 +209,6 @@ export class BillComponent {
             arrayCount++;
             if (element === data) {
                 this.itemsArray.splice(arrayCount - 1, 1)
-                console.log("match found", arrayCount)
             }
         });
     }
@@ -213,7 +219,6 @@ export class BillComponent {
         this.totalQuantityOfItems = 0;
         let count = 0;
         this.itemsArray.forEach(element => {
-            console.log(element)
             this.grandTotal = this.grandTotal + element.total;
             this.totalQuantityOfItems = this.totalQuantityOfItems + element.qty;
             count++;
@@ -221,19 +226,22 @@ export class BillComponent {
                 this.calculateGst();
             }
         });
+        if (this.supplyDate) {
+            sessionStorage.setItem('supplyDate', this.supplyDate);
+        }
         if (this.selectedCompany.yourDc) {
             if (!this.yourDcNumber) {
                 this.showPrintOption = true;
                 window.alert("Your DC Number not available");
             } else {
-                localStorage.setItem('yourDcNumber', this.yourDcNumber);
+                sessionStorage.setItem('yourDcNumber', this.yourDcNumber);
             }
             if (!this.yourDcDate) {
                 this.showPrintOption = true;
                 window.alert("Your DC Date not available");
             } else {
                 this.yourDcDateData = this.yourDcDate.split('-')[2] + '/' + this.yourDcDate.split('-')[1] + '/' + this.yourDcDate.split('-')[0]
-                localStorage.setItem('yourDcDate', this.yourDcDate);
+                sessionStorage.setItem('yourDcDate', this.yourDcDate);
             }
         }
         if (this.selectedCompany.ourDc) {
@@ -241,14 +249,14 @@ export class BillComponent {
                 this.showPrintOption = true;
                 window.alert("Our DC Number not available");
             } else {
-                localStorage.setItem('ourDcNumber', this.ourDcNumber);
+                sessionStorage.setItem('ourDcNumber', this.ourDcNumber);
             }
             if (!this.ourDcDate) {
                 this.showPrintOption = true;
                 window.alert("Our DC Date not available");
             } else {
                 this.ourDcDateData = this.ourDcDate.split('-')[2] + '/' + this.ourDcDate.split('-')[1] + '/' + this.ourDcDate.split('-')[0]
-                localStorage.setItem('ourDcDate', this.ourDcDate);
+                sessionStorage.setItem('ourDcDate', this.ourDcDate);
             }
 
 
@@ -295,7 +303,7 @@ export class BillComponent {
         this.showInvoiceOption = false;
     }
 
-    changeInvoice = function (newInvoice) {
+    changeInvoiceOnce = function (newInvoice) {
         if (newInvoice) {
             localStorage.setItem('newInvoice', newInvoice.toString())
             this.invoice = localStorage.getItem('newInvoice')
@@ -305,44 +313,125 @@ export class BillComponent {
         }
     }
 
-    submit = function (billContent) {
-        const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
-
-        document.body.innerHTML = document.getElementById(billContent).innerHTML;
-        localStorage.setItem('billData', JSON.stringify(this.itemsArray))
-
-        const doc = new jsPDF();
-        // pdf.fromHTML($('#billContent'), () => {
-        // });
-        // pdf.save("sample.pdf");
-
-        // doc.fromHTML($('#billContent').html(), 15, 15, {
-        //     'width': 170
-        // });
-        // doc.save('sample-file.pdf');
-
-
-        html2pdf(document.body, {
-            margin: 0.5,
-            filename: this.invoice + "(" + new Date().getDate() + "-" + (new Date().getMonth() + 1) + ").pdf",
-        });
-        if(this.invoice<localStorage.getItem('upcomingInvoice')){
-        localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice'))).toString());
-        }else{
-            localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice')) + 1).toString());
-            localStorage.setItem('saved','true');
+    changeInvoiceAll = function (newInvoice) {
+        if (newInvoice) {
+            localStorage.setItem('upcomingInvoice', newInvoice.toString())
+            this.invoice = localStorage.getItem('upcomingInvoice')
+            this.showInvoiceOption = true;
+        } else {
+            this.showInvoiceOption = true;
         }
-        setTimeout(function () {
-            window.print();
-            location.reload();
-        }, 1000)
+    }
+
+    // storeUsingApi = function () {
+
+    //     console.log("Called");
+    //     let data = {
+    //         'invoice': this.invoice,
+    //         'totalAmount': this.grandTotal,
+    //         'totWithGst': this.totIncGst,
+    //         'cgst': this.cgstRupee,
+    //         'sgst': this.sgstRupee,
+    //         'items': this.itemsArray,
+    //         'companyName': this.selectedCompany.name,
+    //         'supplyDate': this.supplyDate,
+    //         'yourDcNumber': this.yourDcNumber ? this.yourDcNumber : null,
+    //         'yourDcDate': this.yourDcDateData ? this.yourDcDateData : null,
+    //         'ourDcDate': this.ourDcDateData ? this.ourDcDateData : null,
+    //         'ourDcNumber': this.ourDcNumber ? this.ourDcNumber : null,
+    //     }
+    //     console.log("************", data);
+    //     this.billService.storeBill(data).subscribe(resdata => {
+    //         console.log(resdata);
+    //     }, err => {
+    //         console.log(err);
+    //     })
+
+
+    // }
+
+    submit = function (billContent) {
+
+
+        // this.storeUsingApi()
+
+        let data = {
+            'invoice': this.invoice,
+            'totalAmount': this.grandTotal,
+            'totWithGst': this.totIncGst,
+            'cgst': this.cgstRupee,
+            'sgst': this.sgstRupee,
+            'items': this.itemsArray,
+            'companyName': this.selectedCompany.name,
+            'supplyDate': this.supplyDate,
+            'yourDcNumber': this.yourDcNumber ? this.yourDcNumber : null,
+            'yourDcDate': this.yourDcDateData ? this.yourDcDateData : null,
+            'ourDcDate': this.ourDcDateData ? this.ourDcDateData : null,
+            'ourDcNumber': this.ourDcNumber ? this.ourDcNumber : null,
+        }
+        this.billService.storeBill(data).subscribe(resdata => {
+            console.log("Response data", resdata);
+            sessionStorage.setItem('saved', 'true');
+            const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
+            document.body.innerHTML = document.getElementById(billContent).innerHTML;
+            sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
+            const doc = new jsPDF();
+            // html2pdf(document.body, {
+            //     margin: 0.5,
+            //     filename: this.invoice + "(" + new Date().getDate() + "-" + (new Date().getMonth() + 1) + ").pdf",
+            // });
+            if (localStorage.getItem('newInvoice')) {
+                if (this.invoice > localStorage.getItem('upcomingInvoice')) {
+                    localStorage.setItem('upcomingInvoice', (parseInt(this.invoice) + 1).toString());
+                } else {
+                    console.log("no change in invoice")
+                }
+            } else {
+                localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice')) + 1).toString());
+            }
+            setTimeout(function () {
+                window.print();
+                location.reload();
+            }, 1000);
+
+        }, err => {
+            console.log("Errrorr", err);
+            sessionStorage.setItem('saved', 'true');
+            const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
+            document.body.innerHTML = document.getElementById(billContent).innerHTML;
+            sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
+            const doc = new jsPDF();
+            // html2pdf(document.body, {
+            //     margin: 0.5,
+            //     filename: this.invoice + "(" + new Date().getDate() + "-" + (new Date().getMonth() + 1) + ").pdf",
+            // });
+            if (localStorage.getItem('newInvoice')) {
+                if (this.invoice > localStorage.getItem('upcomingInvoice')) {
+                    localStorage.setItem('upcomingInvoice', (parseInt(this.invoice) + 1).toString());
+                } else {
+                    console.log("no change in invoice")
+                }
+            } else {
+                localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice')) + 1).toString());
+            }
+            setTimeout(function () {
+                window.print();
+                location.reload();
+            }, 1000);
+
+        })
+
+
+
+
     }
 
     print = function (billContent) {
+
         const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
 
         document.body.innerHTML = document.getElementById(billContent).innerHTML;
-        localStorage.setItem('billData', JSON.stringify(this.itemsArray))
+        sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
         window.print();
         location.reload();
     }

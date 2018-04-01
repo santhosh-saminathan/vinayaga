@@ -4,15 +4,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NumberToWordsPipe } from './number-to-words.pipe'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BillComponent } from './billData/bill.component';
+import { BillService } from '././services/bill.service';
+import { DataComponent } from './data/data.component';
+
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
-  { path: '', component: HomeComponent},
-  { path: 'bill', component:BillComponent}
+  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
+  { path: 'bill', component: BillComponent },
+  { path: 'detail', component: DataComponent }
 ];
 
 @NgModule({
@@ -20,14 +25,16 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     BillComponent,
-    NumberToWordsPipe
+    NumberToWordsPipe,
+    DataComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [NumberToWordsPipe,{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [NumberToWordsPipe, BillService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

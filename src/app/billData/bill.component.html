@@ -10,7 +10,7 @@
                 <span style="font-size:24px">{{selectedCompany.name}}</span>
             </div>
         </div>
-    
+
         <!-- Updating items -->
         <div class="row outer_style">
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -20,12 +20,16 @@
                     <span style="color:rgb(69, 69, 226);cursor:pointer" (click)="updateInvoice()">Update</span>
                     <br>
                     <span [hidden]="showInvoiceOption">
-                        <span class="glyphicon glyphicon-arrow-right"></span> Enter new Invoice number :
+                        <span class="glyphicon glyphicon-arrow-right"></span>New Invoice:
                         <input class="input_data" type="number" [(ngModel)]="newinvoice">
-                        <button type="button" class="btn btn-primary btn-xs" (click)="changeInvoice(newinvoice)">Change</button>
+
+                        <span>
+                            <button style="margin-top:5px" type="button" class="btn btn-primary btn-xs" (click)="changeInvoiceOnce(newinvoice)">Change Once</button>
+                            <button style="margin-top:5px" type="button" class="btn btn-primary btn-xs" (click)="changeInvoiceAll(newinvoice)">Continue from here</button>
+                        </span>
                     </span>
                 </div>
-    
+
                 <br>
                 <div>
                     <label>Date of Supply&nbsp;&nbsp;:</label>
@@ -38,13 +42,13 @@
                         <button type="button" class="btn btn-primary btn-xs" (click)="updateDate(dt)">Update</button>
                     </span>
                 </div>
-    
-    
+
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.yourDc">
                 <div>
                     <label>Your DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="yourDcNumber">
+                    <input tabindex="-1" class="w-150" placeholder="DC-Number" type="text" [(ngModel)]="yourDcNumber">
                 </div>
                 <br>
                 <div>
@@ -55,7 +59,7 @@
             <div class="col-xs-12 col-sm-12 col-md-3" *ngIf="selectedCompany.ourDc">
                 <div>
                     <label>Our DC No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-                    <input tabindex="-1" class="w-150" placeholder="DC-Number" type="number" [(ngModel)]="ourDcNumber">
+                    <input tabindex="-1" class="w-150" placeholder="DC-Number" type="text" [(ngModel)]="ourDcNumber">
                 </div>
                 <br>
                 <div>
@@ -73,10 +77,10 @@
                 </select>
             </div>
         </div>
-    
+
         <!-- Select Item -->
         <div class="row outer_style">
-    
+
             <div class="col-xs-12 col-sm-4 ">
                 <label>Select Item:</label>
                 <select autofocus [(ngModel)]="selectedItemName" (change)="newItem(selectedItemName)" class="form-control">
@@ -84,7 +88,7 @@
                     <option value="newItem">+Add New</option>
                 </select>
             </div>
-    
+
             <div class="col-xs-12 overflow-scroll">
                 <table class="table table-striped custab colorfulFocus" *ngIf="selectedItemName && selectedItemName!='newItem'">
                     <thead>
@@ -119,7 +123,7 @@
                         <td *ngIf="selectedItem">{{selectedItem.rate}}</td>
                         <td *ngIf="selectedItem">{{totRate}}</td>
                         <td *ngIf="selectedItem">
-                            <button  class="btn btn-info btn-xs colorfulFocus" (click)="addItem()">
+                            <button class="btn btn-info btn-xs colorfulFocus" (click)="addItem()">
                                 <b>+</b>Add</button>
                         </td>
                     </tr>
@@ -154,11 +158,11 @@
                     </tr>
                 </table>
             </div>
-    
-    
-    
+
+
+
         </div>
-    
+
         <!-- Selected Item table and Generate bill button -->
         <div class="row">
             <div class="col-xs-12">
@@ -187,10 +191,10 @@
                 </div>
             </div>
         </div>
-    
+
         <div class="center_align" [hidden]="itemsArray.length==0">
-        <br>
-        <button tabindex="-1" class="btn btn-sm btn-primary" id="myBtn" (click)="loadBill()">Generate bill</button>
+            <br>
+            <button class="btn btn-sm btn-primary colorfulFocus" id="myBtn" (click)="loadBill()">Generate bill</button>
         </div>
     </div>
 </div>
@@ -233,7 +237,7 @@
                     <div class="col-xs-8 border_left">
                         <div class="row">
                             <div class="col-xs-6 singleLine">INVOICE NO : {{invoice}}</div>
-                            <div class="col-xs-6 singleLine">DATE : {{date}} </div>
+                            <div class="col-xs-6 singleLine">DATE : {{supplyDate}} </div>
                             <div class="col-xs-12 singleLine">RULE&nbsp;7(1)&nbsp;Under&nbsp;Section&nbsp;31&nbsp;of&nbsp;GST&nbsp;RULES&nbsp;2017</div>
                         </div>
                     </div>
@@ -288,6 +292,7 @@
                         <div *ngIf="selectedCompany.billDifferentType">
                             <p *ngIf="billFormatType !='none'">{{billFormatType}}</p>
                             <p *ngIf="billFormatType =='none'"> </p>
+                            <p class="warning_text" *ngIf="!billFormatType"> Missing </p>
                         </div>
                     </div>
                 </div>
@@ -311,17 +316,25 @@
                                 <span class="singleLine">Place : Coimbatore</span>
                             </div>
                             <div class="col-xs-4" *ngIf="selectedCompany.ourDc">
-                                <span class="singleLine">Our Dc No: {{ourDcNumber}} <span class="warning_text" *ngIf="!ourDcNumber">Missing</span></span>
+                                <span class="singleLine">Our Dc No: {{ourDcNumber}}
+                                    <span class="warning_text" *ngIf="!ourDcNumber">Missing</span>
+                                </span>
                                 <br>
-                                <span class="singleLine">Date: {{ourDcDateData}} <span class="warning_text" *ngIf="!ourDcDateData">Missing</span></span>
+                                <span class="singleLine">Date: {{ourDcDateData}}
+                                    <span class="warning_text" *ngIf="!ourDcDateData">Missing</span>
+                                </span>
                             </div>
                             <div class="col-xs-4" *ngIf="!selectedCompany.ourDc">
 
                             </div>
                             <div class="col-xs-4" *ngIf="selectedCompany.yourDc">
-                                <span class="singleLine">Your Dc No: {{yourDcNumber}}<span class="warning_text" *ngIf="!yourDcNumber">Missing</span></span>
+                                <span class="singleLine">Your Dc No: {{yourDcNumber}}
+                                    <span class="warning_text" *ngIf="!yourDcNumber">Missing</span>
+                                </span>
                                 <br>
-                                <span class="singleLine">Date: {{yourDcDateData}}<span class="warning_text" *ngIf="!yourDcDateData">Missing</span></span>
+                                <span class="singleLine">Date: {{yourDcDateData}}
+                                    <span class="warning_text" *ngIf="!yourDcDateData">Missing</span>
+                                </span>
                             </div>
                         </div>
 
