@@ -12,3 +12,19 @@
     font-size: 16px;
     font-weight: bold;
 }
+
+.custom_table_design{
+    width:95%;
+    margin:0 auto;
+    height: 500px;
+    border: 1px solid grey;
+}
+
+.detailTable td{
+    padding: 3px;
+}
+
+.key{
+    color: black;
+    font-weight: bold;
+}

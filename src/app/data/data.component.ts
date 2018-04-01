@@ -10,13 +10,14 @@ import { BillService } from './../services/bill.service';
 export class DataComponent {
     billData: any = [];
     timePeriod: any;
-    totCgst:number;
-    totSgst:number;
-    totAmount:number;
-    totCost:number;
-    separateBill:any;
-    sdt:any;
-    edt:any;
+    totCgst: number;
+    totSgst: number;
+    totAmount: number;
+    totCost: number;
+    separateBill: any;
+    sdt: any;
+    edt: any;
+    allGst: any;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
     }
@@ -26,7 +27,18 @@ export class DataComponent {
         this.timePeriod = "presentMonth";
         this.getTimeInterval(this.timePeriod);
 
-       
+
+    }
+
+    delete(data) {
+        let result = confirm("Are you sure? Want to delete this Bill?");
+        if (result) {
+            this.billService.deleteBill({ 'invoice': data }).subscribe(data => {
+                this.ngOnInit();
+            }, err => {
+
+            })
+        }
     }
 
     getTimeInterval(data) {
@@ -54,16 +66,16 @@ export class DataComponent {
             var firstDay = new Date(now.getFullYear() - (now.getMonth() > 0 ? 0 : 1), (now.getMonth() - 1 + 12) % 12, 1);
 
 
-                let time = {
-                    'startYear': firstDay.getFullYear(),
-                    'startMonth': firstDay.getMonth()+1,
-                    'startDate': firstDay.getDate(),
-                    'lastYear': lastDay.getFullYear(),
-                    'lastMonth': lastDay.getMonth()+1,
-                    'lastDate': lastDay.getDate()
-                }
-                this.getData(time);
-          
+            let time = {
+                'startYear': firstDay.getFullYear(),
+                'startMonth': firstDay.getMonth() + 1,
+                'startDate': firstDay.getDate(),
+                'lastYear': lastDay.getFullYear(),
+                'lastMonth': lastDay.getMonth() + 1,
+                'lastDate': lastDay.getDate()
+            }
+            this.getData(time);
+
 
         }
         if (data === 'presentYear') {
@@ -104,11 +116,24 @@ export class DataComponent {
 
             this.billData = data;
 
+            console.log(this.billData);
+
+            this.billData.sort((a: any, b: any) => {
+                if (a.invoice < b.invoice) {
+                    return -1;
+                } else if (a.invoice > b.invoice) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+
             this.billData.forEach(element => {
                 this.totCgst = this.totCgst + element.cgst;
                 this.totSgst = this.totSgst + element.sgst;
+                this.allGst = this.totCgst + this.totSgst;
                 this.totCost = this.totCost + element.totalAmount;
-                this.totAmount = this.totAmount + element.totWithGst;   
+                this.totAmount = this.totAmount + element.totWithGst;
             });
 
         }, err => {
@@ -117,7 +142,7 @@ export class DataComponent {
 
     }
 
-    billDetail(data){
+    billDetail(data) {
         console.log(data);
         this.separateBill = data;
     }

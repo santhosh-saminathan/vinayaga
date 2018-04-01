@@ -1,6 +1,6 @@
 <div>
-    <h3>Filter based on:</h3>
     <div class="row">
+        <br>
         <div class="col-xs-12 col-sm-4">
             <div class="form-group">
                 <label for="interval">Get data for:</label>
@@ -39,9 +39,8 @@
 </div>
 
 <br>
-<br>
 
-<div class="table-responsive" style="width:80%;margin:0 auto">
+<div class="table-responsive custom_table_design">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -56,6 +55,7 @@
                 <th>CGST</th>
                 <th class="nowrap">Total Amount</th>
                 <th>Details</th>
+                <th></th>
             </tr>
         </thead>
         <tbody *ngFor="let data of billData; let i = index">
@@ -73,6 +73,10 @@
                 <td>
                     <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" (click)="billDetail(data)">Details</button>
                 </td>
+                <td>
+                    <span (click)="delete(data.invoice)" style="color: red;cursor: pointer;" class="glyphicon glyphicon-trash"></span>
+
+                </td>
             </tr>
         </tbody>
     </table>
@@ -87,6 +91,8 @@
         <span class="highlight">{{totSgst}}</span>
         <br> Total CGST :
         <span class="highlight">{{totCgst}}</span>
+        <br> SGST + CGST :
+        <span class="highlight">{{allGst}}</span>
     </div>
     <div class="col-xs-12 col-sm-3">
         Total Without GST&nbsp;&nbsp;:
@@ -107,7 +113,7 @@
             </div>
             <div class="modal-body">
                 <div *ngIf="separateBill">
-                    <table>
+                    <table class="detailTable">
                         <tbody>
                             <tr>
                                 <td class="key">Invoice</td>
@@ -140,12 +146,12 @@
                                 <td>{{separateBill.ourDcNumber}}</td>
                             </tr>
                             <tr>
-                                <td>Our Dc Date</td>
+                                <td class="key">Our Dc Date</td>
                                 <td>:</td>
                                 <td>{{separateBill.ourDcDate}}</td>
                             </tr>
                             <tr>
-                                <td>Items</td>
+                                <td class="key" style="position:absolute">Items</td>
                                 <td>:</td>
                                 <td>
                                     <table class="table table-bordered">
@@ -178,12 +184,12 @@
                             </tr>
 
                             <tr>
-                                <td>Total Bill</td>
+                                <td class="key">Total Bill</td>
                                 <td>:</td>
                                 <td>{{separateBill.totalAmount}}</td>
                             </tr>
                             <tr>
-                                <td>Total (Inc GST)</td>
+                                <td class="key">Total (Inc GST)</td>
                                 <td>:</td>
                                 <td>{{separateBill.totWithGst}}</td>
                             </tr>
@@ -191,8 +197,8 @@
                                 <td class="key">Updated</td>
                                 <td>:</td>
                                 <td>
-                                    <span *ngIf="separateBill && separateBill.version === 0">No</span>
-                                    <span *ngIf="separateBill && separateBill.version === 1"></span>Updated</td>
+                                    <span *ngIf="separateBill && separateBill.version == 0">Not</span>
+                                    <span *ngIf="separateBill && separateBill.version == 1"></span>Updated</td>
                             </tr>
 
                         </tbody>
