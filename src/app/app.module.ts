@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { BillComponent } from './billData/bill.component';
 import { BillService } from '././services/bill.service';
 import { DataComponent } from './data/data.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     RouterModule.forRoot(routes)
   ],
   providers: [NumberToWordsPipe, BillService, { provide: LocationStrategy, useClass: HashLocationStrategy }],

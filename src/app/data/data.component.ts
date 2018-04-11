@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { BillService } from './../services/bill.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
     selector: 'data',
@@ -19,13 +20,18 @@ export class DataComponent {
     edt: any;
     allGst: any;
 
-    constructor(private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
+
+    constructor(private spinner: NgxSpinnerService, private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
     }
 
     ngOnInit() {
 
         this.timePeriod = "presentMonth";
         this.getTimeInterval(this.timePeriod);
+
+        this.spinner.show();
+
+
 
 
     }
@@ -117,6 +123,7 @@ export class DataComponent {
             this.billData = data;
 
             console.log(this.billData);
+            this.spinner.hide();
 
             this.billData.sort((a: any, b: any) => {
                 if (a.invoice < b.invoice) {
@@ -127,6 +134,7 @@ export class DataComponent {
                     return 0;
                 }
             });
+
 
             this.billData.forEach(element => {
                 this.totCgst = this.totCgst + element.cgst;
