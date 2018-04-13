@@ -50,6 +50,14 @@ let companyDetails = [
                 'rate': 420,
                 'pieces': false
             }, {
+                'name': 'Stainless steel tensile',
+                'rate': 36,
+                'pieces': false
+            }, {
+                'name': 'Non alloy steel tensile',
+                'rate': 29,
+                'pieces': false
+            },{
                 'name': 'Stainless steel test bar cutting',
                 'rate': 157,
                 'pieces': false
@@ -97,7 +105,15 @@ let companyDetails = [
                 'name': 'Non alloy steel 16mm weld test plate micro',
                 'rate': 210,
                 'pieces': false
-            },
+            },{
+                'name': 'Non alloy steel gost cutting',
+                'rate': 140,
+                'pieces': false
+            }, {
+                'name': 'Stainless steel gost cutting',
+                'rate': 200,
+                'pieces': false
+            }
         ]
     },
     {
@@ -173,7 +189,11 @@ let companyDetails = [
                 'rate': 140,
                 'pieces': false
             }, {
-                'name': 'Stainless Steel IGC A ',
+                'name': 'Non Alloy Steel IGC-A ',
+                'rate': 15,
+                'pieces': false
+            }, {
+                'name': 'Stainless Steel IGC-A ',
                 'rate': 15,
                 'pieces': false
             }
@@ -216,6 +236,14 @@ let companyDetails = [
             }, {
                 'name': 'Non alloy steel full length impact',
                 'rate': 367,
+                'pieces': false
+            }, {
+                'name': 'Stainless steel 16mm weld test plate V groove',
+                'rate': 420,
+                'pieces': false
+            }, {
+                'name': 'Non alloy steel 16mm weld test plate V groove',
+                'rate': 420,
                 'pieces': false
             }, {
                 'name': 'Stainless steel IBR bend',
@@ -345,10 +373,14 @@ let companyDetails = [
                 'name': 'Stainless Steel Tensile Test Bar ',
                 'rate': 50,
                 'pieces': false
-            },{
-            'name': 'Non Alloy Steel impact',
-            'rate': 60,
-            'pieces': true
+            }, {
+                'name': 'Non Alloy Steel bend',
+                'rate': 125,
+                'pieces': false
+            }, {
+                'name': 'Non Alloy Steel impact',
+                'rate': 60,
+                'pieces': true
             }, {
                 'name': 'Stainless Steel impact ',
                 'rate': 80,
@@ -452,7 +484,15 @@ let companyDetails = [
                 'name': 'Stainless steel IGC-A',
                 'rate': 15,
                 'pieces': false
-            }, {
+            },  {
+                'name': 'Non Alloy Steel IGC-A ',
+                'rate': 15,
+                'pieces': false
+            },{
+                'name': 'Stainless steel pitting piece',
+                'rate': 150,
+                'pieces': false
+            },{
                 'name': 'Stainless steel full length impact',
                 'rate': 165,
                 'pieces': true
@@ -509,6 +549,10 @@ let companyDetails = [
             }, {
                 'name': 'Stainless Steel IGC Bend ',
                 'rate': 150,
+                'pieces': false
+            },  {
+                'name': 'Non Alloy Steel IGC-A ',
+                'rate': 15,
                 'pieces': false
             }, {
                 'name': 'Stainless Steel IGC A ',
