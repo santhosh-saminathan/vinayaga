@@ -114,6 +114,8 @@ export class DataComponent {
 
     getData(time) {
 
+        this.spinner.show();
+
         this.billService.getDetails(time).subscribe(data => {
             this.totCgst = 0;
             this.totSgst = 0;
