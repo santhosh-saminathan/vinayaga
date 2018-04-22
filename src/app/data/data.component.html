@@ -45,6 +45,8 @@
 
 </div>
 
+<div *ngIf="duplicates">Duplicate Invoice:<span style="color:grey" *ngFor="let data of duplicates;">{{data}} </span></div>
+
 <div class="table-responsive custom_table_design">
     <table class="table table-bordered">
         <thead>
@@ -64,7 +66,7 @@
             </tr>
         </thead>
         <tbody *ngFor="let data of billData; let i = index">
-            <tr>
+            <tr [ngClass]="{'duplicateData': data.same}">
                 <td>{{i+1}}</td>
                 <td>{{data.invoice}}</td>
                 <td>{{data.supplyDate | date:'dd-MM-yyyy'}}</td>
@@ -79,7 +81,7 @@
                     <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" (click)="billDetail(data)">Details</button>
                 </td>
                 <td>
-                    <span (click)="delete(data.invoice)" style="color: red;cursor: pointer;" class="glyphicon glyphicon-trash"></span>
+                    <span (click)="delete(data.invoice)" [ngClass]="{'duplicateData': data.same}"  class="glyphicon glyphicon-trash delete"></span>
 
                 </td>
             </tr>

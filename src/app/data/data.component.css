@@ -29,6 +29,12 @@
     font-weight: bold;
 }
 
-.duplicate{
-    color: red;
+.duplicateData{
+    color: white !important;
+    background: red;
+}
+
+.delete{
+  cursor: pointer;
+  color: red;
 }

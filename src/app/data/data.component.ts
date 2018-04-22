@@ -19,6 +19,7 @@ export class DataComponent {
     sdt: any;
     edt: any;
     allGst: any;
+    duplicates:any = [];
 
 
     constructor(private spinner: NgxSpinnerService, private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
@@ -115,6 +116,7 @@ export class DataComponent {
     getData(time) {
 
         this.spinner.show();
+        this.duplicates = [];
 
         this.billService.getDetails(time).subscribe(data => {
             this.totCgst = 0;
@@ -124,7 +126,6 @@ export class DataComponent {
 
             this.billData = data;
 
-            console.log(this.billData);
             this.spinner.hide();
 
             this.billData.sort((a: any, b: any) => {
@@ -133,6 +134,9 @@ export class DataComponent {
                 } else if (a.invoice > b.invoice) {
                     return 1;
                 } else {
+                    a.same = true;
+                    b.same = true;
+                    this.duplicates.push(a.invoice);
                     return 0;
                 }
             });
