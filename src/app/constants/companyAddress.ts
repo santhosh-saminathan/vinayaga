@@ -470,23 +470,23 @@ let companyDetails = [
         displayTotNos:true,
         items: [{
                 'name': 'Stainless steel impact',
-                'rate': 55,
+                'rate': 65,
                 'pieces': true,
             }, {
                 'name': 'Non Alloy steel impact',
-                'rate': 35,
+                'rate': 45,
                 'pieces': true,
             }, {
                 'name': 'Stainless steel  IGC bend',
-                'rate': 140,
+                'rate': 155,
                 'pieces': false
             }, {
                 'name': 'Stainless steel IGC-A',
-                'rate': 15,
+                'rate': 20,
                 'pieces': false
             },  {
                 'name': 'Non Alloy Steel IGC-A ',
-                'rate': 15,
+                'rate': 20,
                 'pieces': false
             },{
                 'name': 'Stainless steel pitting piece',
@@ -502,19 +502,19 @@ let companyDetails = [
                 'pieces': true
             },{
                 'name': 'Stainless steel test block impact',
-                'rate': 55,
+                'rate': 65,
                 'pieces': true,
             }, {
                 'name': 'Non Alloy steel test block impact',
-                'rate': 35,
+                'rate': 45,
                 'pieces': true,
             }, {
                 'name': 'Stainless steel  test block IGC bend',
-                'rate': 140,
+                'rate': 155,
                 'pieces': false
             }, {
                 'name': 'Stainless steel test block  IGC-A',
-                'rate': 15,
+                'rate': 20,
                 'pieces': false
             },
             {
