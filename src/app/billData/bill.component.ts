@@ -2,11 +2,8 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NumberToWordsPipe } from './../number-to-words.pipe';
 import * as jsPDF from "jspdf";
-import * as html2canvas from 'html2canvas';
-import * as html2pdf from 'html2pdf.js';
 import { Constants } from './../constants/companyAddress';
 import { BillService } from './../services/bill.service';
-declare var $: any;
 
 @Component({
     selector: 'bill',

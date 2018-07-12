@@ -19,7 +19,7 @@ export class DataComponent {
     sdt: any;
     edt: any;
     allGst: any;
-    duplicates:any = [];
+    duplicates: any = [];
 
 
     constructor(private spinner: NgxSpinnerService, private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
@@ -31,10 +31,6 @@ export class DataComponent {
         this.getTimeInterval(this.timePeriod);
 
         this.spinner.show();
-
-
-
-
     }
 
     delete(data) {
@@ -85,18 +81,6 @@ export class DataComponent {
 
 
         }
-        if (data === 'presentYear') {
-
-            let time = {
-                'startYear': firstDay.getFullYear(),
-                'startMonth': 0,
-                'startDate': 1,
-                'lastYear': lastDay.getFullYear(),
-                'lastMonth': 12,
-                'lastDate': 31
-            }
-            this.getData(time);
-        }
     }
 
     customDate(sdate, edate) {
@@ -117,6 +101,12 @@ export class DataComponent {
 
         this.spinner.show();
         this.duplicates = [];
+
+        this.billService.billByCompany(time).subscribe(data => {
+            console.log(data);
+        }, err => {
+            console.log(err);
+        })
 
         this.billService.getDetails(time).subscribe(data => {
             this.totCgst = 0;
