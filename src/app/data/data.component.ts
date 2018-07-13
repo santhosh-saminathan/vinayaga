@@ -102,11 +102,11 @@ export class DataComponent {
         this.spinner.show();
         this.duplicates = [];
 
-        this.billService.billByCompany(time).subscribe(data => {
-            console.log(data);
-        }, err => {
-            console.log(err);
-        })
+//         this.billService.billByCompany(time).subscribe(data => {
+//             console.log(data);
+//         }, err => {
+//             console.log(err);
+//         })
 
         this.billService.getDetails(time).subscribe(data => {
             this.totCgst = 0;
