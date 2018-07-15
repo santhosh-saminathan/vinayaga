@@ -14,10 +14,11 @@
 }
 
 .custom_table_design {
+    font-size: 12px;
     width: 95%;
     margin: 0 auto;
-    height: 450px;
-    border: 1px solid grey;
+    /* height: 800px; */
+    /* border: 1px solid grey; */
 }
 
 .detailTable td {
@@ -39,27 +40,7 @@
     color: red;
 }
 
-.card-outer {
-    border: 2px solid grey;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 10px;
-}
-
-.card-inner {
-    height: 50px;
-    cursor: pointer;
-}
-
-.card-inner:hover {
-    height: 50px;
-    cursor: pointer;
+.ngx-pagination .current {
     font-weight: bold;
+    font-size: 15px;
 }
-
-.card-data{
-    /* color:#0097A4; */
-    color: #4a5152;
-    vertical-align: middle;
-    display: table-cell;
-  }

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { BillService } from './../services/bill.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Constants } from './../constants/companyAddress';
+import { Location } from '@angular/common';
+
 
 @Component({
     selector: 'data',
@@ -20,15 +23,25 @@ export class DataComponent {
     edt: any;
     allGst: any;
     duplicates: any = [];
+    deleteResponse: any;
+    companyNames: any = [];
+    selectedCompany: any = "All";
+    url: any;
+    timeRange: any;
 
 
-    constructor(private spinner: NgxSpinnerService, private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
+    constructor(private location: Location, private spinner: NgxSpinnerService, private router: Router, private activatedRoute: ActivatedRoute, private billService: BillService) {
+        this.url = location;
     }
 
     ngOnInit() {
 
+        console.log(this.url._platformStrategy._platformLocation.location.origin)
+
+        this.companyNames = Constants.companyAddress();
+
         this.timePeriod = "presentMonth";
-        this.getTimeInterval(this.timePeriod);
+        this.getTimeInterval(this.timePeriod, this.selectedCompany);
 
         this.spinner.show();
     }
@@ -36,15 +49,51 @@ export class DataComponent {
     delete(data) {
         let result = confirm("Are you sure? Want to delete this Bill?");
         if (result) {
-            this.billService.deleteBill({ 'invoice': data }).subscribe(data => {
-                this.ngOnInit();
+            this.billService.deleteBill({ 'invoice': data }).subscribe(ResData => {
+                this.deleteResponse = ResData;
+                let index = this.billData.map(function (e) { return e._id; }).indexOf(this.deleteResponse._id);
+                console.log(this.billData);
+                this.billData.splice(index, 1);
+
+                this.duplicates = [];
+                this.totCgst = 0;
+                this.totSgst = 0;
+                this.totAmount = 0;
+                this.totCost = 0;
+                this.allGst = 0;
+
+                this.billData.sort((a: any, b: any) => {
+                    if (a.invoice < b.invoice) {
+                        return -1;
+                    } else if (a.invoice > b.invoice) {
+                        return 1;
+                    } else {
+                        a.same = true;
+                        b.same = true;
+                        this.duplicates.push(a.invoice);
+                        return 0;
+                    }
+                });
+
+                console.log(this.billData);
+
+
+                this.billData.forEach(element => {
+                    this.totCgst = this.totCgst + element.cgst;
+                    this.totSgst = this.totSgst + element.sgst;
+                    this.allGst = this.totCgst + this.totSgst;
+                    this.totCost = this.totCost + element.totalAmount;
+                    this.totAmount = this.totAmount + element.totWithGst;
+                });
             }, err => {
 
             })
         }
     }
 
-    getTimeInterval(data) {
+    getTimeInterval(data, company) {
+
+        console.log(data, company);
 
         var date = new Date(), y = date.getFullYear(), m = date.getMonth();
         var firstDay = new Date(y, m, 1);
@@ -60,7 +109,12 @@ export class DataComponent {
                 'lastMonth': lastDay.getMonth() + 1,
                 'lastDate': lastDay.getDate()
             }
-            this.getData(time);
+            if (company === "All") {
+                this.getData(time);
+            } else {
+                this.getCompanyBills(time, company);
+            }
+
         }
         if (data === 'lastMonth') {
 
@@ -77,13 +131,16 @@ export class DataComponent {
                 'lastMonth': lastDay.getMonth() + 1,
                 'lastDate': lastDay.getDate()
             }
-            this.getData(time);
-
+            if (company === "All") {
+                this.getData(time);
+            } else {
+                this.getCompanyBills(time, company);
+            }
 
         }
     }
 
-    customDate(sdate, edate) {
+    customDate(sdate, edate, company) {
         if (new Date(edate) >= new Date(sdate)) {
             let time = {
                 'startYear': sdate.split('-')[0],
@@ -93,27 +150,73 @@ export class DataComponent {
                 'lastMonth': edate.split('-')[1],
                 'lastDate': edate.split('-')[2]
             }
-            this.getData(time);
+            if (company === "All") {
+                this.getData(time);
+            } else {
+                this.getCompanyBills(time, company);
+            }
         }
     }
 
-    getData(time) {
 
+    getCompanyBills(time, company) {
         this.spinner.show();
         this.duplicates = [];
 
-//         this.billService.billByCompany(time).subscribe(data => {
-//             console.log(data);
-//         }, err => {
-//             console.log(err);
-//         })
+        time.companyName = company;
+        this.timeRange = {};
 
+        this.timeRange = time;
+
+        console.log(time);
+
+        this.billService.billByCompany(time).subscribe(data => {
+            this.totCgst = 0;
+            this.totSgst = 0;
+            this.totAmount = 0;
+            this.totCost = 0;
+            this.allGst = 0;
+            this.billData = data;
+
+            this.spinner.hide();
+
+            this.billData.sort((a: any, b: any) => {
+                if (a.invoice < b.invoice) {
+                    return -1;
+                } else if (a.invoice > b.invoice) {
+                    return 1;
+                } else {
+                    a.same = true;
+                    b.same = true;
+                    this.duplicates.push(a.invoice);
+                    return 0;
+                }
+            });
+            this.billData.forEach(element => {
+                this.totCgst = this.totCgst + element.cgst;
+                this.totSgst = this.totSgst + element.sgst;
+                this.allGst = this.totCgst + this.totSgst;
+                this.totCost = this.totCost + element.totalAmount;
+                this.totAmount = this.totAmount + element.totWithGst;
+            });
+        }, err => {
+            console.log(err);
+        })
+    }
+
+    getData(time) {
+        this.timeRange = {};
+
+        this.timeRange = time;
+
+        this.spinner.show();
+        this.duplicates = [];
         this.billService.getDetails(time).subscribe(data => {
             this.totCgst = 0;
             this.totSgst = 0;
             this.totAmount = 0;
             this.totCost = 0;
-
+            this.allGst = 0;
             this.billData = data;
 
             this.spinner.hide();
@@ -149,6 +252,13 @@ export class DataComponent {
     billDetail(data) {
         console.log(data);
         this.separateBill = data;
+    }
+
+    printData() {
+        console.log(this.timeRange)
+        console.log(JSON.stringify(this.timeRange));
+        console.log(window.btoa(JSON.stringify(this.timeRange)));
+        window.open(this.url._platformStrategy._platformLocation.location.origin + '/#/print?data=' + window.btoa(JSON.stringify(this.timeRange)));
     }
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-root',
@@ -13,17 +14,24 @@ export class AppComponent {
     allowUser: boolean = false;
     password: any;
     showWarning: boolean = false;
-    showHeader:boolean = true;
-    constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    showHeader: boolean = true;
+    url: any;
+
+    constructor(private location: Location, private router: Router, private activatedRoute: ActivatedRoute) {
         setInterval(() => {
             //this.time = new Date();
             this.newTime();
         }, 1);
+        this.url = location;
     }
 
     ngOnInit() {
+        console.log(this.url._platformStrategy._platformLocation)
+
         let str = window.location.href;
-        if(str.substring(str.lastIndexOf("/") + 1, str.length) === 'detail'){
+        if (str.includes('home') || str.includes('bill')) {
+            this.showHeader = true;
+        } else {
             this.showHeader = false;
         }
         this.getPersentTime();
@@ -33,7 +41,7 @@ export class AppComponent {
     }
 
     login(password) {
-        if (password === "test" || password === "vin1912") {
+        if (password === "test@123" || password === "vin1912") {
             this.allowUser = true;
             sessionStorage.setItem('password', password)
         } else {
@@ -97,7 +105,7 @@ export class AppComponent {
         this.time = h + ':' + m + ':' + s + ' ' + ampm;
     }
 
-  
+
 
 }
 

@@ -174,6 +174,10 @@ export class BillComponent {
         this.total = null;
         this.totalCount = '';
         this.displayBill = false;
+
+        this.newItemName = null;
+        this.newItemTotPiece = null;
+        this.newItemRate = null;
     }
 
     addItem = function () {
@@ -318,7 +322,7 @@ export class BillComponent {
 
             }, err => {
                 console.log(err);
-            },()=>{
+            }, () => {
                 console.log("finishes");
             })
             localStorage.setItem('newInvoice', newInvoice.toString())
@@ -375,10 +379,10 @@ export class BillComponent {
 
             this.billService.updateBill(data).subscribe(resdata => {
                 console.log("Response data", resdata);
-           
+
             }, err => {
                 console.log("Errrorr", err);
-            },()=>{
+            }, () => {
                 sessionStorage.setItem('saved', 'true');
                 sessionStorage.removeItem('billUpdate');
                 const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
@@ -443,7 +447,7 @@ export class BillComponent {
                 //     location.reload();
                 // }, 1000);
 
-            },()=>{
+            }, () => {
                 sessionStorage.setItem('saved', 'true');
                 const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
                 document.body.innerHTML = document.getElementById(billContent).innerHTML;

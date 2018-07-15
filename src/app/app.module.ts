@@ -12,13 +12,15 @@ import { BillComponent } from './billData/bill.component';
 import { BillService } from '././services/bill.service';
 import { DataComponent } from './data/data.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { PrintBillComponent } from './print-bill/print-bill.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', component: HomeComponent },
   { path: 'bill', component: BillComponent },
-  { path: 'detail', component: DataComponent }
+  { path: 'detail', component: DataComponent },
+  { path: 'print', component: PrintBillComponent },
 ];
 
 @NgModule({
@@ -27,10 +29,12 @@ const routes: Routes = [
     HomeComponent,
     BillComponent,
     NumberToWordsPipe,
-    DataComponent
+    DataComponent,
+    PrintBillComponent
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     FormsModule,
     HttpClientModule,
     NgxSpinnerModule,

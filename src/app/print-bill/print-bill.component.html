@@ -1,0 +1,77 @@
+<!-- <div *ngIf="duplicates && duplicates.length>0">
+  Duplicate Invoice:
+  <span style="color:grey" *ngFor="let data of duplicates;">{{data}} </span>
+</div> -->
+
+<button style="float:right;margin:5px 15px" (click)="printScreen()" class="btn btn-default btn-xs">Print page</button>
+
+
+<div class="row" *ngIf="billData && billData.length>0">
+  <div *ngIf="urlObj.companyName" class="col-xs-12 col-sm-6">
+    Company Name:
+    <b>{{urlObj.companyName}}</b>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <p>From
+      <b>{{urlObj.startDate}}/{{urlObj.startMonth}}/{{urlObj.startYear}}</b> - To
+      <b>{{urlObj.lastDate}}/{{urlObj.lastMonth}}/{{urlObj.lastYear}}</b>
+    </p>
+  </div>
+</div>
+
+<div *ngIf="billData && billData.length>0" class="table-responsive custom_table_design">
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Invoice</th>
+        <th class="nowrap">Supply Date</th>
+        <th *ngIf="!urlObj.companyName" class="nowrap">Company Name</th>
+        <th class="nowrap">Your Dc Date</th>
+        <th class="nowrap">Your Dc No</th>
+        <th class="nowrap">Bill Amt</th>
+        <th>S+C(GST)</th>
+        <th class="nowrap">Tot Amt</th>
+        <th>Reference</th>
+      </tr>
+    </thead>
+    <!-- <tbody *ngFor="let data of billData| paginate: { itemsPerPage: 25, currentPage: p }; let i = index"> -->
+    <tbody *ngFor="let data of billData; let i = index">
+      <tr [ngClass]="{'duplicateData': data.same}">
+        <td>{{i+1}}</td>
+        <td>{{data.invoice}}</td>
+        <td>{{data.supplyDate | date:'dd-MM-yyyy'}}</td>
+        <td *ngIf="!urlObj.companyName">{{data.companyName}}</td>
+        <td>{{data.yourDcDate | date:'dd-MM-yyyy'}}</td>
+        <td>{{data.yourDcNumber}}</td>
+        <td>{{data.totalAmount}}</td>
+        <td>{{data.sgst}} + {{data.cgst}}</td>
+        <td>{{data.totWithGst}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+
+</div>
+
+<div *ngIf="billData && billData.length>0" class="row">
+  <div class="col-xs-12 col-sm-6">
+
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    Total SGST :
+    <span class="highlight">{{totSgst}}</span>
+    <br> Total CGST :
+    <span class="highlight">{{totCgst}}</span>
+    <br> SGST + CGST :
+    <span class="highlight">{{allGst}}</span>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    Total Without GST&nbsp;&nbsp;:
+    <span class="highlight">{{totCost}}</span>
+    <br> Total Including GST :
+    <span class="highlight">{{totAmount}}</span>
+  </div>
+</div>
