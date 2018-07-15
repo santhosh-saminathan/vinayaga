@@ -27,7 +27,6 @@ export class PrintBillComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       let data = params["data"];
       this.urlObj = JSON.parse(window.atob(data));
-      console.log(this.urlObj);
 
       if (this.urlObj.companyName) {
         this.billService.billByCompany(this.urlObj).subscribe(data => {

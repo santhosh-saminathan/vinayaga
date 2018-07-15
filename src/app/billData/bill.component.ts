@@ -323,7 +323,7 @@ export class BillComponent {
             }, err => {
                 console.log(err);
             }, () => {
-                console.log("finishes");
+                // console.log("finishes");
             })
             localStorage.setItem('newInvoice', newInvoice.toString())
             this.invoice = localStorage.getItem('newInvoice')
@@ -378,7 +378,6 @@ export class BillComponent {
         if (sessionStorage.getItem('billUpdate') === 'true') {
 
             this.billService.updateBill(data).subscribe(resdata => {
-                console.log("Response data", resdata);
 
             }, err => {
                 console.log("Errrorr", err);
@@ -406,7 +405,6 @@ export class BillComponent {
 
         } else {
             this.billService.storeBill(data).subscribe(resdata => {
-                console.log("Response data", resdata);
                 // sessionStorage.setItem('saved', 'true');
                 // const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
                 // document.body.innerHTML = document.getElementById(billContent).innerHTML;

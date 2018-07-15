@@ -26,13 +26,11 @@ export class AppComponent {
     }
 
     ngOnInit() {
-        console.log(this.url._platformStrategy._platformLocation)
-
         let str = window.location.href;
-        if (str.includes('home') || str.includes('bill')) {
-            this.showHeader = true;
-        } else {
+        if (str.includes('detail') || str.includes('print')) {
             this.showHeader = false;
+        } else {
+            this.showHeader = true;
         }
         this.getPersentTime();
         if (sessionStorage.getItem('password')) {

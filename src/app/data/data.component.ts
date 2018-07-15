@@ -36,8 +36,6 @@ export class DataComponent {
 
     ngOnInit() {
 
-        console.log(this.url._platformStrategy._platformLocation.location.origin)
-
         this.companyNames = Constants.companyAddress();
 
         this.timePeriod = "presentMonth";
@@ -52,7 +50,6 @@ export class DataComponent {
             this.billService.deleteBill({ 'invoice': data }).subscribe(ResData => {
                 this.deleteResponse = ResData;
                 let index = this.billData.map(function (e) { return e._id; }).indexOf(this.deleteResponse._id);
-                console.log(this.billData);
                 this.billData.splice(index, 1);
 
                 this.duplicates = [];
@@ -75,8 +72,6 @@ export class DataComponent {
                     }
                 });
 
-                console.log(this.billData);
-
 
                 this.billData.forEach(element => {
                     this.totCgst = this.totCgst + element.cgst;
@@ -92,8 +87,6 @@ export class DataComponent {
     }
 
     getTimeInterval(data, company) {
-
-        console.log(data, company);
 
         var date = new Date(), y = date.getFullYear(), m = date.getMonth();
         var firstDay = new Date(y, m, 1);
@@ -167,8 +160,6 @@ export class DataComponent {
         this.timeRange = {};
 
         this.timeRange = time;
-
-        console.log(time);
 
         this.billService.billByCompany(time).subscribe(data => {
             this.totCgst = 0;
@@ -250,14 +241,10 @@ export class DataComponent {
     }
 
     billDetail(data) {
-        console.log(data);
         this.separateBill = data;
     }
 
     printData() {
-        console.log(this.timeRange)
-        console.log(JSON.stringify(this.timeRange));
-        console.log(window.btoa(JSON.stringify(this.timeRange)));
         window.open(this.url._platformStrategy._platformLocation.location.origin + '/#/print?data=' + window.btoa(JSON.stringify(this.timeRange)));
     }
 
