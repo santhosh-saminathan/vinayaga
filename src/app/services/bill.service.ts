@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// const url = "https://nodeexpress-app.herokuapp.com/";
-const url = "http://app-be9c83cc-2fff-4500-b796-9e62c246168a.cleverapps.io/"
+const url = "https://nodeexpress-app.herokuapp.com/";
+// const url = "http://app-be9c83cc-2fff-4500-b796-9e62c246168a.cleverapps.io/"
 
 @Injectable()
 export class BillService {
