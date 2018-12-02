@@ -7,11 +7,11 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AACCA2285Q1ZF',
-        serviceAccountCode:998898,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:false,
-        displayTotNos:false,
+        serviceAccountCode: 998898,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
         items: [
             {
                 'name': 'Stainless steel impact',
@@ -25,11 +25,11 @@ let companyDetails = [
                 'name': 'Stainless steel IGC',
                 'rate': 84,
                 'pieces': false
-            },  {
+            }, {
                 'name': 'Stainless steel IGC G48',
                 'rate': 84,
                 'pieces': false
-            },{
+            }, {
                 'name': 'Stainless steel full length impact',
                 'rate': 420,
                 'pieces': false
@@ -57,7 +57,7 @@ let companyDetails = [
                 'name': 'Non alloy steel tensile',
                 'rate': 29,
                 'pieces': false
-            },{
+            }, {
                 'name': 'Stainless steel test bar cutting',
                 'rate': 157,
                 'pieces': false
@@ -81,11 +81,11 @@ let companyDetails = [
                 'name': 'Stainless steel 16mm weld test plate impact',
                 'rate': 241,
                 'pieces': false
-            },{
+            }, {
                 'name': 'Stainless steel 16mm weld test plate bend',
                 'rate': 315,
                 'pieces': false
-            },{
+            }, {
                 'name': 'Stainless steel 16mm weld test plate micro',
                 'rate': 262,
                 'pieces': false
@@ -105,7 +105,7 @@ let companyDetails = [
                 'name': 'Non alloy steel 16mm weld test plate micro',
                 'rate': 210,
                 'pieces': false
-            },{
+            }, {
                 'name': 'Non alloy steel gost cutting',
                 'rate': 140,
                 'pieces': false
@@ -124,11 +124,11 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AACCA2285Q1ZF',
-        serviceAccountCode:998898,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:false,
-        displayTotNos:false,
+        serviceAccountCode: 998898,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
         items: [
             {
                 'name': 'Stainless steel impact',
@@ -142,11 +142,11 @@ let companyDetails = [
                 'name': 'Stainless steel IGC',
                 'rate': 84,
                 'pieces': false
-            },  {
+            }, {
                 'name': 'Stainless steel IGC G48',
                 'rate': 84,
                 'pieces': false
-            },{
+            }, {
                 'name': 'Stainless steel full length impact',
                 'rate': 420,
                 'pieces': false
@@ -171,32 +171,32 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AAWCS8068D1ZV',
-        serviceAccountCode:998931,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:true,
-        displayTotNos:false,
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: true,
+        displayTotNos: false,
         items: [{
-                'name': 'Stainless Steel Impact',
-                'rate': 55,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy Steel Impact ',
-                'rate': 35,
-                'pieces': true
-            }, {
-                'name': 'Stainless Steel IGC Bend ',
-                'rate': 140,
-                'pieces': false
-            }, {
-                'name': 'Non Alloy Steel IGC-A ',
-                'rate': 15,
-                'pieces': false
-            }, {
-                'name': 'Stainless Steel IGC-A ',
-                'rate': 15,
-                'pieces': false
-            }
+            'name': 'Stainless Steel Impact',
+            'rate': 55,
+            'pieces': true
+        }, {
+            'name': 'Non Alloy Steel Impact ',
+            'rate': 35,
+            'pieces': true
+        }, {
+            'name': 'Stainless Steel IGC Bend ',
+            'rate': 140,
+            'pieces': false
+        }, {
+            'name': 'Non Alloy Steel IGC-A ',
+            'rate': 15,
+            'pieces': false
+        }, {
+            'name': 'Stainless Steel IGC-A ',
+            'rate': 15,
+            'pieces': false
+        }
         ]
 
     }, {
@@ -206,14 +206,14 @@ let companyDetails = [
         city: 'Coimbatore-641407',
         state: 'Tamilnadu',
         stateCode: '33',
-        serviceAccountCode:998898,
-        ourDc:false,
-        yourDc:true,
+        serviceAccountCode: 998898,
+        ourDc: false,
+        yourDc: true,
         gst: '33AACCA2285Q1ZF',
-        billDifferentType:false,
-        displayTotNos:false,
+        billDifferentType: false,
+        displayTotNos: false,
         items: [
-           {
+            {
                 'name': 'Stainless steel impact',
                 'rate': 84,
                 'pieces': true
@@ -225,11 +225,11 @@ let companyDetails = [
                 'name': 'Stainless steel IGC',
                 'rate': 84,
                 'pieces': false
-            },  {
+            }, {
                 'name': 'Stainless steel IGC G48',
                 'rate': 84,
                 'pieces': false
-            },{
+            }, {
                 'name': 'Stainless steel full length impact',
                 'rate': 420,
                 'pieces': false
@@ -253,7 +253,7 @@ let companyDetails = [
         ]
 
     },
-     {
+    {
         code: 'MASPL',
         name: 'Mira Alloy Steels Private Limited',
         address: 'S.F.No 363,Kurumbapalayam',
@@ -261,11 +261,11 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AAICS1449J1Z9',
-        serviceAccountCode:998931,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:false,
-        displayTotNos:false,
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
         items: [
             {
                 'name': 'Stainless Steel Impact',
@@ -360,32 +360,32 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33ACQPR8448H1ZZ',
-        serviceAccountCode:998931,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:false,
-        displayTotNos:false,
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
         items: [{
             'name': 'Non Alloy Steel Tensile Test Bar',
             'rate': 50,
             'pieces': false
-            }, {
-                'name': 'Stainless Steel Tensile Test Bar ',
-                'rate': 50,
-                'pieces': false
-            }, {
-                'name': 'Non Alloy Steel bend',
-                'rate': 125,
-                'pieces': false
-            }, {
-                'name': 'Non Alloy Steel impact',
-                'rate': 60,
-                'pieces': true
-            }, {
-                'name': 'Stainless Steel impact ',
-                'rate': 80,
-                'pieces': true
-            }
+        }, {
+            'name': 'Stainless Steel Tensile Test Bar ',
+            'rate': 50,
+            'pieces': false
+        }, {
+            'name': 'Non Alloy Steel bend',
+            'rate': 125,
+            'pieces': false
+        }, {
+            'name': 'Non Alloy Steel impact',
+            'rate': 60,
+            'pieces': true
+        }, {
+            'name': 'Stainless Steel impact ',
+            'rate': 80,
+            'pieces': true
+        }
         ]
     },
     {
@@ -396,33 +396,33 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AAKCS9336C1ZC',
-        serviceAccountCode:998931,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:true,
-        displayTotNos:false,
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: true,
+        displayTotNos: false,
         items: [{
-                'name': 'Non Alloy steel impact',
-                'rate': 80,
-                'pieces': true
-            },{
-                'name': 'Stainless steel impact',
-                'rate': 100,
-                'pieces': true
-            },  {
-                'name': 'Stainless steel IGC-B',
-                'rate': 25,
-                'pieces': false
-            }, {
-                'name': 'Stainless steel IGC-E ',
-                'rate': 100,
-                'pieces': false
-            }, 
-            {
-                'name': 'Non Alloy steel bend',
-                'rate': 175,
-                'pieces': false
-            }
+            'name': 'Non Alloy steel impact',
+            'rate': 80,
+            'pieces': true
+        }, {
+            'name': 'Stainless steel impact',
+            'rate': 100,
+            'pieces': true
+        }, {
+            'name': 'Stainless steel IGC-B',
+            'rate': 25,
+            'pieces': false
+        }, {
+            'name': 'Stainless steel IGC-E ',
+            'rate': 100,
+            'pieces': false
+        },
+        {
+            'name': 'Non Alloy steel bend',
+            'rate': 175,
+            'pieces': false
+        }
         ]
     },
     {
@@ -433,24 +433,24 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AAACU7496B1ZD',
-        serviceAccountCode:998931,
-        ourDc:true,
-        yourDc:true,
-        billDifferentType:false,
-        displayTotNos:false,
+        serviceAccountCode: 998931,
+        ourDc: true,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
         items: [{
-                'name': 'Non Alloy steel tensile bar',
-                'rate': 45,
-                'pieces': false
-            }, {
-                'name': 'Non Alloy steel Impact',
-                'rate': 45,
-                'pieces': true
-            }, {
-                'name': 'Stainless steel tensile bar ',
-                'rate': 55,
-                'pieces': false
-            }, 
+            'name': 'Non Alloy steel tensile bar',
+            'rate': 45,
+            'pieces': false
+        }, {
+            'name': 'Non Alloy steel Impact',
+            'rate': 45,
+            'pieces': true
+        }, {
+            'name': 'Stainless steel tensile bar ',
+            'rate': 55,
+            'pieces': false
+        },
         ]
 
     },
@@ -463,65 +463,65 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AADCS0183Q1Z3',
-        serviceAccountCode:998931,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:true,
-        displayTotNos:true,
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: true,
+        displayTotNos: true,
         items: [{
-                'name': 'Stainless steel impact',
-                'rate': 65,
-                'pieces': true,
-            }, {
-                'name': 'Non Alloy steel impact',
-                'rate': 45,
-                'pieces': true,
-            }, {
-                'name': 'Stainless steel  IGC bend',
-                'rate': 155,
-                'pieces': false
-            }, {
-                'name': 'Stainless steel IGC-A',
-                'rate': 20,
-                'pieces': false
-            },  {
-                'name': 'Non Alloy Steel IGC-A ',
-                'rate': 20,
-                'pieces': false
-            },{
-                'name': 'Stainless steel pitting piece',
-                'rate': 150,
-                'pieces': false
-            },{
-                'name': 'Stainless steel full length impact',
-                'rate': 165,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy steel full length impact',
-                'rate': 145,
-                'pieces': true
-            },{
-                'name': 'Stainless steel test block impact',
-                'rate': 65,
-                'pieces': true,
-            }, {
-                'name': 'Non Alloy steel test block impact',
-                'rate': 45,
-                'pieces': true,
-            }, {
-                'name': 'Stainless steel  test block IGC bend',
-                'rate': 155,
-                'pieces': false
-            }, {
-                'name': 'Stainless steel test block  IGC-A',
-                'rate': 20,
-                'pieces': false
-            },
-            {
-                'name': 'Non Alloy steel IBR bend',
-                'rate': 155,
-                'pieces': false
-            }
+            'name': 'Stainless steel impact',
+            'rate': 65,
+            'pieces': true,
+        }, {
+            'name': 'Non Alloy steel impact',
+            'rate': 45,
+            'pieces': true,
+        }, {
+            'name': 'Stainless steel  IGC bend',
+            'rate': 155,
+            'pieces': false
+        }, {
+            'name': 'Stainless steel IGC-A',
+            'rate': 20,
+            'pieces': false
+        }, {
+            'name': 'Non Alloy Steel IGC-A ',
+            'rate': 20,
+            'pieces': false
+        }, {
+            'name': 'Stainless steel pitting piece',
+            'rate': 150,
+            'pieces': false
+        }, {
+            'name': 'Stainless steel full length impact',
+            'rate': 165,
+            'pieces': true
+        }, {
+            'name': 'Non Alloy steel full length impact',
+            'rate': 145,
+            'pieces': true
+        }, {
+            'name': 'Stainless steel test block impact',
+            'rate': 65,
+            'pieces': true,
+        }, {
+            'name': 'Non Alloy steel test block impact',
+            'rate': 45,
+            'pieces': true,
+        }, {
+            'name': 'Stainless steel  test block IGC bend',
+            'rate': 155,
+            'pieces': false
+        }, {
+            'name': 'Stainless steel test block  IGC-A',
+            'rate': 20,
+            'pieces': false
+        },
+        {
+            'name': 'Non Alloy steel IBR bend',
+            'rate': 155,
+            'pieces': false
+        }
         ]
     },
     {
@@ -533,32 +533,32 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AALCS5492C1ZA',
-        serviceAccountCode:998931,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:true,
-        displayTotNos:false,
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: true,
+        displayTotNos: false,
         items: [{
-                'name': 'Stainless Steel Impact',
-                'rate': 65,
-                'pieces': true
-            }, {
-                'name': 'Non Alloy Steel Impact ',
-                'rate': 45,
-                'pieces': true
-            }, {
-                'name': 'Stainless Steel IGC Bend ',
-                'rate': 150,
-                'pieces': false
-            },  {
-                'name': 'Non Alloy Steel IGC-A ',
-                'rate': 15,
-                'pieces': false
-            }, {
-                'name': 'Stainless Steel IGC A ',
-                'rate': 15,
-                'pieces': false
-            }
+            'name': 'Stainless Steel Impact',
+            'rate': 65,
+            'pieces': true
+        }, {
+            'name': 'Non Alloy Steel Impact ',
+            'rate': 45,
+            'pieces': true
+        }, {
+            'name': 'Stainless Steel IGC Bend ',
+            'rate': 150,
+            'pieces': false
+        }, {
+            'name': 'Non Alloy Steel IGC-A ',
+            'rate': 15,
+            'pieces': false
+        }, {
+            'name': 'Stainless Steel IGC A ',
+            'rate': 15,
+            'pieces': false
+        }
         ]
 
 
@@ -571,36 +571,54 @@ let companyDetails = [
         state: 'Tamilnadu',
         stateCode: '33',
         gst: '33AAECV0350M1ZE',
-        serviceAccountCode:998931,
-        ourDc:false,
-        yourDc:true,
-        billDifferentType:false,
-        displayTotNos:false,
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
         items: [{
-                'name': 'Carbon steel impact',
-                'rate': 90,
-                'pieces': true
-            },  {
-                'name': '  Stainless steel impact',
-                'rate': 100,
-                'pieces': true
-            },  {
-                'name': '  Stainless steel IGC-E',
-                'rate': 250,
-                'pieces': false
-            },{
-                'name': 'Sample die rework purpose(double side)',
-                'rate': 600,
-                'pieces': false
-            }
+            'name': 'Carbon steel impact',
+            'rate': 90,
+            'pieces': true
+        }, {
+            'name': '  Stainless steel impact',
+            'rate': 100,
+            'pieces': true
+        }, {
+            'name': '  Stainless steel IGC-E',
+            'rate': 250,
+            'pieces': false
+        }, {
+            'name': 'Sample die rework purpose(double side)',
+            'rate': 600,
+            'pieces': false
+        }
+        ]
+
+    },
+
+    {
+        code: 'HAAIPL',
+        name: 'Hi Acme Automations India Private Limited',
+        address: 'SF No 452/2, Kurudampalayam Village, Rakkipalayam Pirivu, Thoppampati Post',
+        city: 'Coimbatore-641017',
+        state: 'Tamilnadu',
+        stateCode: '33',
+        gst: '33AABCH5957M1Z8',
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
+        items: [
         ]
 
     }
 ]
 
 
-    export class Constants {
-        public static companyAddress() : any{
-             return companyDetails;
-            }
-      }
+export class Constants {
+    public static companyAddress(): any {
+        return companyDetails;
+    }
+}
