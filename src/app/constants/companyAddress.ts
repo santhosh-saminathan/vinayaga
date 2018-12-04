@@ -600,7 +600,7 @@ let companyDetails = [
     {
         code: 'HAAIPL',
         name: 'Hi Acme Automations India Private Limited',
-        address: 'SF No 452/2, Kurudampalayam Village, Rakkipalayam Pirivu, Thoppampati Post',
+        address: 'SF No 452/2, Kurudampalayam Village, Rakkipalayam Pirivu',
         city: 'Coimbatore-641017',
         state: 'Tamilnadu',
         stateCode: '33',
