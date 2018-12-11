@@ -613,6 +613,40 @@ let companyDetails = [
         items: [
         ]
 
+    },
+    {
+        code: 'JI',
+        name: 'Jwala Industries',
+        address: 'SF No 82/1, Kunnathur Village, Kunnathur',
+        city: 'Coimbatore-641017',
+        state: 'Tamilnadu',
+        stateCode: '33',
+        gst: '33AAHFJ8951A1ZJ',
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
+        items: [
+        ]
+
+    },
+    {
+        code: 'MASPL2',
+        name: 'Mira Alloy Steels Private Limited(Unit-II)',
+        address: 'SF No 98/1, Onnakarasampalayam, Nalli chettipalayam post',
+        city: 'Coimbatore-641653',
+        state: 'Tamilnadu',
+        stateCode: '33',
+        gst: '33AAICS1449J1Z9',
+        serviceAccountCode: 998931,
+        ourDc: false,
+        yourDc: true,
+        billDifferentType: false,
+        displayTotNos: false,
+        items: [
+        ]
+
     }
 ]
 
