@@ -51,6 +51,7 @@ export class BillComponent {
     yourDcNumber: any;
     ourDcNumber: any;
     ourDcDate: any;
+    disabledAPIButton: boolean = false;
 
     constructor(private router: Router, private activatedRoute: ActivatedRoute, private numberToWordsPipe: NumberToWordsPipe, private billService: BillService) { }
 
@@ -360,6 +361,7 @@ export class BillComponent {
 
     submit = function (billContent) {
 
+        this.disabledAPIButton = true;
         let data = {
             'invoice': this.invoice,
             'totalAmount': this.grandTotal,
@@ -378,10 +380,11 @@ export class BillComponent {
         if (sessionStorage.getItem('billUpdate') === 'true') {
 
             this.billService.updateBill(data).subscribe(resdata => {
-
+                
             }, err => {
                 console.log("Errrorr", err);
             }, () => {
+                this.disabledAPIButton = false;
                 sessionStorage.setItem('saved', 'true');
                 sessionStorage.removeItem('billUpdate');
                 const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
@@ -405,47 +408,14 @@ export class BillComponent {
 
         } else {
             this.billService.storeBill(data).subscribe(resdata => {
-                // sessionStorage.setItem('saved', 'true');
-                // const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
-                // document.body.innerHTML = document.getElementById(billContent).innerHTML;
-                // sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
-                // const doc = new jsPDF();
-                // if (localStorage.getItem('newInvoice')) {
-                //     if (this.invoice > localStorage.getItem('upcomingInvoice')) {
-                //         localStorage.setItem('upcomingInvoice', (parseInt(this.invoice) + 1).toString());
-                //     } else {
-                //         console.log("no change in invoice")
-                //     }
-                // } else {
-                //     localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice')) + 1).toString());
-                // }
-                // setTimeout(function () {
-                //     window.print();
-                //     location.reload();
-                // }, 1000);
+              
 
             }, err => {
                 console.log("Errrorr", err);
-                // sessionStorage.setItem('saved', 'true');
-                // const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
-                // document.body.innerHTML = document.getElementById(billContent).innerHTML;
-                // sessionStorage.setItem('billData', JSON.stringify(this.itemsArray))
-                // const doc = new jsPDF();
-                // if (localStorage.getItem('newInvoice')) {
-                //     if (this.invoice > localStorage.getItem('upcomingInvoice')) {
-                //         localStorage.setItem('upcomingInvoice', (parseInt(this.invoice) + 1).toString());
-                //     } else {
-                //         console.log("no change in invoice")
-                //     }
-                // } else {
-                //     localStorage.setItem('upcomingInvoice', (parseInt(localStorage.getItem('upcomingInvoice')) + 1).toString());
-                // }
-                // setTimeout(function () {
-                //     window.print();
-                //     location.reload();
-                // }, 1000);
+              
 
             }, () => {
+                this.disabledAPIButton = false;
                 sessionStorage.setItem('saved', 'true');
                 const elementToPrint = document.getElementById(billContent); //The html element to become a pdf
                 document.body.innerHTML = document.getElementById(billContent).innerHTML;

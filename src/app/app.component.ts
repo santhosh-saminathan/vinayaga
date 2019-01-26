@@ -19,7 +19,6 @@ export class AppComponent {
 
     constructor(private location: Location, private router: Router, private activatedRoute: ActivatedRoute) {
         setInterval(() => {
-            //this.time = new Date();
             this.newTime();
         }, 1);
         this.url = location;

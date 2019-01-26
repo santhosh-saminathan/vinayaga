@@ -436,7 +436,7 @@
         <div style="text-align:right">
             <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && selectedCompany.billDifferentType &&  billFormatType != 'none'"
                 class="btn" (click)="print('billContent')">Print</button>
-            <button style="color:white;background:#2c96f1" *ngIf="!showPrintOption && !selectedCompany.billDifferentType || (selectedCompany.billDifferentType && billFormatType == 'none')"
+            <button [disabled]="disabledAPIButton" style="color:white;background:#2c96f1" *ngIf="!showPrintOption && !selectedCompany.billDifferentType || (selectedCompany.billDifferentType && billFormatType == 'none')"
                 class="btn" (click)="submit('billContent')">Print and Download</button>
         </div>
     </div>
